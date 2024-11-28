@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0kpt2aaloivw"]
+
+[ext_resource type="Texture2D" uid="uid://c1uffyqbf26fl" path="res://Assets/Animations/Slash/精灵-0002.png" id="1_j080x"]
+[ext_resource type="Texture2D" uid="uid://dasesu3yjv3bi" path="res://Assets/Animations/Slash/精灵-0003.png" id="2_r5fma"]
+[ext_resource type="Texture2D" uid="uid://eq1hihhrrqj2" path="res://Assets/Animations/Slash/精灵-0004.png" id="3_kf1ss"]
+[ext_resource type="Texture2D" uid="uid://dq0pjc1ie611k" path="res://Assets/Animations/Slash/精灵-0005.png" id="4_v7d01"]
+[ext_resource type="Texture2D" uid="uid://glhqk0h6efuw" path="res://Assets/Animations/Slash/精灵-0006.png" id="5_31psp"]
+[ext_resource type="Texture2D" uid="uid://bkxl2nfco7fdu" path="res://Assets/Animations/Slash/精灵-0007.png" id="6_gxevl"]
+[ext_resource type="Texture2D" uid="uid://2716mkfalbmh" path="res://Assets/Animations/Slash/精灵-0008.png" id="7_dfi6m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71pmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j080x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r5fma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kf1ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v7d01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_31psp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gxevl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dfi6m")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Slash",
+"speed": 20.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_71pmk")
+animation = &"Slash"
+frame_progress = 0.511525

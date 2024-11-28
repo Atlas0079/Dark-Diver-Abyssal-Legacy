@@ -1,0 +1,44 @@
+{
+	"town_square": {
+		"id": "town_square",
+		"name": "城镇广场",
+		"description": "热闹的城镇中心广场，四周商铺林立",
+		"type": "outdoor",
+		"size": {"x": 20, "y": 20},
+		"features": {
+			"interactables": ["fountain", "notice_board"],
+			"npcs": ["merchant_01", "guard_01"],
+			"shops": ["general_store", "blacksmith"],
+			"quest_givers": ["elder"]
+		},
+		"connections": [
+			{
+				"target": "market_street",
+				"path_type": "normal",
+				"distance": 1.0,
+				"requirements": {}
+			},
+			{
+				"target": "secret_alley",
+				"path_type": "hidden",
+				"distance": 0.5,
+				"requirements": {
+					"items": ["thieves_map"],
+					"quests": ["join_thieves_guild"],
+					"level": 5
+				}
+			},
+			{
+				"target": "temple_entrance",
+				"path_type": "normal",
+				"distance": 2.0,
+				"requirements": {
+					"time_range": {
+						"start": "06:00",
+						"end": "20:00"
+					}
+				}
+			}
+		]
+	}
+}

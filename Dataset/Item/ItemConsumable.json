@@ -1,0 +1,41 @@
+{
+  "20001": {
+    "name": "苹果",
+    "description": "一个新鲜的苹果",
+    "item_value": 5,
+    "category": "food",
+    "use_type": "all_time",
+    "tag": [],
+    "effects": {
+      "type": "heal",
+      "value": 2
+    },
+    "image": "res://Art/Items/Item_Consumable_1.png"
+  },
+  "20002": {
+    "name": "面包",
+    "description": "一块香喷喷的面包",
+    "item_value": 8,
+    "category": "food",
+    "use_type": "all_time",
+    "tag": [],
+    "effects": {
+      "type": "gain_energy",
+      "value": 10
+    },
+    "image": "res://Art/Items/Item_Consumable_2.png"
+  },
+  "20003": {
+    "name": "治疗药水",
+    "description": "能够恢复生命值的药水",
+    "item_value": 20,
+    "category": "potion",
+    "use_type": "battle",
+    "tag": [],
+    "effects": {
+      "type": "heal",
+      "value": 30
+    },
+    "image": "res://Art/Items/Item_Consumable_3.png"
+  }
+}

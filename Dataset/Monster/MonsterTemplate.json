@@ -1,0 +1,103 @@
+{
+	"10001": {
+	  "name": "蜥蜴人",
+	  "race": "蜥蜴人",
+	  "creature_type": "monster",
+	  "image": "res://Assets/Character/lizardman.png",
+	  
+	  "base_attributes": {
+		"strength": 12,
+		"dexterity": 10,
+		"constitution": 13,
+		"intelligence": 14,
+		"perception": 15,
+		"charisma": 16
+	  },
+	  
+	  "resources": {
+		"health": {
+		  "current": 38,
+		  "max": 38
+		},
+		"mana": {
+		  "current": 44,
+		  "max": 44
+		},
+		"qi": {
+		  "current": 22,
+		  "max": 22
+		}
+	  },
+	  
+	  "equipment": {
+		"weapon": "破损弯刀",
+		"armor": null,
+		"accessories": ["兽骨项链"]
+	  },
+	  
+	  "battle": {
+		"action_point": 0,
+		"action_threshold": 10,
+		"active_skills": {
+		  "0005": {
+			"timings": [],
+			"priority": 1
+		  }
+		}
+	  },
+	  
+	  "traits": ["0001", "0002"],
+	  "states": [{"burn": 3}]
+	},
+	
+	"10002": {
+	  "name": "巨魔",
+	  "race": "巨魔",
+	  "creature_type": "monster",
+	  "image": "res://Assets/Character/barlgura.png",
+	  
+	  "base_attributes": {
+		"strength": 18,
+		"dexterity": 12,
+		"constitution": 16,
+		"intelligence": 8,
+		"perception": 10,
+		"charisma": 6
+	  },
+	  
+	  "resources": {
+		"health": {
+		  "current": 50,
+		  "max": 50
+		},
+		"mana": {
+		  "current": 28,
+		  "max": 28
+		},
+		"qi": {
+		  "current": 30,
+		  "max": 30
+		}
+	  },
+	  
+	  "equipment": {
+		"weapon": null,
+		"armor": null,
+		"accessories": []
+	  },
+	  
+	  "battle": {
+		"action_point": 0,
+		"action_threshold": 12,
+		"active_skills": {
+		  "0005": {
+			"timings": [],
+			"priority": 1
+		  }
+		}
+	  },
+	  
+	  "traits": ["0003", "0004"],
+	  "states": [{"burn": 2}]
+	}
+  }

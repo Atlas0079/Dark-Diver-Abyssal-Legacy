@@ -1,0 +1,28 @@
+{
+    "adventurer_team": {
+      "team_id": "00001",
+      "describe": "冒险者小队",
+      "positions": {
+        "front_left": {"character_id": "00001", "is_down": false},
+        "front_center": null,
+        "front_right": {"character_id": "00002", "is_down": false},
+        "back_left": null,
+        "back_center": {"character_id": "00003", "is_down": false},
+        "back_right": null
+      }
+    },
+    "monster_team": {
+      "team_id": "00002",
+      "describe": "怪物小队",
+      "positions": {
+        "front_left": null,
+        "front_center": {"character_id": "10001T1", "is_down": false},
+        "front_right": null,
+        "back_left": {"character_id": "10002T1", "is_down": false},
+        "back_center": null,
+        "back_right": {"character_id": "10003T1", "is_down": false}
+      }
+    },
+    "turn": 1,
+    "active_character": null
+  }

@@ -1,0 +1,24 @@
+{
+  "10001": {
+      "describe": "冒险者小队1",
+      "positions": {
+          "FRONT_TOP": null,
+          "FRONT_MID": "00001",
+          "FRONT_BOT": null,
+          "BACK_TOP": null,
+          "BACK_MID": null,
+          "BACK_BOT": "00002"
+      }
+  },
+  "20001": {
+      "describe": "怪物小队1",
+      "positions": {
+          "FRONT_TOP": null,
+          "FRONT_MID": "10001",
+          "FRONT_BOT": null,
+          "BACK_TOP": "10002",
+          "BACK_MID": null,
+          "BACK_BOT": null
+      }
+  }
+}
