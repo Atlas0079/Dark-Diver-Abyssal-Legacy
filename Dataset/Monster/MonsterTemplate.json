@@ -30,9 +30,9 @@
 	  },
 	  
 	  "equipment": {
-		"weapon": "破损弯刀",
+		"weapon": "11001",
 		"armor": null,
-		"accessories": ["兽骨项链"]
+		"accessories": ["13003"]
 	  },
 	  
 	  "battle": {

@@ -87,8 +87,13 @@ func can_use_connection(connection: Dictionary, character: Character) -> bool:
 	
 	# 检查物品需求
 	if reqs.has("items"):
-		for item_id in reqs.items:
-			if not character.inventory.has_item(item_id):
+		for required_item_id in reqs.items:
+			var found = false
+			for item in character.inventory.items:
+				if item.item_id == required_item_id:
+					found = true
+					break
+			if not found:
 				return false
 	
 	# 检查任务需求

@@ -59,6 +59,9 @@ func init_battle(blue_team_id: String, red_team_id: String) -> void:
 	# 从JSON加载队伍数据
 	var blue_team_data = DataManager.get_team_data(blue_team_id)
 	var red_team_data = DataManager.get_team_data(red_team_id)
+	if blue_team_data == null or red_team_data == null:
+		print("Battle.init_battle 队伍数据为空")
+		return
 	
 	# 根据数据创建角色并放置到对应位置
 	setup_team(blue_team_data, blue_team)
@@ -69,6 +72,7 @@ func init_battle(blue_team_id: String, red_team_id: String) -> void:
 # 设置队伍
 func setup_team(team_data: Dictionary, team_positions: Dictionary) -> void:
 	# 遍历队伍数据中的每个位置
+	#print("Battle.setup_team team_data: %s" % team_data)
 	for position in team_data.positions:
 		var character_id = team_data.positions[position]
 		if character_id != null:

@@ -94,7 +94,7 @@ func get_targets(user: Character) -> Array[Character]:
 			if character != null and character.is_alive():
 				targets.append(character)
 				
-	print("Skill get_targets : ", targets)
+	#print("Skill get_targets : ", targets)
 	# 2. 查技能使用条件
 	for condition in use_conditions:
 		match condition.type:
@@ -110,7 +110,7 @@ func get_targets(user: Character) -> Array[Character]:
 	# 3. 根据timing筛选目标（所有条件都要满足）
 	var filtered_targets = targets
 	
-	print("Skill get_targets timings : ", timings)
+	#print("Skill get_targets timings : ", timings)
 	for timing in timings:
 		var current_valid_targets: Array[Character] = []
 		
@@ -207,7 +207,7 @@ func get_targets(user: Character) -> Array[Character]:
 			selected_targets = [targets_by_priority[group].pick_random()]
 			break
 
-	print("Skill get_targets after common rule : ", selected_targets)
+	#print("Skill get_targets after common rule : ", selected_targets)
 
 	# 如果技能tag包含"row"或"column"或"all"，添加扩展后的目标
 	if "row" in tags or "column" in tags or "all" in tags:
@@ -236,7 +236,7 @@ func get_targets(user: Character) -> Array[Character]:
 				if target_team[pos] != null and target_team[pos] not in selected_targets:
 					selected_targets.append(target_team[pos])
 
-	print("Skill get_targets after all rule : ", selected_targets)
+	#print("Skill get_targets after all rule : ", selected_targets)
 
 	return selected_targets
 

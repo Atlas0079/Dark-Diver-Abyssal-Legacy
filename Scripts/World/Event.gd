@@ -34,7 +34,7 @@ var conditions = {
 	"quest_ids": [],         # 需要的任务状态
 	"states": [],         # 需要的状态
 	"variables": {},      # 需要的变量条件
-	"chance": 100         # 触发概率(0-100)
+	"chance": 100         # 触���概率(0-100)
 }
 
 # 事件行为
@@ -103,8 +103,13 @@ func _check_conditions(character: Character, context: Dictionary) -> bool:
 			return false
 	
 	# 检查物品需求
-	for item_id in conditions.item_ids:
-		if not character.inventory.has(item_id):
+	for required_item_id in conditions.item_ids:
+		var found = false
+		for item in character.inventory.items:
+			if item.item_id == required_item_id:
+				found = true
+				break
+		if not found:
 			return false
 	
 	# 检查任务状态
@@ -133,9 +138,13 @@ func execute_action(action: Dictionary, character: Character, context: Dictionar
 		"dialog":
 			pass
 		"give_item":
-			character.inventory.add_item(action.item_id)
+			var item = DataManager.create_item(action.item_id)
+			if item:
+				character.inventory.add_item(item)
 		"remove_item":
-			character.inventory.remove_item(action.item_id)
+			var item = character.inventory.find_item_by_id(action.item_id)
+			if item:
+				character.inventory.remove_item(item)
 		"modify_state":
 			if action.operation == "add":
 				character.states.append(action.state)

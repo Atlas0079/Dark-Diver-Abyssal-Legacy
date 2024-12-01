@@ -96,6 +96,7 @@ func _load_item_data() -> void:
 			_item_data[id] = misc_data[id]
 			_item_data[id]["item_type"] = "misc"
 	misc_file.close()
+	#print("DataManager _load_item_data _item_data: %s" % _item_data)
 
 # 加载事件数据
 func _load_event_data() -> void:
@@ -147,25 +148,6 @@ func create_monster_copy(monster_id: String) -> Character:
 func get_whole_skill_data() -> Dictionary:
 	return _skill_data
 
-# 物品相关的公共接口
-func get_item_data(item_id: String) -> Dictionary:
-	return _item_data.get(str(item_id), {})
-
-func get_item_name(item_id: String) -> String:
-	return get_item_data(item_id).get("name", "未知物品")
-
-func get_item_description(item_id: String) -> String:
-	return get_item_data(item_id).get("description", "")
-
-func get_item_type(item_id: String) -> String:
-	return get_item_data(item_id).get("item_type", "")
-
-func get_item_value(item_id: String) -> int:
-	return get_item_data(item_id).get("item_value", 0)
-
-func item_exists(item_id: String) -> bool:
-	return _item_data.has(str(item_id))
-
 func get_equipment_boosts(item_id: String) -> Dictionary:
 	var data = get_item_data(item_id)
 	if data.get("item_type") == "equipment":
@@ -201,3 +183,35 @@ func get_event(event_id: String) -> Event:
 func cleanup():
 	_character_instances.clear()
 	_monster_templates.clear()
+
+# 获取物品数据
+func get_item_data(item_id: String) -> Dictionary:
+	return _item_data.get(str(item_id), {})
+
+# 检查物品是否存在
+func item_exists(item_id: String) -> bool:
+	return _item_data.has(str(item_id))
+
+# 创建物品实例
+func create_item(item_id: String) -> Item:
+	if not item_exists(item_id):
+		return null
+	
+	var data = get_item_data(item_id)
+	var item: Item
+	
+	# 根据物品类型创建对应的子类实例
+	match data.get("item_type", ""):
+		"equipment":
+			item = Equipment.new(item_id)
+		"consumable":
+			item = Consumable.new(item_id)
+		"misc":
+			item = MiscItem.new(item_id)
+		_:
+			push_error("Unknown item type for item: " + item_id)
+			return null
+	
+	# 初始化物品数据
+	item.init_from_template()
+	return item

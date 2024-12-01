@@ -21,7 +21,7 @@ func _ready():
 	connect_signals()
 	
 	# 开始战斗测试
-	battle.init_battle("00001", "00002")
+	battle.init_battle("10001", "20001")
 	# 设置技能动画系统
 	SkillAnimation.setup_scene(self)
 	
@@ -202,6 +202,20 @@ func update_character_info():
 		"ap": selected_character.battle_stats.action_point,
 		"ap_threshold": selected_character.battle_stats.action_threshold
 	})
+	
+	# 添加装备信息
+	var equipment_text = "\n装备:\n"
+	if selected_character.equipment.weapon:
+		equipment_text += "武器: " + selected_character.equipment.weapon.get_item_name() + "\n"
+	if selected_character.equipment.armor:
+		equipment_text += "护甲: " + selected_character.equipment.armor.get_item_name() + "\n"
+	if not selected_character.equipment.accessories.is_empty():
+		equipment_text += "饰品: "
+		for acc in selected_character.equipment.accessories:
+			equipment_text += acc.get_item_name() + ", "
+		equipment_text = equipment_text.trim_suffix(", ") + "\n"
+	
+	info_text += equipment_text
 	
 	$CharacterInfo/StatusRichTextLabel.text = info_text
 

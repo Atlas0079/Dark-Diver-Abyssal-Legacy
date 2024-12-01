@@ -42,8 +42,8 @@ var resources = {
 
 # 装备
 var equipment = {
-	"weapon": "",
-	"armor": "",
+	"weapon": null,
+	"armor": null,
 	"accessories": []
 }
 
@@ -87,7 +87,23 @@ func init_from_data(original_data: Dictionary) -> void:
 	
 	# 装备
 	if data.has("equipment"):
-		self.equipment = data.equipment
+		var equip_data = data.equipment
+		if equip_data.has("weapon") and equip_data.weapon:
+			var weapon = DataManager.create_item(str(equip_data.weapon))
+			print("Character init_from_data weapon: %s" % weapon)
+			if weapon:
+				equipment.weapon = weapon
+				
+		if equip_data.has("armor") and equip_data.armor:
+			var armor = DataManager.create_item(str(equip_data.armor))
+			if armor:
+				equipment.armor = armor
+				
+		if equip_data.has("accessories"):
+			for acc_id in equip_data.accessories:
+				var accessory = DataManager.create_item(str(acc_id))
+				if accessory:
+					equipment.accessories.append(accessory)
 	
 	# 战斗相关
 	if data.has("battle"):
@@ -115,8 +131,10 @@ func init_from_data(original_data: Dictionary) -> void:
 	# 初始化背包
 	inventory = Inventory.new(data.get("inventory", {}).get("capacity", 20))
 	if data.has("inventory"):
-		for item in data.inventory.get("items", []):
-			inventory.add_item(item)
+		for item_id in data.inventory.get("items", []):
+			var item = DataManager.create_item(str(item_id))
+			if item:
+				inventory.add_item(item)
 	
 	# 初始化完基础属性后更新战斗属性
 	_update_combat_stats()
@@ -217,29 +235,18 @@ func set_attribute(attr_name: String, value: int) -> void:
 
 # 添加更新战斗属性的方法
 func _update_combat_stats() -> void:
-	# 获取装备加成
-	var base_boosts = get_equipment_base_stat_boosts()
-	var fixed_combat_boosts = get_equipment_fixed_combat_boosts()
-	var random_combat_boosts = get_equipment_random_combat_boosts()
+	# 重置装备加成
+	combat_stats.equipment_boosts.clear()
 	
-	# 计算实际基础属性（原始 + 装备固定加成）
-	var actual_base_stats = base_attributes.duplicate()
-	for stat in base_boosts:
-		actual_base_stats[stat] += base_boosts[stat]
-	
-	# 根据实际基础属性计算战斗属性
-	combat_stats.physical_attack = actual_base_stats.strength * 1.5 + actual_base_stats.dexterity * 0.5
-	combat_stats.magical_attack = actual_base_stats.intelligence * 1.5 + actual_base_stats.perception * 0.5
-	combat_stats.physical_defense = actual_base_stats.constitution * 1 + actual_base_stats.dexterity * 0.5
-	combat_stats.magical_defense = actual_base_stats.perception * 1 + actual_base_stats.intelligence * 0.5
-	
-	# 添加装备固定战斗属性加成
-	for stat in fixed_combat_boosts:
-		combat_stats[stat] += fixed_combat_boosts[stat]
-	
-	# 存储装备浮动加成范围，供实际战斗时使用
-	combat_stats.equipment_boosts = random_combat_boosts
-
+	# 计算所有装备的属性加成
+	var all_equipment = [equipment.weapon, equipment.armor] + equipment.accessories
+	for equipped_item in all_equipment:
+		if equipped_item:
+			var boosts = equipped_item.get_attribute_boosts()
+			for attr in boosts:
+				if not combat_stats.equipment_boosts.has(attr):
+					combat_stats.equipment_boosts[attr] = 0
+				combat_stats.equipment_boosts[attr] += boosts[attr]
 
 # 获取战斗属性（不包含随机加成）
 func get_combat_stat(stat_name: String) -> float:
@@ -249,82 +256,16 @@ func get_combat_stat(stat_name: String) -> float:
 func get_actual_combat_stat(stat_name: String) -> float:
 	var base_value = get_combat_stat(stat_name)
 	
-	# 如果有装备加成范围，计算随机加成
-	var boosts = combat_stats.get("equipment_boosts", {})
-	if boosts.has(stat_name):
-		if boosts[stat_name] is Dictionary:
-			var min_boost = boosts[stat_name].get("min", 0)
-			var max_boost = boosts[stat_name].get("max", 0)
-			base_value += randf_range(min_boost, max_boost)
+	# 获取所有装备的当前属性加成
+	var all_equipment = [equipment.weapon, equipment.armor] + equipment.accessories
+	for equipped_item in all_equipment:
+		if equipped_item:
+			var boosts = equipped_item.calculate_current_attributes()
+			if boosts.has(stat_name):
+				base_value += boosts[stat_name]
+				print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
 	
 	return base_value
-
-# 获取装备提供的固定基础属性加成
-func get_equipment_base_stat_boosts() -> Dictionary:
-	var total_boosts = {
-		"strength": 0,、
-		
-		"dexterity": 0,
-		"constitution": 0,
-		"intelligence": 0,
-		"perception": 0,
-		"charisma": 0
-	}
-	
-	# 处理所有装备
-	for item_id in [equipment.weapon, equipment.armor] + equipment.accessories:
-		if item_id:
-			var boosts = DataManager.get_equipment_boosts(item_id)
-			for stat in boosts:
-				if stat in total_boosts:  # 只处理基础属性
-					if not (boosts[stat] is Dictionary):  # 只处理固定值
-						total_boosts[stat] += boosts[stat]
-	
-	return total_boosts
-
-# 获取装备提供的固定战斗属性加成
-func get_equipment_fixed_combat_boosts() -> Dictionary:
-	var total_boosts = {
-		"physical_attack": 0,
-		"magical_attack": 0,
-		"physical_defense": 0,
-		"magical_defense": 0,
-		"hit_rate": 0,
-		"dodge_rate": 0,
-		"crit_rate": 0
-	}
-	
-	# 处理所有装备
-	for item_id in [equipment.weapon, equipment.armor] + equipment.accessories:
-		if item_id:
-			var boosts = DataManager.get_equipment_boosts(item_id)
-			for stat in boosts:
-				if stat in total_boosts:  # 只处理战斗属性
-					if not (boosts[stat] is Dictionary):  # 只处理固定值
-						total_boosts[stat] += boosts[stat]
-	
-	return total_boosts
-
-# 获取装备提供的浮动战斗属性加成范围
-func get_equipment_random_combat_boosts() -> Dictionary:
-	var total_boosts = {
-		"physical_attack": {"min": 0, "max": 0},
-		"magical_attack": {"min": 0, "max": 0},
-		"physical_defense": {"min": 0, "max": 0},
-		"magical_defense": {"min": 0, "max": 0}
-	}
-	
-	# 处理所有装备
-	for item_id in [equipment.weapon, equipment.armor] + equipment.accessories:
-		if item_id:
-			var boosts = DataManager.get_equipment_boosts(item_id)
-			for stat in boosts:
-				if stat in total_boosts:  # 只处理战斗属性
-					if boosts[stat] is Dictionary:  # 只处理范围值
-						total_boosts[stat].min += boosts[stat].get("min", 0)
-						total_boosts[stat].max += boosts[stat].get("max", 0)
-	
-	return total_boosts
 
 # 检查卸下装备后是否会影响其他装备的需求
 func _check_unequip_impact(item_id: String, equip_type: String) -> bool:
@@ -346,17 +287,17 @@ func _check_unequip_impact(item_id: String, equip_type: String) -> bool:
 	
 	# 检查武器
 	if equipment.weapon:
-		if not _check_equip_conditions(equipment.weapon):
+		if not equipment.weapon.check_equip_conditions(self):
 			all_requirements_met = false
 	
 	# 检查护甲
 	if equipment.armor:
-		if not _check_equip_conditions(equipment.armor):
+		if not equipment.armor.check_equip_conditions(self):
 			all_requirements_met = false
 	
 	# 检查饰品
 	for accessory in equipment.accessories:
-		if not _check_equip_conditions(accessory):
+		if not accessory.check_equip_conditions(self):
 			all_requirements_met = false
 	
 	# 恢复原始状态
@@ -366,129 +307,60 @@ func _check_unequip_impact(item_id: String, equip_type: String) -> bool:
 	return all_requirements_met
 
 # 装备物品
-func equip(item_id: String, equip_type: String) -> bool:
-	# 检查物品是否在背包中
-	if not inventory.has_item(item_id) and not inventory.has_item_in_overflow(item_id):
-		print("Character equip 背包中没有该物品: ", item_id)
+func equip(item: Item) -> bool:
+	var equip_type = item.get_type()
+	if not can_equip(item):
 		return false
 		
-	# 检查物品类型是否匹配
-	var item_data = DataManager.get_item_data(item_id)
-	if item_data.get("equipment_type") != equip_type:
-		print("Character equip 物品类型不匹配: ", item_id)
-		return false
-		
-	# 检查是否满足装备条件
-	if not _check_equip_conditions(item_id):
-		print("Character equip 不满足装备条件: ", item_id)
-		return false
-	
-	# 如果是更换装备，需要检查卸下当前装备是否会影响其他装备
 	match equip_type:
 		"weapon":
-			if equipment.weapon:
-				# 先检查新装备是否满足要求
-				if not _check_equip_conditions(item_id):
-					return false
-				# 再检查卸下当前装备的影响
-				if not _check_unequip_impact(equipment.weapon, "weapon"):
-					return false
+			if equipment.weapon != null:
+				unequip(equipment.weapon)
+			equipment.weapon = item
 		"armor":
-			if equipment.armor:
-				if not _check_equip_conditions(item_id):
-					return false
-				if not _check_unequip_impact(equipment.armor, "armor"):
-					return false
+			if equipment.armor != null:
+				unequip(equipment.armor)
+			equipment.armor = item
 		"accessory":
 			if equipment.accessories.size() >= 3:
-				if not _check_equip_conditions(item_id):
-					return false
-				if not _check_unequip_impact(equipment.accessories.back(), "accessory"):
-					return false
+				unequip(equipment.accessories[0])
+			equipment.accessories.append(item)
 	
-	match equip_type:
-		"weapon":
-			if equipment.weapon:
-				if not unequip(equipment.weapon, "weapon"):
-					return false
-			equipment.weapon = item_id
-		"armor":
-			if equipment.armor:
-				if not unequip(equipment.armor, "armor"):
-					return false
-			equipment.armor = item_id
-		"accessory":
-			if equipment.accessories.size() >= 3:
-				if not unequip(equipment.accessories.back(), "accessory"):
-					return false
-			equipment.accessories.append(item_id)
-		_:
-			push_error("Invalid equip type: " + equip_type)
-			return false
-	
-	# 从背包中移除物品
-	if inventory.has_item(item_id):
-		inventory.remove_item(item_id)
-	else:
-		inventory.remove_from_overflow(item_id)
+	# 从背包移除物品
+	inventory.remove_item(item)
 	
 	# 更新战斗属性
 	_update_combat_stats()
-	
 	return true
 
 # 卸下装备
-func unequip(item_id: String, equip_type: String) -> bool:
-	# 首先检查是否装备了该物品
+func unequip(item: Item) -> bool:
+	# 检查是否装备了该物品
+	var equip_type = item.get_type()
 	var is_equipped = false
 	match equip_type:
-		"weapon": is_equipped = equipment.weapon == item_id
-		"armor": is_equipped = equipment.armor == item_id
-		"accessory": is_equipped = equipment.accessories.has(item_id)
+		"weapon": is_equipped = equipment.weapon == item
+		"armor": is_equipped = equipment.armor == item
+		"accessory": is_equipped = equipment.accessories.has(item)
 		
 	if not is_equipped:
-		print("Character unequip 未装备该物品: ", item_id)
 		return false
 	
-	# 检查卸下该装备是否会影响其他装备的需求
-	if not _check_unequip_impact(item_id, equip_type):
-		print("Character unequip 卸下该装备会导致其他装备需求不满足: ", item_id)
-		return false
-	
-	# 尝试放入普通背包
-	if inventory.can_add_item(item_id):
-		# 从装备栏移除
+	# 尝试放入背包
+	if inventory.can_add_item(item):
 		match equip_type:
 			"weapon": equipment.weapon = null
 			"armor": equipment.armor = null
-			"accessory": equipment.accessories.erase(item_id)
-		# 使用背包的add_item方法添加物品
-		if not inventory.add_item(item_id):
-			push_error("Character unequip 添加物品到背包失败: " + item_id)
-			return false
+			"accessory": equipment.accessories.erase(item)
+		return inventory.add_item(item)
 	else:
-		# 如果普通背包放不下，放入溢出区
-		match equip_type:
-			"weapon": equipment.weapon = null
-			"armor": equipment.armor = null
-			"accessory": equipment.accessories.erase(item_id)
-		if not inventory.add_to_overflow(item_id):
-			push_error("Character unequip 添加物品到溢出区失败: " + item_id)
-			return false
-	
-	# 更新战斗属性
-	_update_combat_stats()
-	
-	return true
+		# 如果背包满了，放入溢出区
+		return inventory.add_to_overflow(item)
 
-# 检查装备条件
-func _check_equip_conditions(item_id: String) -> bool:
-	var item_data = DataManager.get_item_data(item_id)
-	var conditions = item_data.get("equip_conditions", {})
-	
-	for attr_name in conditions:
-		if get_attribute(attr_name) < conditions[attr_name]:
-			return false
-	return true
-
-
+# 检查是否可以装备
+# 先检查装备条件，再检查背包是否可以容纳替换后的装备
+# 背包剩余容量-放入背包的装备占用空间+替换上的装备占用空间
+func can_equip(item: Item) -> bool:
+	var item_size = item.get_size()
+	var remaining_space = inventory.get_remaining_space()
+	return item.check_equip_conditions(self) and remaining_space >= item_size
