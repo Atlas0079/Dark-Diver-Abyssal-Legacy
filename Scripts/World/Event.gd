@@ -3,14 +3,15 @@ extends Resource
 
 # 事件类型枚举
 enum EventType {
-	ENTER,      # 进入区域时触发
-	EXIT,       # 离开区域时触发
-	STAY,       # 停留时触发
-	INTERACT,   # 与特定物品/NPC互动时触发
-	BATTLE,     # 战斗相关事件
-	QUEST,      # 任务相关事件
-	DIALOG,     # 对话事件
-	CUSTOM      # 自定义事件
+	ENTER_DUNGENONROOM,      # 进入房间时触发
+	EXIT_DUNGEON_ROOM,       # 离开房间时触发
+	ENTER_LOCATION,     # 进入地点时触发
+	EXIT_LOCATION,      # 离开地点时触发
+	INTERACT,        # 与特定物品/NPC互动时触发
+	BATTLE,          # 战斗相关事件
+	QUEST,           # 任务相关事件
+	DIALOG,          # 对话事件
+	CUSTOM           # 自定义事件
 }
 
 # 基本信息
@@ -34,9 +35,8 @@ var conditions = {
 	"quest_ids": [],         # 需要的任务状态
 	"states": [],         # 需要的状态
 	"variables": {},      # 需要的变量条件
-	"chance": 100         # 触���概率(0-100)
+	"chance": 100         # 触发概率(0-100)
 }
-
 # 事件行为
 var actions: Array = []
 

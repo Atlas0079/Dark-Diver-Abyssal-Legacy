@@ -1,0 +1,15 @@
+{
+    "prison_area": {
+        "id": "A0001",
+        "name": "监牢区",
+        "floor_level": 1,
+        "tags": ["prison"],
+        "area_type": "dungeon",
+        "image": "res://Assets/Images/Areas/prison_area.png",
+        "description": "阴暗潮湿的监牢区域，到处都是生锈的铁栅栏",
+        "monster_groups": ["undead", "humanoid"],
+        "item_spawn_rate": {"I10001":1.2,"I10002":0.7},
+        "event_spawn_rate": {"EA0001":1.6,"EA0002":0.5},
+        "rooms_spawn_rate": {"R10001":1.2, "R10002":0.5, "R10003":1.8}
+    }
+} 

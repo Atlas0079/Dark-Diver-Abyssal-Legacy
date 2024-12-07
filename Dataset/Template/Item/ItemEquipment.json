@@ -1,10 +1,10 @@
 {
-  "11001": {
+  "I11001": {
     "name": "精钢长剑",
     "description": "一把锋利的精钢长剑,挥舞起来得心应手。",
     "item_value": 500,
     "equipment_type": "weapon",
-    "tag": "melee",
+    "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "min": 2,
@@ -19,12 +19,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_1.png"
   },
-  "11002": {
+  "I11002": {
     "name": "火焰魔杖",
     "description": "蕴含火焰元素的魔杖,可以增强火系法术的威力。",
     "item_value": 600,
     "equipment_type": "weapon",
-    "tag": "magic",
+    "tag": ["magic"],
     "attribute_boosts": {
       "magical_attack": {
         "max": 8,
@@ -39,12 +39,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_2.png"
   },
-  "11003": {
+  "I11003": {
     "name": "猎人之弓",
     "description": "精准的长弓,适合远程攻击。",
     "item_value": 450,
     "equipment_type": "weapon",
-    "tag": "ranged",
+    "tag": ["ranged"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 5,
@@ -60,12 +60,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_3.png"
   },
-  "11004": {
+  "I11004": {
     "name": "双刃匕首",
     "description": "锋利的双刃匕首,便于快速突袭。",
     "item_value": 400,
     "equipment_type": "weapon",
-    "tag": "melee",
+    "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 4,
@@ -81,12 +81,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_4.png"
   },
-  "11005": {
+  "I11005": {
     "name": "雷霆之锤",
     "description": "蕴含雷电之力的战锤,具有强大的冲击力。",
     "item_value": 700,
     "equipment_type": "weapon",
-    "tag": "melee",
+    "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 8,
@@ -104,12 +104,12 @@
       1005
     ]
   },
-  "12001": {
+  "I12001": {
     "name": "魔法长袍",
     "description": "一件蕴含魔力的长袍,可以增强施法者的法术威力。",
     "item_value": 800,
     "equipment_type": "armor",
-    "tag": "lightarmor",
+    "tag": ["lightarmor"],
     "attribute_boosts": {
       "magical_attack": {
         "max": 5,
@@ -131,12 +131,12 @@
       2001
     ]
   },
-  "12002": {
+  "I12002": {
     "name": "骑士铠甲",
     "description": "坚固的全身铠甲,提供极佳的防护。",
     "item_value": 1000,
     "equipment_type": "armor",
-    "tag": "heavyarmor",
+    "tag": ["heavyarmor"],
     "attribute_boosts": {
       "physical_defense": {
         "max": 8,
@@ -154,12 +154,12 @@
       2002
     ]
   },
-  "12003": {
+  "I12003": {
     "name": "猎人皮甲",
     "description": "轻便的皮革护甲,不影响行动速度。",
     "item_value": 600,
     "equipment_type": "armor",
-    "tag": "lightarmor",
+    "tag": ["lightarmor"],
     "attribute_boosts": {
       "physical_defense": {
         "max": 4,
@@ -174,12 +174,12 @@
       2003
     ]
   },
-  "12004": {
+  "I12004": {
     "name": "符文法袍",
     "description": "刻有神秘符文的法袍,能够增强魔法抗性。",
     "item_value": 900,
     "equipment_type": "armor",
-    "tag": "lightarmor",
+    "tag": ["lightarmor"],
     "attribute_boosts": {
       "magical_defense": {
         "max": 7,
@@ -197,12 +197,12 @@
       2004
     ]
   },
-  "12005": {
+  "I12005": {
     "name": "龙鳞胸甲",
     "description": "用龙鳞打造的胸甲,具有优秀的防护性能。",
     "item_value": 1200,
     "equipment_type": "armor",
-    "tag": "heavyarmor",
+    "tag": ["heavyarmor"],
     "attribute_boosts": {
       "physical_defense": {
         "min": 6,
@@ -220,24 +220,24 @@
       2005
     ]
   },
-  "13001": {
+  "I13001": {
     "name": "敏捷皮靴",
     "description": "一双轻盈的皮靴,穿上后可以提高移动速度和灵活性。",
     "item_value": 300,
     "equipment_type": "accessory",
-    "tag": "boot",
+    "tag": ["boot"],
     "attribute_boosts": {
       "dexterity": 1
     },
     "equip_conditions": {},
     "special_skill": []
   },
-  "13002": {
+  "I13002": {
     "name": "智慧项链",
     "description": "镶嵌魔法宝石的项链,能够增强智力。",
     "item_value": 500,
     "equipment_type": "accessory",
-    "tag": "necklace",
+    "tag": ["necklace"],
     "attribute_boosts": {
       "intelligence": 2
     },
@@ -247,12 +247,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_7.png"
   },
-  "13003": {
+  "I13003": {
     "name": "力量手环",
     "description": "蕴含力量的手环,可以增强物理攻击力。",
     "item_value": 400,
     "equipment_type": "accessory",
-    "tag": "bracelet",
+    "tag": ["bracelet"],
     "attribute_boosts": {
       "strength": 2
     },
@@ -260,12 +260,12 @@
     "special_skill": [],
     "image": "res://Art/Items/Item_Equipment_6.png"
   },
-  "13004": {
+  "I13004": {
     "name": "生命戒指",
     "description": "能够提升生命值的魔法戒指。",
     "item_value": 450,
     "equipment_type": "accessory",
-    "tag": "ring",
+    "tag": ["ring"],
     "attribute_boosts": {
       "max_health": {
         "min": 20,
@@ -278,12 +278,12 @@
     ],
     "image": "res://Art/Items/Item_Equipment_5.png"
   },
-  "13005": {
+  "I13005": {
     "name": "守护护符",
     "description": "具有保护效果的护符,可以提升防御能力。",
     "item_value": 550,
     "equipment_type": "accessory",
-    "tag": "amulet",
+    "tag": ["amulet"],
     "attribute_boosts": {
       "physical_defense": {
         "max": 2,

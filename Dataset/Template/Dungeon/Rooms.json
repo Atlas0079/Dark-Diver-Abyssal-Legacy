@@ -1,0 +1,25 @@
+{
+    "R0001": {
+        "name": "牢房",
+        "room_type": "NORMAL",
+        "tags": ["Size:Small"],
+        "description": "一间狭小的牢房，墙上有铁链",
+        "room_loot_multiplier": 1.0,
+        "item_spawn_weights": {"I10001":1.2,"I10002":0.7},
+        "event_spawn_weights": {"EA0001":1.6,"EA0002":0.5},
+        "objects_spawn_weights": { "O10001":1.2, "O10002":0.5, "O10003":1.8 },
+        "spawn_rules": {
+            "basic": {
+                "required": true,
+                "unique": false,
+                "max_count": 1,
+                "max_count_per_area": 1,
+                "min_count": 1,
+                "weight": 1.0
+            },
+            "position": {
+                "require_zone_edge": true
+            }
+        }
+    }
+}

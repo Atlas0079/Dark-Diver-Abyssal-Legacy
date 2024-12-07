@@ -13,6 +13,9 @@ var _monster_data = {}      # 怪物数据缓存
 var _item_data = {}         # 统一的物品数据缓存
 var _event_data = {}
 var _event_instances = {}
+var _dungeon_area_templates = {}  # 地下城区域模板
+var _dungeon_room_templates = {}  # 地下城房间模板
+var _current_dungeon = null      # 当前地下城实例
 
 func _ready():
 	# 加载所有必要的数据
@@ -26,13 +29,14 @@ func _load_all_data() -> void:
 	_load_monster_data()
 	_load_item_data()
 	_load_event_data()
+	_load_dungeon_templates()
 	_create_all_character_instances()
 	for npc in _character_instances:
 		print("DataManager _load_all_data npc: %s" % npc)
 
 # 加载队伍数据
 func _load_team_data() -> void:
-	var file = FileAccess.open("res://Dataset/Teams.json", FileAccess.READ)
+	var file = FileAccess.open("res://Dataset/Save/Teams.json", FileAccess.READ)
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
@@ -41,7 +45,7 @@ func _load_team_data() -> void:
 
 # 加载技能数据
 func _load_skill_data() -> void:
-	var file = FileAccess.open("res://Dataset/Skills.json", FileAccess.READ)
+	var file = FileAccess.open("res://Dataset/Template/Skills.json", FileAccess.READ)
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
@@ -50,7 +54,7 @@ func _load_skill_data() -> void:
 
 # 加载NPC数据
 func _load_npc_data() -> void:
-	var file = FileAccess.open("res://Dataset/NPC/NPCData.json", FileAccess.READ)
+	var file = FileAccess.open("res://Dataset/Save/NPC/NPCData.json", FileAccess.READ)
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
@@ -59,7 +63,7 @@ func _load_npc_data() -> void:
 
 # 加载怪物数据
 func _load_monster_data() -> void:
-	var file = FileAccess.open("res://Dataset/Monster/MonsterTemplate.json", FileAccess.READ)
+	var file = FileAccess.open("res://Dataset/Template/MonsterTemplate.json", FileAccess.READ)
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
@@ -71,7 +75,7 @@ func _load_item_data() -> void:
 	var json = JSON.new()
 	
 	# 加载装备数据
-	var equipment_file = FileAccess.open("res://Dataset/Item/ItemEquipment.json", FileAccess.READ)
+	var equipment_file = FileAccess.open("res://Dataset/Template/Item/ItemEquipment.json", FileAccess.READ)
 	if json.parse(equipment_file.get_as_text()) == OK:
 		var equipment_data = json.get_data()
 		for id in equipment_data:
@@ -80,7 +84,7 @@ func _load_item_data() -> void:
 	equipment_file.close()
 	
 	# 加载消耗品数据
-	var consumable_file = FileAccess.open("res://Dataset/Item/ItemConsumable.json", FileAccess.READ)
+	var consumable_file = FileAccess.open("res://Dataset/Template/Item/ItemConsumable.json", FileAccess.READ)
 	if json.parse(consumable_file.get_as_text()) == OK:
 		var consumable_data = json.get_data()
 		for id in consumable_data:
@@ -89,7 +93,7 @@ func _load_item_data() -> void:
 	consumable_file.close()
 	
 	# 加载杂项数据
-	var misc_file = FileAccess.open("res://Dataset/Item/ItemMisc.json", FileAccess.READ)
+	var misc_file = FileAccess.open("res://Dataset/Template/Item/ItemMisc.json", FileAccess.READ)
 	if json.parse(misc_file.get_as_text()) == OK:
 		var misc_data = json.get_data()
 		for id in misc_data:
@@ -100,18 +104,36 @@ func _load_item_data() -> void:
 
 # 加载事件数据
 func _load_event_data() -> void:
-	var file = FileAccess.open("res://Dataset/Events.json", FileAccess.READ)
+	var file = FileAccess.open("res://Dataset/Template/Events.json", FileAccess.READ)
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
 		_event_data = json.get_data()
 	file.close()
 
+# 加载地下城模板数据
+func _load_dungeon_templates() -> void:
+	var json = JSON.new()
+	
+	# 加载区域模板
+	var area_file = FileAccess.open("res://Dataset/Template/Dungeon/Areas.json", FileAccess.READ)
+	if json.parse(area_file.get_as_text()) == OK:
+		_dungeon_area_templates = json.get_data()
+	area_file.close()
+	
+	# 加载房间模板
+	var room_file = FileAccess.open("res://Dataset/Template/Dungeon/Rooms.json", FileAccess.READ)
+	if json.parse(room_file.get_as_text()) == OK:
+		_dungeon_room_templates = json.get_data()
+	room_file.close()
+
 # 创建所有角色实例
 func _create_all_character_instances() -> void:
 	# 创建NPC实例
 	for npc_id in _npc_data:
 		var character = Character.new()
+		
+		# 初始化NPC数据
 		character.init_from_data(_npc_data[npc_id])
 		_character_instances[npc_id] = character
 
@@ -215,3 +237,40 @@ func create_item(item_id: String) -> Item:
 	# 初始化物品数据
 	item.init_from_template()
 	return item
+
+# 地下城相关的公共接口
+func get_area_template(template_id: String) -> Dictionary:
+	return _dungeon_area_templates.get(template_id, {})
+
+func get_room_template(template_id: String) -> Dictionary:
+	return _dungeon_room_templates.get(template_id, {})
+
+func get_all_area_templates() -> Dictionary:
+	return _dungeon_area_templates
+
+func get_all_room_templates() -> Dictionary:
+	return _dungeon_room_templates
+
+# 保存地下城状态
+func save_dungeon_state(dungeon: Dungeon) -> void:
+	if dungeon == null:
+		return
+		
+	var save_file = FileAccess.open("res://Dataset/Save/Dungeon.json", FileAccess.WRITE)
+	var save_data = dungeon.save_state()
+	save_file.store_string(JSON.stringify(save_data, "", true))
+	save_file.close()
+
+# 加载地下城状态
+func load_dungeon_state() -> Dungeon:
+	var file = FileAccess.open("res://Dataset/Save/Dungeon.json", FileAccess.READ)
+	if not file:
+		return null
+		
+	var json = JSON.new()
+	if json.parse(file.get_as_text()) == OK:
+		var data = json.get_data()
+		var dungeon = Dungeon.new()
+		dungeon.load_state(data)
+		return dungeon
+	return null
