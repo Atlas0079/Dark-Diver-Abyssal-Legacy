@@ -14,7 +14,7 @@ enum Position {
 var turn_count = 1
 
 # 每个回合需要的时间 秒钟
-var battle_speed = 1.0
+var battle_speed = 0.5
 
 var active_characters: Array = []
 

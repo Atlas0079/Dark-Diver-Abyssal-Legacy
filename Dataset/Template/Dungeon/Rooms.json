@@ -1,25 +1,72 @@
 {
-    "R0001": {
-        "name": "牢房",
-        "room_type": "NORMAL",
-        "tags": ["Size:Small"],
-        "description": "一间狭小的牢房，墙上有铁链",
-        "room_loot_multiplier": 1.0,
-        "item_spawn_weights": {"I10001":1.2,"I10002":0.7},
-        "event_spawn_weights": {"EA0001":1.6,"EA0002":0.5},
-        "objects_spawn_weights": { "O10001":1.2, "O10002":0.5, "O10003":1.8 },
-        "spawn_rules": {
-            "basic": {
-                "required": true,
-                "unique": false,
-                "max_count": 1,
-                "max_count_per_area": 1,
-                "min_count": 1,
-                "weight": 1.0
-            },
-            "position": {
-                "require_zone_edge": true
-            }
-        }
+    "R0000": {
+        "name": "房间模板",
+        "description": {
+            "1": "这是一个基础的房间，四周墙壁光滑整洁，没有任何特殊的装饰或特征。",
+            "2": "房间的角落堆积着一些灰尘，天花板上悬挂着一盏简单的照明装置。"
+        },
+        "unique": false,
+        "weight": 1,
+        "tags": ["",""],
+        "min_distance": {"R0000":0},
+        "min_passages": 1,
+        "max_passages": 4,
+        "room_loot_multiplier": 1
+    },
+    "R1001": {
+        "name": "地下墓穴出生点",
+        "description": {
+            "1": "这是你跃入传送门后来到的第一个房间，这里是一个古老的墓穴的样子。石制的墙壁上刻着模糊的铭文，几根残破的石柱支撑着拱形的天花板。",
+            "2": "墙壁布满苔藓，空气中弥漫着潮湿的霉味。几束微弱的光线从天花板的裂缝中透入，照亮了房间中央一个残破的石制祭坛。"
+        },
+        "unique": false,
+        "weight": 1,
+        "tags": ["spawn"],
+        "min_distance": {"R10002":10},
+        "min_passages": 1,
+        "max_passages": 4,
+        "room_loot_multiplier": 0
+    },
+    "R1002": {
+        "name": "地下墓穴撤离传送门",
+        "description": {
+            "1": "一个古老的传送法阵占据了这个房间的中央，暗淡的蓝光从法阵的纹路中渗出，在地面上投射出神秘的图案。",
+            "2": "房间的四周摆放着几尊残破的守卫雕像。空气中隐约可以感受到魔法能量的波动。"
+        },
+        "unique": false,
+        "weight": 1,
+        "tags": ["exit"],
+        "min_distance": {"R0000":0},
+        "min_passages": 1,
+        "max_passages": 1,
+        "room_loot_multiplier": 1
+    },
+    "R1003": {
+        "name": "地下墓穴传送门",
+        "description": {
+            "1": "这个房间中央矗立着一座造型奇特的石门，门框上镶嵌着几颗暗淡的宝石。传送门的能量在门扉之间不稳定地波动着。",
+            "2": "地面上刻画着复杂的魔法阵纹路，墙壁上的火把散发着幽蓝色的火焰。"
+        },
+        "unique": false,
+        "weight": 1,
+        "tags": ["portal"],
+        "min_distance": {"R0000":0},
+        "min_passages": 1,
+        "max_passages": 4,
+        "room_loot_multiplier": 1
+    },
+    "R1004": {
+        "name": "地下墓穴厅堂",
+        "description": {
+            "1": "这是一个宽敞的地下厅堂，高耸的石柱整齐排列，支撑着拱形的穹顶。墙壁上的火把散发着昏黄的光芒。",
+            "2": "厅堂的地面铺着磨损的石板，四周的墙壁上雕刻着古老的浮雕。"
+        },
+        "unique": false,
+        "weight": 1,
+        "tags": ["hall", "tomb"],
+        "min_distance": {"R0000":0},
+        "min_passages": 1,
+        "max_passages": 4,
+        "room_loot_multiplier": 1
     }
 }

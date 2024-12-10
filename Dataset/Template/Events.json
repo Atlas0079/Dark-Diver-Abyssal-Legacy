@@ -1,6 +1,6 @@
 {
-	"EA0001": {
-		"name": "EA0001",
+	"EA001": {
+		"name": "EA001",
 		"type": "ENTER",
 		"conditions": {
 			"states": {
@@ -20,8 +20,8 @@
 		],
 		"one_time": true
 	},
-	"EA0002": {
-		"name": "EA0002",
+	"EA002": {
+		"name": "A0002",
 		"type": "ENTER",
 		"conditions": {
 			"time_range": {
@@ -37,8 +37,8 @@
 		],
 		"one_time": false
 	},
-	"EA0003": {
-		"name": "EA0003",
+	"EA003": {
+		"name": "EA003",
 		"type": "INTERACT",
 		"conditions": {
 			"target": "fountain"

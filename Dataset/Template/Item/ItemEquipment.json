@@ -1,27 +1,24 @@
 {
   "I11001": {
-    "name": "精钢长剑",
-    "description": "一把锋利的精钢长剑,挥舞起来得心应手。",
+    "name": "希尔瓦里士兵剑",
+    "description": "希尔瓦里王国制式配发的单手剑，用料扎实，做工规整。虽然款式朴素，但经久耐用。",
     "item_value": 500,
     "equipment_type": "weapon",
     "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
-        "min": 2,
-        "max": 6
+        "min": 4,
+        "max": 8
       }
     },
     "equip_conditions": {
       "strength": 10
     },
-    "special_skill": [
-      1001
-    ],
     "image": "res://Art/Items/Item_Equipment_1.png"
   },
   "I11002": {
-    "name": "火焰魔杖",
-    "description": "蕴含火焰元素的魔杖,可以增强火系法术的威力。",
+    "name": "桦木法杖",
+    "description": "用北地桦木精心打造的法杖，杖身刻有引导魔力的基础符文。适合初学者使用的施法武器。",
     "item_value": 600,
     "equipment_type": "weapon",
     "tag": ["magic"],
@@ -32,77 +29,94 @@
       }
     },
     "equip_conditions": {
-      "intelligence": 12
+      "intelligence": 9
     },
-    "special_skill": [
-      1002
-    ],
     "image": "res://Art/Items/Item_Equipment_2.png"
   },
   "I11003": {
-    "name": "猎人之弓",
-    "description": "精准的长弓,适合远程攻击。",
+    "name": "猎人短弓",
+    "description": "猎人们最常用的轻型短弓，便于在森林中快速瞄准和射击。采用韧性极佳的木材制成，射程适中。",
     "item_value": 450,
     "equipment_type": "weapon",
     "tag": ["ranged"],
     "attribute_boosts": {
       "physical_attack": {
-        "max": 5,
-        "min": 2
-      },
-      "dexterity": 2
+        "max": 6,
+        "min": 3
+      }
     },
     "equip_conditions": {
-      "dexterity": 12
+      "dexterity": 9
     },
-    "special_skill": [
-      1003
-    ],
     "image": "res://Art/Items/Item_Equipment_3.png"
   },
   "I11004": {
-    "name": "双刃匕首",
-    "description": "锋利的双刃匕首,便于快速突袭。",
+    "name": "赛格瓦里刺剑",
+    "description": "赛格瓦里地区特有的细剑，剑身轻薄灵活，适合快速突刺。需要一定的技巧才能发挥其最大威力。",
+    "item_value": 450,
+    "equipment_type": "weapon",
+    "tag": ["melee"],
+    "attribute_boosts": {
+      "physical_attack": {
+        "max": 10,
+        "min": 1
+      }
+    },
+    "equip_conditions": {
+      "dexterity": 8,
+      "strength": 8
+    },
+    "image": "res://Art/Items/Item_Equipment_3.png"
+  },
+  "I11005": {
+    "name": "卫兵铁短剑",
+    "description": "城市卫兵常用的制式短剑，非常轻便，便于在狭窄的街道中快速应对威胁。",
     "item_value": 400,
     "equipment_type": "weapon",
     "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
-        "max": 4,
-        "min": 2
-      },
-      "attack_speed": 2
+        "max": 7,
+        "min": 5
+      }
     },
     "equip_conditions": {
-      "dexterity": 8
     },
-    "special_skill": [
-      1004
-    ],
     "image": "res://Art/Items/Item_Equipment_4.png"
   },
-  "I11005": {
-    "name": "雷霆之锤",
-    "description": "蕴含雷电之力的战锤,具有强大的冲击力。",
+  "I11006": {
+    "name": "希尔瓦里长柄战斧",
+    "description": "希尔瓦里王国重装步兵的标配武器，沉重的斧头能够轻易劈开敌人的护甲。需要相当的力量才能自如挥舞。",
     "item_value": 700,
     "equipment_type": "weapon",
     "tag": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
-        "max": 8,
-        "min": 4
-      },
-      "magical_attack": {
-        "max": 4,
-        "min": 2
+        "max": 12,
+        "min": 5
       }
     },
     "equip_conditions": {
-      "strength": 15
+      "strength": 12
     },
-    "special_skill": [
-      1005
-    ]
+    "image": "res://Art/Items/Item_Equipment_5.png"
+  },
+  "I11007": {
+    "name": "赛格瓦里长矛",
+    "description": "",
+    "item_value": 500,
+    "equipment_type": "weapon",
+    "tag": ["melee"],
+    "attribute_boosts": {
+      "physical_attack": {
+        "max": 10,
+        "min": 7
+      }
+    },
+    "equip_conditions": {
+      "strength": 12
+    },
+    "image": "res://Art/Items/Item_Equipment_5.png"
   },
   "I12001": {
     "name": "魔法长袍",

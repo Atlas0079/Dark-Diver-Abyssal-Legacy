@@ -1,0 +1,36 @@
+{
+    "D0000": {
+    "tag":["door"],
+    "name": "门模板",
+    "description": "",
+    "sturdy_value": 1,
+    "lockable": true
+    },
+    "D0001": {
+        "tag":["door"],
+        "name": "木门",
+        "description": "普通的木门",
+        "sturdy_value": 1,
+        "lockable": true
+    },
+    "D0002": {
+        "tag":["door"],
+        "name": "铁门",
+        "description": "坚固的铁门",
+        "sturdy_value": 2,
+        "lockable": true
+    },
+    "D0003": {
+        "tag":["door"],
+        "name": "单向门",
+        "description": "",
+        "sturdy_value": 2
+    },
+"D0004": {
+    "tag":["door"],
+    "name": "隐藏门",
+    "description": "隐藏在墙壁中的秘密通道",
+        "sturdy_value": 3
+    }
+
+}

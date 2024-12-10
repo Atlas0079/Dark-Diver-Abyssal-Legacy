@@ -1,15 +1,67 @@
 {
-    "prison_area": {
-        "id": "A0001",
+    "A0001": {
+        "id": "prison_area",
         "name": "监牢区",
         "floor_level": 1,
-        "tags": ["prison"],
+        "tags": ["prison", "dungeon"],
         "area_type": "dungeon",
         "image": "res://Assets/Images/Areas/prison_area.png",
         "description": "阴暗潮湿的监牢区域，到处都是生锈的铁栅栏",
-        "monster_groups": ["undead", "humanoid"],
-        "item_spawn_rate": {"I10001":1.2,"I10002":0.7},
-        "event_spawn_rate": {"EA0001":1.6,"EA0002":0.5},
-        "rooms_spawn_rate": {"R10001":1.2, "R10002":0.5, "R10003":1.8}
-    }
-} 
+        
+        "config": {
+            "width": 16,
+            "height": 16,
+            "zone_size": 4,
+            "zone_amount": 7,
+            "min_cluster_distance": 3,
+            "max_cluster_room_amount": 9,
+            "min_cluster_room_amount": 7,
+            "growth_bias": 2.0
+        },
+        
+        "passage_rules": {
+            "config":{
+                "bend_factor": 0.3,
+                "multi_path_factor": 0.5,
+                "direction_factor": 0.5
+            },
+            "random_passage_weights":{
+                "P0001":1,
+                "P0002":0.5
+            },
+            "locked_door_chance": 0.3,
+            "hidden_door_chance": 0.1
+        },
+        
+        "monster_rules": {
+            "random_monster_team_weights": {
+                "20001": 1,
+                "20002": 0.4
+            },
+            "random_boss_team_weights":{
+                "20001": 1,
+                "20002": 0.4
+            }
+        },
+        
+        "room_ruls": {
+            "R0001":{
+                "min_quantity":2,
+                "max_quantity":2,
+                "item_spawn_rates_cover":{
+                    "I20002":0.5
+                },
+                "random_event_weights":{
+                    "note":"这个值会覆盖下面的全区域的事件产生率",
+                    "EA001":1.0
+                }
+            }
+        },
+        "event_rules": {
+            "random_event_weights": {
+                "EA001": 1.6,  
+                "EA002": 0.5   
+                }
+            }
+    }    
+}

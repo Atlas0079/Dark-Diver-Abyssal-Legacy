@@ -15,7 +15,10 @@ var _event_data = {}
 var _event_instances = {}
 var _dungeon_area_templates = {}  # 地下城区域模板
 var _dungeon_room_templates = {}  # 地下城房间模板
+var _dungeon_passage_templates = {}  # 地下城通道模板
 var _current_dungeon = null      # 当前地下城实例
+var _room_templates = {}  # 房间模板
+var _passage_templates = {}  # 通道模板
 
 func _ready():
 	# 加载所有必要的数据
@@ -126,6 +129,13 @@ func _load_dungeon_templates() -> void:
 	if json.parse(room_file.get_as_text()) == OK:
 		_dungeon_room_templates = json.get_data()
 	room_file.close()
+
+	# 加载通道模板
+	var passage_file = FileAccess.open("res://Dataset/Template/Dungeon/Passages.json", FileAccess.READ)
+	if json.parse(passage_file.get_as_text()) == OK:
+		_dungeon_passage_templates = json.get_data()
+	passage_file.close()
+
 
 # 创建所有角色实例
 func _create_all_character_instances() -> void:
@@ -243,13 +253,19 @@ func get_area_template(template_id: String) -> Dictionary:
 	return _dungeon_area_templates.get(template_id, {})
 
 func get_room_template(template_id: String) -> Dictionary:
-	return _dungeon_room_templates.get(template_id, {})
+	return _room_templates.get(template_id, {})
+
+func get_passage_template(template_id: String) -> Dictionary:
+	return _passage_templates.get(template_id, {})
 
 func get_all_area_templates() -> Dictionary:
 	return _dungeon_area_templates
 
 func get_all_room_templates() -> Dictionary:
-	return _dungeon_room_templates
+	return _room_templates
+
+func get_all_passage_templates() -> Dictionary:
+	return _passage_templates
 
 # 保存地下城状态
 func save_dungeon_state(dungeon: Dungeon) -> void:

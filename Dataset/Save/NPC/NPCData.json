@@ -143,5 +143,76 @@
     "traits": ["0101", "0102"],
     "states": [{"silence": 2}, {"burn": 3}],
     "location": "地下城"
+  },
+
+  "00003": {
+    "name": "艾丽卡",
+    "race": "人类",
+    "creature_type": "战士",
+    "image": "res://Assets/Character/female paladin.png",
+    
+    "base_attributes": {
+      "strength": 10,
+      "dexterity": 10,
+      "constitution": 10,
+      "intelligence": 10,
+      "perception": 10,
+      "charisma": 10
+    },
+    
+    "resources": {
+      "health": {
+        "current": 30,
+        "max": 30
+      },
+      "mana": {
+        "current": 30,
+        "max": 30
+      },
+      "stamina": {
+        "current": 80,
+        "max": 80
+      },
+      "qi": {
+        "current": 20,
+        "max": 20
+      },
+      "energy": {
+        "current": 90,
+        "max": 90
+      },
+      "stress": {
+        "current": 30,
+        "max": 100
+      }
+    },
+    
+    "equipment": {
+      "weapon": "11002",
+      "armor": "12003",
+      "accessories": ["13002"]
+    },
+    
+    "battle": {
+      "action_point": 10,
+      "action_threshold": 12,
+      "active_skills": {
+        "0005": {
+          "timings": ["enemy_hp_above_half"],
+          "priority": 1
+        }
+      }
+    },
+    
+    "inventory": {
+      "capacity": 8,
+      "items": ["魔法卷轴", "法力药水"],
+      "money": 150
+    },
+    
+    "learned_skills": ["0101", "0102", "0103", "0104", "0105"],
+    "traits": ["0101", "0102"],
+    "states": [{"silence": 2}, {"burn": 3}],
+    "location": "地下城"
   }
 }

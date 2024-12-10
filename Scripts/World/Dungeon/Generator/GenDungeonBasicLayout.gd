@@ -10,17 +10,16 @@ const DIRECTIONS = {
 
 var room_grid: Array = []
 var grid_size: Vector2i = Vector2i(20, 20)
-var rng = RandomNumberGenerator.new()
 
 # 配置参数
 var config = {
 	"width": 16,
 	"height": 16,
 	"zone_size": 4,
-	"zone_amount": 5,
+	"zone_amount": 7,
 	"min_cluster_distance": 3,
 	"max_cluster_room_amount": 9,
-	"min_cluster_room_amount": 5,
+	"min_cluster_room_amount": 7,
 	"growth_bias": 2.0
 }
 
@@ -59,9 +58,15 @@ class Cluster:
 		rooms = []
 		type = cluster_type
 
-# 使用种子初始化随机数生成器
+# 添加 RandomUtils 实例
+var random_utils: RandomUtils
+
+func _init():
+	random_utils = RandomUtils.new()
+
+# 修改初始化种子的函数
 func initialize_with_seed(seed_value: int):
-	rng.seed = seed_value
+	random_utils.initialize_with_seed(seed_value)
 
 # 初始化网格
 func _initialize_grid():
@@ -72,17 +77,6 @@ func _initialize_grid():
 		for y in range(grid_size.y):
 			column[y] = " "  # 空位置用空格表示
 		room_grid.append(column)
-
-# 自定义数组随机打乱函数
-func _shuffle_array(array: Array) -> Array:
-	var shuffled = array.duplicate()
-	var n = shuffled.size()
-	for i in range(n - 1, 0, -1):
-		var j = rng.randi() % (i + 1)
-		var temp = shuffled[i]
-		shuffled[i] = shuffled[j]
-		shuffled[j] = temp
-	return shuffled
 
 # 获取邻居数量
 func _get_neighbor_count(pos: Vector2i, selected_zones: Array) -> int:
@@ -131,7 +125,7 @@ func generate_zones_and_settlements() -> Array:
 			for zone in new_zones:
 				total_weight += zone.weight
 			
-			var random_value = rng.randf() * total_weight
+			var random_value = random_utils.randf() * total_weight
 			var current_weight = 0
 			
 			for zone in new_zones:
@@ -144,17 +138,18 @@ func generate_zones_and_settlements() -> Array:
 	settlements = []
 	settlement_zones.clear()
 	for zone in selected_zones:
+		var zone_pos: Vector2i = zone
 		var attempts = 0
 		var max_attempts = 100
 		
 		while attempts < max_attempts:
-			var settlement_x = rng.randi_range(
-				zone.x * config.zone_size, 
-				(zone.x + 1) * config.zone_size - 1
+			var settlement_x = random_utils.randi_range(
+				zone_pos.x * config.zone_size, 
+				(zone_pos.x + 1) * config.zone_size - 1
 			)
-			var settlement_y = rng.randi_range(
-				zone.y * config.zone_size, 
-				(zone.y + 1) * config.zone_size - 1
+			var settlement_y = random_utils.randi_range(
+				zone_pos.y * config.zone_size, 
+				(zone_pos.y + 1) * config.zone_size - 1
 			)
 			var settlement_pos = Vector2i(settlement_x, settlement_y)
 			
@@ -168,7 +163,7 @@ func generate_zones_and_settlements() -> Array:
 			
 			if valid_position:
 				settlements.append(settlement_pos)
-				settlement_zones[settlement_pos] = zone  # 记录聚落所属的区域
+				settlement_zones[settlement_pos] = zone_pos  # 存储 Vector2i
 				settlement_rooms[settlement_pos] = []    # 初始化聚落的房间列表
 				break
 			
@@ -194,7 +189,7 @@ func generate_rooms(settlements: Array) -> void:
 		settlement_rooms[settlement] = [settlement]  # 将中心添加到房间列表
 		
 		var rooms = [settlement]  # 当前聚落的所有房间
-		var room_amount = rng.randi_range(
+		var room_amount = random_utils.randi_range(
 			config.min_cluster_room_amount,
 			config.max_cluster_room_amount
 		)
@@ -211,10 +206,12 @@ func generate_rooms(settlements: Array) -> void:
 						candidates.append({"pos": new_pos, "weight": neighbor_count + 1})
 			
 			if candidates.size() > 0:
-				var chosen = _weighted_choice(candidates)
-				rooms.append(chosen)
-				dungeon_grid[chosen.x][chosen.y] = RoomType.ROOM
-				settlement_rooms[settlement].append(chosen)  # 将新房间添加到聚落的房间列表
+				var chosen_dict = random_utils.weighted_choice(candidates)
+				var chosen_pos = chosen_dict.pos  # 获取位置Vector2i
+				rooms.append(chosen_pos)
+				#print(chosen_dict)
+				dungeon_grid[chosen_pos.x][chosen_pos.y] = RoomType.ROOM
+				settlement_rooms[settlement].append(chosen_pos)  # 将新房间添加到聚落的房间列表
 
 # 辅助函数：检查位置是否有效
 func _is_valid_room_position(pos: Vector2i) -> bool:
@@ -231,22 +228,6 @@ func _count_room_neighbors(pos: Vector2i) -> int:
 			dungeon_grid[check_pos.x][check_pos.y] == RoomType.SETTLEMENT):
 			count += 1
 	return count
-
-# 辅助函数：根据权重随机选择
-func _weighted_choice(candidates: Array) -> Vector2i:
-	var total_weight = 0
-	for candidate in candidates:
-		total_weight += candidate.weight
-	
-	var random_value = rng.randf() * total_weight
-	var current_weight = 0
-	
-	for candidate in candidates:
-		current_weight += candidate.weight
-		if current_weight >= random_value:
-			return candidate.pos
-	
-	return candidates[0].pos  # 防止意外情况
 
 # 连接相邻区域的房间
 func connect_adjacent_zones(selected_zones: Array) -> void:
@@ -324,7 +305,7 @@ func _connect_zones(rooms1: Array, rooms2: Array) -> void:
 	var start = best_pair[0]
 	var end = best_pair[1]
 	
-	# 在两个房间之间创建路径
+	# 在两个房间之间建路径
 	var path = _find_path(start, end)
 	if path != null:
 		for pos in path:
