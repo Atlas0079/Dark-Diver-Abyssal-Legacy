@@ -62,7 +62,10 @@
 		"constitution": 16,
 		"intelligence": 8,
 		"perception": 10,
-		"charisma": 6
+		"charisma": 6,
+		"dodge_rate": 100,
+		"block_rate": 10,
+		"crit_rate": 10
 	  },
 	  
 	  "resources": {

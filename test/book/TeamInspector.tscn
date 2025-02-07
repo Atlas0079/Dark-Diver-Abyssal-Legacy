@@ -1,0 +1,233 @@
+[gd_scene load_steps=16 format=3 uid="uid://bleqxkenttow6"]
+
+[ext_resource type="Texture2D" uid="uid://c026bopr0dscm" path="res://Assets/UI assets pack 2/UI books & more.png" id="2_aqr1d"]
+[ext_resource type="Texture2D" uid="uid://b7kk7whbjegw2" path="res://Assets/UI/PieceBG.png" id="3_1bmnx"]
+[ext_resource type="Texture2D" uid="uid://831ktwub1bwk" path="res://Assets/UI/bookmark.png" id="3_raqvy"]
+[ext_resource type="Texture2D" uid="uid://df8dih854sj4i" path="res://Assets/UI/bookmark_back.png" id="3_ydp0m"]
+[ext_resource type="Texture2D" uid="uid://b1gpwximsp0ok" path="res://Assets/Character/male_mystic.png" id="4_ucj7e"]
+[ext_resource type="Texture2D" uid="uid://cq6w41c4s5ei2" path="res://Assets/Portrait/female2-1x-t-book.png" id="6_jqeil"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="7_61tt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmq2m"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(64, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv3ds"]
+resource_local_to_scene = true
+atlas = ExtResource("2_aqr1d")
+region = Rect2(672, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slakk"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(672, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a7v8"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(640, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7vih"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(672, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpq61"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(16, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogcye"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(336, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqc8m"]
+atlas = ExtResource("2_aqr1d")
+region = Rect2(656, 16, 48, 64)
+
+[node name="TeamInspector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BookRight" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 640.0
+offset_top = 100.0
+offset_right = 832.0
+offset_bottom = 356.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_cmq2m")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="AllyBookMark" type="TextureRect" parent="BookRight"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 180.5
+offset_top = 30.0
+offset_right = 212.5
+offset_bottom = 54.0
+texture = ExtResource("3_raqvy")
+
+[node name="TextureButton" type="TextureButton" parent="BookRight/AllyBookMark"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_mv3ds")
+texture_pressed = SubResource("AtlasTexture_slakk")
+stretch_mode = 3
+
+[node name="EquipBookMark" type="TextureRect" parent="BookRight"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 180.5
+offset_top = 60.0
+offset_right = 212.5
+offset_bottom = 84.0
+texture = ExtResource("3_ydp0m")
+
+[node name="TextureButton" type="TextureButton" parent="BookRight/EquipBookMark"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_3a7v8")
+stretch_mode = 3
+
+[node name="EquipBookMark2" type="TextureRect" parent="BookRight"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 180.5
+offset_top = 90.0
+offset_right = 212.5
+offset_bottom = 114.0
+texture = ExtResource("3_ydp0m")
+
+[node name="TextureButton" type="TextureButton" parent="BookRight/EquipBookMark2"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_o7vih")
+stretch_mode = 3
+
+[node name="BookLeft" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 256.0
+offset_top = 100.0
+offset_right = 448.0
+offset_bottom = 356.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lpq61")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="PortraitBG" type="TextureRect" parent="BookLeft"]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 175.0
+offset_bottom = 199.0
+texture = SubResource("AtlasTexture_ogcye")
+
+[node name="Portrait" type="TextureRect" parent="BookLeft/PortraitBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -95.0
+offset_right = 81.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_jqeil")
+
+[node name="PortraitBorder" type="NinePatchRect" parent="BookLeft/PortraitBG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -1.0
+offset_right = 80.0
+offset_bottom = 191.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_jqc8m")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="AvatarBg" type="TextureRect" parent="BookLeft"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 58.0
+offset_bottom = 50.0
+texture = ExtResource("3_1bmnx")
+
+[node name="Avatar" type="TextureRect" parent="BookLeft/AvatarBg"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 133.0
+offset_bottom = 133.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_ucj7e")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 387.0
+offset_top = -600.0
+offset_right = 472.0
+offset_bottom = -573.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_61tt2")
+theme_override_font_sizes/font_size = 24
+text = "一般NPC"
+autowrap_mode = 2

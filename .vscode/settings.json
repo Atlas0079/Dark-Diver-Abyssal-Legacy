@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/Dataset/Template/Item/ItemConsumable.json"
+            ],
+            "url": "./Dataset/schemas/item_consumable_schema.json"
+        }
+    ]
+}

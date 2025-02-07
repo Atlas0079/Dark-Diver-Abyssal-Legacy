@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://pdwogojrd5eb"]
+
+[ext_resource type="Script" path="res://Dataset/Editor/item_editor.gd" id="1_usuq7"]
+
+[node name="TemplateEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_usuq7")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 300.0
+offset_bottom = 720.0
+max_columns = 3
+same_column_width = true
+icon_mode = 0
+
+[node name="EditType" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 40.0
+item_count = 5
+popup/item_0/text = "ItemEquipment"
+popup/item_1/text = "ItemMisc"
+popup/item_1/id = 1
+popup/item_2/text = "ItemConsumable"
+popup/item_2/id = 2
+popup/item_3/text = "Skill"
+popup/item_3/id = 3
+popup/item_4/text = "Team"
+popup/item_4/id = 4

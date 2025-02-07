@@ -123,6 +123,7 @@ func _process_directions(connections: Array[ConnectionInfo], room_positions: Arr
 	var direction_factor = params.get("direction_factor", 0.2)
 	var result: Array[ConnectionInfo] = []
 	
+	
 	# 确保MST部分的连接保持双向
 	var essential_connections = connections.slice(0, room_positions.size() - 1)
 	for conn in essential_connections:

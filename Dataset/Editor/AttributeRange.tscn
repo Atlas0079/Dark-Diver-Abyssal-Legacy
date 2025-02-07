@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cwiusqjgr651p"]
+
+[node name="AttributeRange" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Type" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 1
+
+[node name="HBC" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MaxValueEdit" type="LineEdit" parent="HBC"]
+layout_mode = 2
+placeholder_text = "Max"
+
+[node name="MinValueEdit" type="LineEdit" parent="HBC"]
+layout_mode = 2
+placeholder_text = "Min"
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+text = "Delete
+"

@@ -9,24 +9,24 @@
     "D0001": {
         "tag":["door"],
         "name": "木门",
-        "description": "普通的木门",
+        "description": "一扇普通的木门",
         "sturdy_value": 1,
         "lockable": true
     },
     "D0002": {
         "tag":["door"],
         "name": "铁门",
-        "description": "坚固的铁门",
-        "sturdy_value": 2,
+        "description": "一扇坚固的铁门，厚实沉重的铁门看上去不能被轻易破坏",
+        "sturdy_value": 3,
         "lockable": true
     },
     "D0003": {
         "tag":["door"],
-        "name": "单向门",
-        "description": "",
+        "name": "活板门",
+        "description": "一扇可以打开的活板门，进入后无法再返回之前的房间",
         "sturdy_value": 2
     },
-"D0004": {
+    "D0004": {
     "tag":["door"],
     "name": "隐藏门",
     "description": "隐藏在墙壁中的秘密通道",

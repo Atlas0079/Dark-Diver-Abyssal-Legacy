@@ -117,22 +117,23 @@ func process_next_action() -> void:
 	process_character_action(character)
 
 # 修改角色行动处理
-func process_character_action(character: Character) -> void:
+func process_character_action(character: Character) -> void: 
 	handle_character_action_start(character)
 
-	var available_skill_id = character.get_available_skill()
+	var available_skill_id = character.get_available_skill(self)
 	if available_skill_id != null:
 		var skill = character.get_skill(available_skill_id)
-		var targets = skill.get_targets(character)
+		var targets = skill.get_targets(character,self)
+		#选择目标的时点
 
 		# 设置动画状态
 		is_animating = true
 
 		# 使用技能并获取效果结果
-		var effects_results = character.use_skill(available_skill_id)
+		var effects_results = character.use_skill(skill,targets,self) 
 		
 		# 播放技能动画
-		SkillAnimation.play_skill_animation(skill, character, targets, effects_results)
+		SkillAnimation.play_skill_animation(skill, character, effects_results)
 		# 等待动画完成信号
 		await animation_completed
 		
@@ -162,7 +163,7 @@ func handle_turn_start() -> void:
 				character.battle_stats.action_point += 1
 				# 2. 检查是否达到行动阈值且有可用技能
 				if character.battle_stats.action_point >= character.battle_stats.action_threshold:
-					var available_skill_id = character.get_available_skill()
+					var available_skill_id = character.get_available_skill(self)
 					if available_skill_id != null:
 						active_characters.append(character)
 	
@@ -172,7 +173,7 @@ func handle_turn_start() -> void:
 # 判断战斗是否结束
 func battle_is_end() -> bool:
 	var blue_alive = false
-	var red_alive = false
+	var red_alive = false 
 	
 	# 检查蓝队是否还有存活角色
 	for pos in blue_team:

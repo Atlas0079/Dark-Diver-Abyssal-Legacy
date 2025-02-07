@@ -1,5 +1,5 @@
-class_name Character
 extends Node
+class_name Character
 
 # 基础信息
 var character_name: String
@@ -14,7 +14,10 @@ var base_attributes = {
 	"constitution": 0,
 	"intelligence": 0,
 	"perception": 0,
-	"charisma": 0
+	"charisma": 0,
+	"dodge_rate": 0,
+	"block_rate": 0,
+	"crit_rate": 0
 }
 
 # 战斗属性
@@ -66,6 +69,9 @@ var temp_inventory = {
 	"items": [] # 临时背包不需要容量限制
 }
 
+# 用于战斗的行动次数计数
+var act_count: int = 0
+
 # 从数据初始化角色
 func init_from_data(original_data: Dictionary) -> void:
 	# 创建原始数据的深度复制
@@ -111,16 +117,13 @@ func init_from_data(original_data: Dictionary) -> void:
 		self.battle_stats.action_threshold = data.battle.get("action_threshold", 0)
 		self.battle_stats.active_skills = {}  # 清空技能字典
 		
-		# 初始化技能
-		var skill_data = DataManager.get_whole_skill_data()
-		if data.battle.has("active_skills"):
-			for skill_id in data.battle.active_skills:
-				if skill_data.has(skill_id):
-					var skill = Skill.new()
-					skill.init_from_data(skill_id, skill_data[skill_id], 
-						data.battle.active_skills[skill_id].get("priority", 0),
-						data.battle.active_skills[skill_id].get("timings", []))
-					self.battle_stats.active_skills[skill_id] = skill
+# 初始化技能
+	if data.battle.has("active_skills"):
+		for skill_id in data.battle.active_skills:
+			var skill = SkillRegistry.create_skill(skill_id) 
+			if skill:
+				skill.owner = self
+				self.battle_stats.active_skills[skill_id] = skill
 	
 	# 其他属性
 	self.learned_skills = data.get("learned_skills", [])
@@ -191,7 +194,7 @@ func get_state_value(state_name: String) -> int:
 	return 0
 
 # 获取技能
-func get_skill(skill_id: String) -> Skill:
+func get_skill(skill_id: String) -> BaseSkill:
 	if battle_stats.active_skills.has(skill_id):
 		return battle_stats.active_skills[skill_id]
 	return null
@@ -199,7 +202,7 @@ func get_skill(skill_id: String) -> Skill:
 func has_skill(skill_id: String) -> bool:
 	return battle_stats.active_skills.has(skill_id)
 
-func get_available_skill() -> String:
+func get_available_skill(battle: Battle) -> String:
 	# 创建一个包含技能ID和优先级的数组
 	var prioritized_skills = []
 	for skill_id in battle_stats.active_skills:
@@ -214,18 +217,13 @@ func get_available_skill() -> String:
 	# 返回第一个可用的技能ID
 	for skill_data in prioritized_skills:
 		var skill_id = skill_data.id
-		if get_skill(skill_id).get_targets(self).size() > 0:
+		if get_skill(skill_id).get_targets(self,battle).size() > 0:
 			return skill_id
 	
 	return ""  # 如果没有可用技能则返回空字符串
 
-func use_skill(skill_id: String) -> Array:
-	var targets = get_skill(skill_id).get_targets(self)
-	var results = []
-	for target in targets:
-		var result = get_skill(skill_id).apply_effects(self, target)
-		results.append(result)
-	return results
+func use_skill(skill: BaseSkill,targets: Array[Character],battle: Battle) -> Dictionary:
+	return skill.apply_effects(self,targets,battle)
 	
 # 修改基础属性的设置方法
 func set_attribute(attr_name: String, value: int) -> void:
@@ -237,7 +235,11 @@ func set_attribute(attr_name: String, value: int) -> void:
 func _update_combat_stats() -> void:
 	# 重置装备加成
 	combat_stats.equipment_boosts.clear()
-	
+	#计算基础属性
+	for attr in base_attributes:
+		combat_stats[attr] = base_attributes[attr]
+
+
 	# 计算所有装备的属性加成
 	var all_equipment = [equipment.weapon, equipment.armor] + equipment.accessories
 	for equipped_item in all_equipment:
@@ -247,6 +249,9 @@ func _update_combat_stats() -> void:
 				if not combat_stats.equipment_boosts.has(attr):
 					combat_stats.equipment_boosts[attr] = 0
 				combat_stats.equipment_boosts[attr] += boosts[attr]
+	print("update_combat_stats dodge_rate:",combat_stats.dodge_rate)
+
+
 
 # 获取战斗属性（不包含随机加成）
 func get_combat_stat(stat_name: String) -> float:
@@ -255,7 +260,6 @@ func get_combat_stat(stat_name: String) -> float:
 # 获取实际战斗属性（包含随机加成）
 func get_actual_combat_stat(stat_name: String) -> float:
 	var base_value = get_combat_stat(stat_name)
-	
 	# 获取所有装备的当前属性加成
 	var all_equipment = [equipment.weapon, equipment.armor] + equipment.accessories
 	for equipped_item in all_equipment:
@@ -264,7 +268,8 @@ func get_actual_combat_stat(stat_name: String) -> float:
 			if boosts.has(stat_name):
 				base_value += boosts[stat_name]
 				print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
-	
+
+
 	return base_value
 
 # 检查卸下装备后是否会影响其他装备的需求
@@ -364,3 +369,17 @@ func can_equip(item: Item) -> bool:
 	var item_size = item.get_size()
 	var remaining_space = inventory.get_remaining_space()
 	return item.check_equip_conditions(self) and remaining_space >= item_size
+
+func get_block_value() -> int:
+	var block_value = 0
+	for accessory in equipment.accessories:
+		if accessory.get_type() == "shield":
+			block_value += accessory.get_block_value()
+	return block_value
+
+func get_block_rate() -> int:
+	var block_rate = 0
+	for accessory in equipment.accessories:
+		if accessory.get_type() == "shield":
+			block_rate += accessory.get_block_rate()
+	return block_rate

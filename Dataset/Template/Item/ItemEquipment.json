@@ -1,14 +1,14 @@
 {
   "I11001": {
     "name": "希尔瓦里士兵剑",
-    "description": "希尔瓦里王国制式配发的单手剑，用料扎实，做工规整。虽然款式朴素，但经久耐用。",
+    "description": "希尔瓦里地区制式配发的单手剑，用料扎实，做工规整。虽然款式朴素，但经久耐用。",
     "item_value": 500,
     "equipment_type": "weapon",
-    "tag": ["melee"],
+    "tags": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
-        "min": 4,
-        "max": 8
+        "max": 8,
+        "min": 4
       }
     },
     "equip_conditions": {
@@ -19,9 +19,9 @@
   "I11002": {
     "name": "桦木法杖",
     "description": "用北地桦木精心打造的法杖，杖身刻有引导魔力的基础符文。适合初学者使用的施法武器。",
-    "item_value": 600,
+    "item_value": 1000,
     "equipment_type": "weapon",
-    "tag": ["magic"],
+    "tags": ["magic"],
     "attribute_boosts": {
       "magical_attack": {
         "max": 8,
@@ -38,7 +38,7 @@
     "description": "猎人们最常用的轻型短弓，便于在森林中快速瞄准和射击。采用韧性极佳的木材制成，射程适中。",
     "item_value": 450,
     "equipment_type": "weapon",
-    "tag": ["ranged"],
+    "tags": ["ranged"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 6,
@@ -53,9 +53,9 @@
   "I11004": {
     "name": "赛格瓦里刺剑",
     "description": "赛格瓦里地区特有的细剑，剑身轻薄灵活，适合快速突刺。需要一定的技巧才能发挥其最大威力。",
-    "item_value": 450,
+    "item_value": 800,
     "equipment_type": "weapon",
-    "tag": ["melee"],
+    "tags": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 10,
@@ -73,7 +73,7 @@
     "description": "城市卫兵常用的制式短剑，非常轻便，便于在狭窄的街道中快速应对威胁。",
     "item_value": 400,
     "equipment_type": "weapon",
-    "tag": ["melee"],
+    "tags": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 7,
@@ -89,7 +89,7 @@
     "description": "希尔瓦里王国重装步兵的标配武器，沉重的斧头能够轻易劈开敌人的护甲。需要相当的力量才能自如挥舞。",
     "item_value": 700,
     "equipment_type": "weapon",
-    "tag": ["melee"],
+    "tags": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 12,
@@ -104,9 +104,9 @@
   "I11007": {
     "name": "赛格瓦里长矛",
     "description": "",
-    "item_value": 500,
+    "item_value": 700,
     "equipment_type": "weapon",
-    "tag": ["melee"],
+    "tags": ["melee"],
     "attribute_boosts": {
       "physical_attack": {
         "max": 10,
@@ -121,13 +121,13 @@
   "I12001": {
     "name": "魔法长袍",
     "description": "一件蕴含魔力的长袍,可以增强施法者的法术威力。",
-    "item_value": 800,
+    "item_value": 1200,
     "equipment_type": "armor",
-    "tag": ["lightarmor"],
+    "tags": ["lightarmor"],
     "attribute_boosts": {
       "magical_attack": {
-        "max": 5,
-        "min": 3
+        "max": 3,
+        "min": 1
       },
       "magical_defense": {
         "max": 4,
@@ -139,18 +139,17 @@
       }
     },
     "equip_conditions": {
-      "intelligence": 15
+      "intelligence": 10
     },
     "special_skill": [
-      2001
     ]
   },
   "I12002": {
-    "name": "骑士铠甲",
+    "name": "骑士链甲罩袍",
     "description": "坚固的全身铠甲,提供极佳的防护。",
-    "item_value": 1000,
+    "item_value": 5000,
     "equipment_type": "armor",
-    "tag": ["heavyarmor"],
+    "tags": ["heavyarmor"],
     "attribute_boosts": {
       "physical_defense": {
         "max": 8,
@@ -162,10 +161,9 @@
       }
     },
     "equip_conditions": {
-      "strength": 18
+      "strength": 14
     },
     "special_skill": [
-      2002
     ]
   },
   "I12003": {
@@ -173,31 +171,28 @@
     "description": "轻便的皮革护甲,不影响行动速度。",
     "item_value": 600,
     "equipment_type": "armor",
-    "tag": ["lightarmor"],
+    "tags": ["lightarmor"],
     "attribute_boosts": {
       "physical_defense": {
-        "max": 4,
-        "min": 2
-      },
-      "dexterity": 2
+        "max": 3,
+        "min": 1
+      }
     },
     "equip_conditions": {
-      "dexterity": 10
     },
     "special_skill": [
-      2003
     ]
   },
   "I12004": {
     "name": "符文法袍",
     "description": "刻有神秘符文的法袍,能够增强魔法抗性。",
-    "item_value": 900,
+    "item_value": 5000,
     "equipment_type": "armor",
-    "tag": ["lightarmor"],
+    "tags": ["lightarmor"],
     "attribute_boosts": {
       "magical_defense": {
-        "max": 7,
-        "min": 4
+        "max": 10,
+        "min": 5
       },
       "magical_attack": {
         "max": 3,
@@ -205,41 +200,39 @@
       }
     },
     "equip_conditions": {
-      "intelligence": 16
+      "intelligence": 14
     },
     "special_skill": [
-      2004
     ]
   },
   "I12005": {
     "name": "龙鳞胸甲",
     "description": "用龙鳞打造的胸甲,具有优秀的防护性能。",
-    "item_value": 1200,
+    "item_value": 12000,
     "equipment_type": "armor",
-    "tag": ["heavyarmor"],
+    "tags": ["heavyarmor"],
     "attribute_boosts": {
       "physical_defense": {
-        "min": 6,
-        "max": 9
+        "max": 15,
+        "min": 9
       },
       "magical_defense": {
-        "min": 3,
-        "max": 5
+        "max": 10,
+        "min": 4
       }
     },
     "equip_conditions": {
-      "strength": 20
+      "strength": 16
     },
     "special_skill": [
-      2005
     ]
   },
   "I13001": {
     "name": "敏捷皮靴",
     "description": "一双轻盈的皮靴,穿上后可以提高移动速度和灵活性。",
-    "item_value": 300,
+    "item_value": 1400,
     "equipment_type": "accessory",
-    "tag": ["boot"],
+    "tags": ["boot"],
     "attribute_boosts": {
       "dexterity": 1
     },
@@ -249,26 +242,25 @@
   "I13002": {
     "name": "智慧项链",
     "description": "镶嵌魔法宝石的项链,能够增强智力。",
-    "item_value": 500,
+    "item_value": 2400,
     "equipment_type": "accessory",
-    "tag": ["necklace"],
+    "tags": ["necklace"],
     "attribute_boosts": {
-      "intelligence": 2
+      "intelligence": 1
     },
     "equip_conditions": {},
     "special_skill": [
-      3001
     ],
     "image": "res://Art/Items/Item_Equipment_7.png"
   },
   "I13003": {
     "name": "力量手环",
     "description": "蕴含力量的手环,可以增强物理攻击力。",
-    "item_value": 400,
+    "item_value": 1500,
     "equipment_type": "accessory",
-    "tag": ["bracelet"],
+    "tags": ["bracelet"],
     "attribute_boosts": {
-      "strength": 2
+      "strength": 1
     },
     "equip_conditions": {},
     "special_skill": [],
@@ -277,40 +269,52 @@
   "I13004": {
     "name": "生命戒指",
     "description": "能够提升生命值的魔法戒指。",
-    "item_value": 450,
+    "item_value": 1500,
     "equipment_type": "accessory",
-    "tag": ["ring"],
+    "tags": ["ring"],
     "attribute_boosts": {
-      "max_health": {
-        "min": 20,
-        "max": 20
-      }
+      "max_health": 10
     },
     "equip_conditions": {},
     "special_skill": [
-      3002
     ],
     "image": "res://Art/Items/Item_Equipment_5.png"
   },
   "I13005": {
     "name": "守护护符",
-    "description": "具有保护效果的护符,可以提升防御能力。",
-    "item_value": 550,
+    "description": "具有保护效果的护符,可以些微提升防御能力。",
+    "item_value": 700,
     "equipment_type": "accessory",
-    "tag": ["amulet"],
+    "tags": ["amulet"],
     "attribute_boosts": {
       "physical_defense": {
-        "max": 2,
+        "max": 1,
         "min": 1
       },
       "magical_defense": {
-        "max": 2,
+        "max": 1,
         "min": 1
       }
     },
     "equip_conditions": {},
     "special_skill": [
-      3003
+    ]
+  },
+  "I13006": {
+    "name": "士兵筝形盾",
+    "description": "士兵常用的木质筝形盾，使用铁箍加固，涂有希尔瓦里地区的徽记。",
+    "item_value": 700,
+    "equipment_type": "accessory",
+    "tags": ["shield"],
+    "attribute_boosts": {
+      "block_value": {
+        "max": 5,
+        "min": 3
+      },
+      "block_rate": 30
+    },
+    "equip_conditions": {},
+    "special_skill": [
     ]
   }
 }

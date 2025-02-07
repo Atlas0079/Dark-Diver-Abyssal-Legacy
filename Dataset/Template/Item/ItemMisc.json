@@ -1,7 +1,7 @@
 {
   "I31001": {
     "name": "铁矿",
-    "description": "一块未经冶炼的铁矿",
+    "description": "一块未经冶炼的铁矿，1公斤左右",
     "item_value": 20,
     "tags": [],
     "category": "制作材料",
@@ -9,7 +9,7 @@
   },
   "I31002": {
     "name": "桦木材",
-    "description": "可用于制作各种工具的木材，这个是桦木的",
+    "description": "桦木，可用于制作各种工具的木材",
     "item_value": 10,
     "tags": [],
     "category": "制作材料",
@@ -26,14 +26,14 @@
   "I31004": {
     "name": "碎魔晶",
     "description": "一块破碎的魔晶，散发着微弱的魔力。",
-    "item_value": 30,
+    "item_value": 50,
     "tags": [],
     "category": "制作材料",
     "image": "res://Art/Items/Item_Misc_4.png"
   },
   "I31005": {
     "name": "机械零件",
-    "description": "一堆乱七八糟机械零件，不知道是做什么用的。",
+    "description": "一堆乱七八糟的机械零件，不知道是做什么用的。",
     "item_value": 8,
     "tags": [],
     "category": "制作材料",
@@ -42,7 +42,7 @@
   "I31006": {
     "name": "彩虹蘑菇",
     "description": "一种会随光线变换颜色的奇特蘑菇，据说可以用来制作特殊的药剂",
-    "item_value": 60,
+    "item_value": 30,
     "tags": [],
     "category": "制作材料",
     "image": "res://Art/Items/Item_Misc_6.png"
@@ -58,7 +58,7 @@
   "I31008": {
     "name": "风铃草",
     "description": "一种会随风发出清脆声响的花，据说能够驱散噩梦",
-    "item_value": 30,
+    "item_value": 20,
     "tags": [],
     "category": "制作材料",
     "image": "res://Art/Items/Item_Misc_8.png"
@@ -66,7 +66,7 @@
   "I31009": {
     "name": "鬼犬的角",
     "description": "鬼犬的角，可以磨碎后制作药剂，也可以改装成声音很特殊的号角",
-    "item_value": 30,
+    "item_value": 20,
     "tags": [],
     "category": "制作材料",
     "image": "res://Art/Items/Item_Misc_9.png"
@@ -74,7 +74,7 @@
   "I32001": {
     "name": "《星辉圣乐》",
     "description": "一本装订豪华的记载着歌曲的乐谱，歌词涉及到某些神秘的宗教仪式。",
-    "item_value": 5,
+    "item_value": 100,
     "tags": [],
     "category": "情报物品",
     "image": "res://Art/Items/Item_Misc_10.png"
@@ -82,7 +82,7 @@
   "I32002": {
     "name": "《元素魔法入门》",
     "description": "一本看起来很粗制滥造的讲述元素魔法基础知识的书籍，用语不太正经，但是内容意外的很实用。全称是《从零开始学习元素魔法！笨蛋也会的元素魔法入门教学！》",
-    "item_value": 5,
+    "item_value": 25,
     "tags": [],
     "category": "情报物品",
     "image": "res://Art/Items/Item_Misc_10.png"
@@ -114,7 +114,7 @@
   "I34001": {
     "name": "幸运草邮戳",
     "description": "四叶草外形的邮戳，上面刻着幸运草的图案，白银做的，看起来很古老。",
-    "item_value": 15,
+    "item_value": 150,
     "tags": [],
     "category": "收藏品",
     "image": "res://Art/Items/Item_Misc_15.png"
@@ -146,7 +146,7 @@
   "I34005": {
     "name": "哥特酒杯",
     "description": "一个哥特风格的酒杯，上面刻着一些奇怪的符号。明明是古董但是看起来很潮很酷炫。",
-    "item_value": 15,
+    "item_value": 70,
     "tags": [],
     "category": "收藏品",
     "image": "res://Art/Items/Item_Misc_19.png"

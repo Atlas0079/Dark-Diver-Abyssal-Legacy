@@ -11,7 +11,10 @@
       "constitution": 10,
       "intelligence": 10,
       "perception": 10,
-      "charisma": 10
+      "charisma": 10,
+      "dodge_rate": 10,
+      "block_rate": 10,
+      "crit_rate": 10
     },
     
     "resources": {
@@ -42,9 +45,9 @@
     },
     
     "equipment": {
-      "weapon": "11001",
-      "armor": "12002",
-      "accessories": ["13005"]
+      "weapon": "I11003",
+      "armor": "I12002",
+      "accessories": ["I13006"]
     },
     
     "battle": {
@@ -52,7 +55,12 @@
       "action_threshold": 10,
       "active_skills": {
         "0005": {
-          "timings": ["enemy_hp_above_half"],
+          "timings": [
+            {
+              "type": "enemy_hp_above_percent",
+              "value": 50
+            }
+          ],
           "priority": 1
         }
       }
@@ -67,152 +75,6 @@
     "learned_skills": ["0001", "0002", "0003", "0004", "0005"],
     "traits": ["0001", "0002"],
     "states": [{"burn": 3}],
-    "location": "地下城"
-  },
-  
-  "00002": {
-    "name": "可可利亚",
-    "race": "精灵",
-    "creature_type": "魔法师",
-    "image": "res://Assets/Character/elf_female_wizard.png",
-    
-    "base_attributes": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 10,
-      "intelligence": 10,
-      "perception": 10,
-      "charisma": 10
-    },
-    
-    "resources": {
-      "health": {
-        "current": 30,
-        "max": 30
-      },
-      "mana": {
-        "current": 30,
-        "max": 30
-      },
-      "stamina": {
-        "current": 80,
-        "max": 80
-      },
-      "qi": {
-        "current": 20,
-        "max": 20
-      },
-      "energy": {
-        "current": 90,
-        "max": 90
-      },
-      "stress": {
-        "current": 30,
-        "max": 100
-      }
-    },
-    
-    "equipment": {
-      "weapon": "11002",
-      "armor": "12003",
-      "accessories": ["13002"]
-    },
-    
-    "battle": {
-      "action_point": 10,
-      "action_threshold": 12,
-      "active_skills": {
-        "0001": {
-          "timings": ["self_mana_above_50_percent"],
-          "priority": 1
-        },
-        "0002": {
-          "timings": ["ally_hp_below_50_percent"],
-          "priority": 2
-        }
-      }
-    },
-    
-    "inventory": {
-      "capacity": 8,
-      "items": ["魔法卷轴", "法力药水"],
-      "money": 150
-    },
-    
-    "learned_skills": ["0101", "0102", "0103", "0104", "0105"],
-    "traits": ["0101", "0102"],
-    "states": [{"silence": 2}, {"burn": 3}],
-    "location": "地下城"
-  },
-
-  "00003": {
-    "name": "艾丽卡",
-    "race": "人类",
-    "creature_type": "战士",
-    "image": "res://Assets/Character/female paladin.png",
-    
-    "base_attributes": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 10,
-      "intelligence": 10,
-      "perception": 10,
-      "charisma": 10
-    },
-    
-    "resources": {
-      "health": {
-        "current": 30,
-        "max": 30
-      },
-      "mana": {
-        "current": 30,
-        "max": 30
-      },
-      "stamina": {
-        "current": 80,
-        "max": 80
-      },
-      "qi": {
-        "current": 20,
-        "max": 20
-      },
-      "energy": {
-        "current": 90,
-        "max": 90
-      },
-      "stress": {
-        "current": 30,
-        "max": 100
-      }
-    },
-    
-    "equipment": {
-      "weapon": "11002",
-      "armor": "12003",
-      "accessories": ["13002"]
-    },
-    
-    "battle": {
-      "action_point": 10,
-      "action_threshold": 12,
-      "active_skills": {
-        "0005": {
-          "timings": ["enemy_hp_above_half"],
-          "priority": 1
-        }
-      }
-    },
-    
-    "inventory": {
-      "capacity": 8,
-      "items": ["魔法卷轴", "法力药水"],
-      "money": 150
-    },
-    
-    "learned_skills": ["0101", "0102", "0103", "0104", "0105"],
-    "traits": ["0101", "0102"],
-    "states": [{"silence": 2}, {"burn": 3}],
     "location": "地下城"
   }
 }

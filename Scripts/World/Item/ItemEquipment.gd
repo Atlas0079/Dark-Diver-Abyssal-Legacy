@@ -3,7 +3,7 @@ extends Item
 
 # 装备特有属性
 var equipment_type: String  # weapon/armor/accessory
-var tag: String  # melee/magic/ranged等
+var tags: Array = []  # 改为数组，可以包含多个标签如 ["melee", "magic"]
 var special_skills: Array = []
 var attribute_ranges: Dictionary = {}  # 存储属性的范围值
 
@@ -16,7 +16,7 @@ func init_from_template() -> void:
 	var template = DataManager.get_item_data(item_id)
 	
 	equipment_type = template.get("equipment_type", "")
-	tag = template.get("tag", "")
+	tags = template.get("tags", [])  # 获取tags数组
 	special_skills = template.get("special_skill", [])
 	
 	# 初始化属性范围
@@ -38,9 +38,13 @@ func get_special_skills() -> Array[String]:
 func get_equipment_type() -> String:
 	return equipment_type
 
-# 获取装备标签
-func get_equipment_tag() -> String:
-	return tag
+# 获取装备标签列表
+func get_equipment_tags() -> Array[String]:
+	return tags
+
+# 检查是否包含特定标签
+func has_tag(tag: String) -> bool:
+	return tag in tags
 
 # 获取属性加成范围
 func get_attribute_ranges() -> Dictionary:
@@ -68,7 +72,7 @@ func calculate_current_attributes() -> Dictionary:
 func serialize() -> Dictionary:
 	var data = super.serialize()
 	data["equipment_type"] = equipment_type
-	data["tag"] = tag
+	data["tags"] = tags  # 更新序列化
 	data["special_skills"] = special_skills
 	data["attribute_ranges"] = attribute_ranges
 	return data
@@ -77,6 +81,6 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	super.deserialize(data)
 	equipment_type = data.get("equipment_type", equipment_type)
-	tag = data.get("tag", tag)
+	tags = data.get("tags", tags)  # 更新反序列化
 	special_skills = data.get("special_skills", special_skills)
 	attribute_ranges = data.get("attribute_ranges", attribute_ranges)

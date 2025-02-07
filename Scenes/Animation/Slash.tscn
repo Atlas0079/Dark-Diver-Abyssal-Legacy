@@ -35,14 +35,16 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"Slash",
 "speed": 20.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-texture_filter = 1
-scale = Vector2(4, 4)
+[node name="AnimatedSprite2D" type="AnimatedSprite3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 2
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_71pmk")
 animation = &"Slash"
-frame_progress = 0.511525
+frame = 7
+frame_progress = 1.0

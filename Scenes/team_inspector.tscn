@@ -1,0 +1,842 @@
+[gd_scene load_steps=19 format=3 uid="uid://dxnhkhav1661s"]
+
+[ext_resource type="Texture2D" uid="uid://coj01fcgkqtmy" path="res://Assets/Custom Border and Panels Menu All Part/border4.png" id="1_ngvyu"]
+[ext_resource type="Texture2D" uid="uid://c026bopr0dscm" path="res://Assets/UI assets pack 2/UI books & more.png" id="2_5fkd6"]
+[ext_resource type="Texture2D" uid="uid://k4fke634v5bs" path="res://Assets/Custom Border and Panels Menu All Part/border5.png" id="3_ow3b5"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="4_wumky"]
+[ext_resource type="Texture2D" uid="uid://drkaybjy8cocp" path="res://Assets/Avater/female3-1-1x-t.png" id="5_2lshv"]
+[ext_resource type="SpriteFrames" uid="uid://c2xrkf278nxk8" path="res://Assets/UI/images/txk.tres" id="6_wk21s"]
+[ext_resource type="Texture2D" uid="uid://dxcftsbts36fm" path="res://Assets/UI/status_bar_bg.png" id="7_vd6ng"]
+[ext_resource type="Texture2D" uid="uid://lq74s5jcifch" path="res://Assets/UI/APprogress.png" id="8_ecnyq"]
+[ext_resource type="Texture2D" uid="uid://728jencd4xg4" path="res://Assets/UI/status_bar_bg_h.png" id="9_y85d4"]
+[ext_resource type="Texture2D" uid="uid://cofxvhkal2ddf" path="res://Assets/UI/HPprogress.png" id="10_x2jay"]
+[ext_resource type="Texture2D" uid="uid://dxev7n53nroh2" path="res://Assets/UI/MPprogress.png" id="11_lyb70"]
+[ext_resource type="Texture2D" uid="uid://b1txovvwcp1pc" path="res://Assets/UI/QIprogress.png" id="12_mnwml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjte"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5fkd6")
+region = Rect2(672, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmls0"]
+atlas = ExtResource("2_5fkd6")
+region = Rect2(592, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6q2s"]
+atlas = ExtResource("2_5fkd6")
+region = Rect2(704, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhjn5"]
+atlas = ExtResource("2_5fkd6")
+region = Rect2(704, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qaqp"]
+atlas = ExtResource("2_5fkd6")
+region = Rect2(704, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cepj8"]
+atlas = ExtResource("2_5fkd6")
+region = Rect2(624, 240, 16, 16)
+
+[node name="TeamInspector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonBorder" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 950.0
+offset_top = 88.0
+offset_right = 1014.0
+offset_bottom = 248.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_ngvyu")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Team" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 12.0
+offset_right = 56.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_ryjte")
+
+[node name="Quest" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 36.0
+offset_right = 56.0
+offset_bottom = 52.0
+texture_normal = SubResource("AtlasTexture_dmls0")
+
+[node name="Map" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 56.0
+offset_bottom = 76.0
+texture_normal = SubResource("AtlasTexture_h6q2s")
+
+[node name="Backpack" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 84.0
+offset_right = 56.0
+offset_bottom = 100.0
+texture_normal = SubResource("AtlasTexture_uhjn5")
+
+[node name="Setting" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 132.0
+offset_right = 56.0
+offset_bottom = 148.0
+texture_normal = SubResource("AtlasTexture_0qaqp")
+
+[node name="Enemy2" type="TextureButton" parent="ButtonBorder"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 108.0
+offset_right = 56.0
+offset_bottom = 124.0
+texture_normal = SubResource("AtlasTexture_cepj8")
+
+[node name="Border" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 256.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_ow3b5")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Char_status" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 264.0
+offset_right = 60.0
+offset_bottom = 304.0
+
+[node name="PrositionLable" type="Control" parent="Char_status"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="back" type="Label" parent="Char_status/PrositionLable"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 18.0
+offset_right = 160.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 24
+text = "后"
+
+[node name="front" type="Label" parent="Char_status/PrositionLable"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 18.0
+offset_right = 362.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 24
+text = "前"
+
+[node name="top" type="Label" parent="Char_status/PrositionLable"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 24
+text = "上"
+
+[node name="mid" type="Label" parent="Char_status/PrositionLable"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 116.0
+offset_right = 40.0
+offset_bottom = 139.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 24
+text = "中"
+
+[node name="bot" type="Label" parent="Char_status/PrositionLable"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 172.0
+offset_right = 40.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 24
+text = "下"
+
+[node name="penal" type="Control" parent="Char_status"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 88.0
+offset_bottom = 88.0
+
+[node name="back_top" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 48.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/back_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/back_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/back_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="back_mid" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 190.0
+offset_bottom = 104.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/back_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/back_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/back_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="back_bot" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 190.0
+offset_bottom = 160.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/back_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/back_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/back_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="front_top" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 390.0
+offset_bottom = 48.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/front_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/front_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/front_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="front_mid" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 56.0
+offset_right = 390.0
+offset_bottom = 104.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/front_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/front_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/front_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="front_bot" type="Panel" parent="Char_status/penal"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 112.0
+offset_right = 390.0
+offset_bottom = 160.0
+
+[node name="Avatar" type="Control" parent="Char_status/penal/front_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Char_status/penal/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2lshv")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Char_status/penal/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_wk21s")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="Char_status/penal/front_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Char_status/penal/front_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Char_status/penal/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_vd6ng")
+texture_progress = ExtResource("8_ecnyq")
+
+[node name="HP" type="TextureProgressBar" parent="Char_status/penal/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("10_x2jay")
+
+[node name="MP" type="TextureProgressBar" parent="Char_status/penal/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("11_lyb70")
+
+[node name="QI" type="TextureProgressBar" parent="Char_status/penal/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("9_y85d4")
+texture_progress = ExtResource("12_mnwml")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 32.0
+offset_right = 992.0
+offset_bottom = 480.0

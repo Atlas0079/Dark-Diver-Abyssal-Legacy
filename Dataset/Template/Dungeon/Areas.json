@@ -1,6 +1,5 @@
 {
     "A0001": {
-        "id": "prison_area",
         "name": "监牢区",
         "floor_level": 1,
         "tags": ["prison", "dungeon"],
@@ -44,7 +43,7 @@
             }
         },
         
-        "room_ruls": {
+        "room_rules": {
             "R0001":{
                 "min_quantity":2,
                 "max_quantity":2,

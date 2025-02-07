@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqehs5j3x0xba"]
+
+[ext_resource type="Script" path="res://test/visualizer/DungeonVisualizer.gd" id="1_osw3f"]
+
+[node name="DungeonVisualizer" type="Node2D"]
+script = ExtResource("1_osw3f")
+
+[node name="VisualizerCanvas" type="Node2D" parent="."]

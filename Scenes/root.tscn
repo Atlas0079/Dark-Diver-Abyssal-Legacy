@@ -1,0 +1,161 @@
+[gd_scene load_steps=20 format=3 uid="uid://dcgl5v14lspxg"]
+
+[ext_resource type="Script" path="res://Scripts/BattleScene.gd" id="1_k2nxt"]
+[ext_resource type="Texture2D" uid="uid://k14fl0aft4as" path="res://Assets/Tileset/floor2.png" id="2_ltwam"]
+[ext_resource type="Texture2D" uid="uid://cqe1bisbfsldx" path="res://Assets/111.png" id="3_2vrgq"]
+[ext_resource type="Texture2D" uid="uid://3o1nuea52olj" path="res://Assets/Character/high_priest.png" id="4_w0xfp"]
+[ext_resource type="Texture2D" uid="uid://b80gm1jgg1fd" path="res://Assets/Character/acolyte.png" id="5_v6nd3"]
+[ext_resource type="Texture2D" uid="uid://dg47v0rcsxn4h" path="res://Assets/Character/female_hunter.png" id="6_gxian"]
+[ext_resource type="Texture2D" uid="uid://chg0gojhftv1k" path="res://Assets/Character/female paladin.png" id="7_o2jfg"]
+[ext_resource type="Texture2D" uid="uid://by0xwpyv0c1bk" path="res://Assets/Character/guard.png" id="8_404m0"]
+[ext_resource type="Texture2D" uid="uid://cu54bs0gd68yi" path="res://Assets/Character/female_rogue.png" id="9_q3d7u"]
+[ext_resource type="Texture2D" uid="uid://djhi647kegc5m" path="res://Assets/Character/Lolth.png" id="10_o7agt"]
+[ext_resource type="Texture2D" uid="uid://pblpmjsync6c" path="res://Assets/Character/Deliarne.png" id="11_k73oo"]
+[ext_resource type="Texture2D" uid="uid://b6wh1k2edebbk" path="res://Assets/Character/beholder.png" id="12_gxn8p"]
+[ext_resource type="Texture2D" uid="uid://dkcjpo42qa1yk" path="res://Assets/Character/barlgura.png" id="13_qm7ip"]
+[ext_resource type="Texture2D" uid="uid://cnbt3k2yrk5qc" path="res://Assets/Character/ancient_deep_dragon.png" id="14_o0t8c"]
+[ext_resource type="Texture2D" uid="uid://cof5m4hl6s12i" path="res://Assets/Character/lizardman.png" id="15_perxt"]
+[ext_resource type="PackedScene" uid="uid://bfulkgy1eb4tx" path="res://Scenes/BattleSceneFrame.tscn" id="16_jutnb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_befle"]
+albedo_texture = ExtResource("2_ltwam")
+uv1_scale = Vector3(10, 10, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cxi2p"]
+size = Vector2(20, 20)
+
+[sub_resource type="Environment" id="Environment_pgyhf"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_k2nxt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 4, 13)
+current = true
+fov = 32.0
+far = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 11, 10)
+light_color = Color(1, 0.960784, 0.901961, 1)
+light_energy = 0.8
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_befle")
+mesh = SubResource("PlaneMesh_cxi2p")
+
+[node name="Backgrounds" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Backgrounds"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3, -4.5)
+shaded = true
+texture_filter = 0
+texture = ExtResource("3_2vrgq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Backgrounds"]
+environment = SubResource("Environment_pgyhf")
+
+[node name="left_team" type="Node3D" parent="."]
+
+[node name="back_top" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.64, 0)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("4_w0xfp")
+
+[node name="back_mid" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.64, 2)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("5_v6nd3")
+
+[node name="back_bot" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.64, 4)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("6_gxian")
+
+[node name="front_top" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.64, 0)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("7_o2jfg")
+
+[node name="front_mid" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.64, 2)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_404m0")
+
+[node name="front_bot" type="Sprite3D" parent="left_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.64, 4)
+flip_h = true
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("9_q3d7u")
+
+[node name="right_team" type="Node3D" parent="."]
+
+[node name="back_top" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.64, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("10_o7agt")
+
+[node name="back_mid" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.64, 2)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("11_k73oo")
+
+[node name="back_bot" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.64, 4)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_gxn8p")
+
+[node name="front_top" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.64, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("13_qm7ip")
+
+[node name="front_mid" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.64, 2)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("14_o0t8c")
+
+[node name="front_bot" type="Sprite3D" parent="right_team"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.64, 4)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("15_perxt")
+
+[node name="Effects" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Effects"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("16_jutnb")]
+layer = 9

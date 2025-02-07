@@ -58,6 +58,8 @@ func _load_skill_data() -> void:
 # 加载NPC数据
 func _load_npc_data() -> void:
 	var file = FileAccess.open("res://Dataset/Save/NPC/NPCData.json", FileAccess.READ)
+	if file == null:
+		push_error("_load_npc_data 未找到Dataset/Save/NPC/NPCData.json")
 	var json = JSON.new()
 	var error = json.parse(file.get_as_text())
 	if error == OK:
@@ -219,6 +221,9 @@ func cleanup():
 # 获取物品数据
 func get_item_data(item_id: String) -> Dictionary:
 	return _item_data.get(str(item_id), {})
+
+func get_item_data_all() -> Dictionary:
+	return _item_data
 
 # 检查物品是否存在
 func item_exists(item_id: String) -> bool:

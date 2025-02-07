@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "patternProperties": {
+        "^I2\\d{4}$": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "物品名称"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "物品描述"
+                },
+                "item_value": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "物品价值"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": ["food", "potion"],
+                    "description": "物品类别"
+                },
+                "use_type": {
+                    "type": "string",
+                    "enum": ["all_time", "battle"],
+                    "description": "使用场合限制"
+                },
+                "tag": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "物品标签"
+                },
+                "effects": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["heal", "gain_energy"],
+                                "description": "效果类型"
+                            },
+                            "value": {
+                                "type": "number",
+                                "description": "效果数值"
+                            }
+                        },
+                        "required": ["type", "value"]
+                    },
+                    "description": "物品效果列表"
+                },
+                "image": {
+                    "type": "string",
+                    "pattern": "^res://Art/Items/.*\\.png$",
+                    "description": "物品图片资源路径"
+                }
+            },
+            "required": [
+                "name",
+                "description",
+                "item_value",
+                "category",
+                "use_type",
+                "tag",
+                "effects",
+                "image"
+            ]
+        }
+    }
+}

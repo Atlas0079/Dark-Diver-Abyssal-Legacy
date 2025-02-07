@@ -1,0 +1,17 @@
+{
+	"$schema": "https://cursor.sh/schemas/cursorrules-schema.json",
+	"tabWidth": 4,
+	"useTabs": true,
+	"formatOnSave": true,
+	"defaultLinter": "eslint",
+	"defaultFormatter": "prettier",
+	"ai": {
+		"mode": "fast"
+	},
+	"ignore": [
+		"node_modules",
+		"dist",
+		"build",
+		".git"
+	]
+} 

@@ -2,49 +2,56 @@
     "P0000": {
         "name": "通道模板",
         "tag": ["template"],
-        "key": [],
+        "discovery_difficulty": 0,
         "description": "这是一条基础的通道，四周的墙壁光滑平整，没有任何特殊的装饰或特征。",
         "lockable": true
     },
     "P0001": {
         "name": "平整干净的墓穴通路",
         "tag": ["clean", "tomb"],
+        "discovery_difficulty": 0,
         "description": "这条通道经过精心维护，地面被打扫得一尘不染，墙壁也十分平整。空气中飘荡着淡淡的熏香气息。",
         "lockable": true
     },
     "P0002": {
         "name": "潮湿黏腻的墓穴通路",
-        "tag": ["wet", "sticky", "tomb"],
+        "tag": ["wet","tomb"],
+        "discovery_difficulty": 0,
         "description": "通道的墙壁和地面都覆盖着一层黏腻的湿气，偶尔能看到水珠顺着墙壁缓缓流下。空气中弥漫着潮湿的霉味，让人感到不适。",
         "lockable": false
     },
     "P0003": {
         "name": "布满蛛网的狭窄通道",
         "tag": ["narrow", "cobweb"],
+        "discovery_difficulty": 0,
         "description": "这条通道异常狭窄，到处都是厚重的蛛网。蛛丝在微弱的光线下泛着银光，空气中弥漫着久未通风的腐朽气息。",
         "lockable": true
     },
     "P0004": {
         "name": "古老的石砖走廊",
         "tag": ["ancient", "stone"],
+        "discovery_difficulty": 0,
         "description": "走廊两侧是年代久远的石砖墙壁，上面刻着模糊不清的古老符文。脚下的石板因年深日久而出现了细小的裂纹。",
         "lockable": true
     },
     "P0005": {
         "name": "荧光菌丛生的洞道",
         "tag": ["luminous", "natural"],
-        "description": "洞壁上生长着大片的荧光蘑菇，散发出柔和的蓝绿色光芒。空气中飘散着淡淡的菌类孢子，给人一种梦幻般的感觉。",
+        "discovery_difficulty": 0,
+        "description": "洞壁上生长着大片的荧光蘑菇，散发出柔和的蓝绿色光芒。空气中飘散着淡淡的菌类孢子。",
         "lockable": false
     },
     "P0006": {
         "name": "渗水的地下水道",
-        "tag": ["wet", "underground"],
+        "tag": ["wet"],
+        "discovery_difficulty": 0,
         "description": "墙壁和天花板不断地滴落着水珠，地面上积着一层浅浅的水。远处传来水流的声音，回声在通道中回荡。",
         "lockable": false
     },
     "P0007": {
         "name": "雕像守卫的走廊",
-        "tag": ["guarded", "decorated"],
+        "tag": [],
+        "discovery_difficulty": 0,
         "description": "走廊两侧矗立着一尊尊威严的战士雕像，它们手持武器，仿佛在守护着什么重要的东西。地面上铺着精美但已经褪色的地毯。",
         "lockable": true
     }

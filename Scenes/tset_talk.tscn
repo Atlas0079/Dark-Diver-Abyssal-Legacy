@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyrnkfy4wgpmo"]
+
+[ext_resource type="Shader" path="res://Scripts/Shader/描边.gdshader" id="2_r0krj"]
+[ext_resource type="Texture2D" uid="uid://dmdtm7iofnj4" path="res://Assets/Custom Border and Panels Menu All Part/border3.png" id="3_etieu"]
+[ext_resource type="Texture2D" uid="uid://brrgrpukkt4w" path="res://Assets/Portrait/female3-1-1x-t.png" id="4_6yh4j"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="4_b0c5b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4kui"]
+shader = ExtResource("2_r0krj")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 1.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Female3-1-1x-t" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_w4kui")
+position = Vector2(683, 432)
+scale = Vector2(2, 2)
+texture = ExtResource("4_6yh4j")
+flip_h = true
+
+[node name="CharacterBorder" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+texture_filter = 1
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 640.0
+offset_bottom = 610.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_etieu")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 530.0
+offset_right = 222.0
+offset_bottom = 587.0
+theme_override_fonts/font = ExtResource("4_b0c5b")
+theme_override_font_sizes/font_size = 36
+text = "魔法师少女：
+给你马桶橛子，快去帮我通马桶！"
