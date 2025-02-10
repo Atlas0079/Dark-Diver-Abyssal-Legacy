@@ -63,8 +63,8 @@
 		"intelligence": 8,
 		"perception": 10,
 		"charisma": 6,
-		"dodge_rate": 100,
-		"block_rate": 10,
+		"dodge_rate": 5,
+		"block_rate": 100,
 		"crit_rate": 10
 	  },
 	  
@@ -80,6 +80,10 @@
 		"qi": {
 		  "current": 30,
 		  "max": 30
+		},
+		"passive_point": {
+		  "current": 0,
+		  "max": 2
 		}
 	  },
 	  

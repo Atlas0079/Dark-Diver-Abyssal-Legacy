@@ -1,3 +1,4 @@
+#res://Scripts/SkillAnimations/Slash.gd
 extends RefCounted
 
 static func play(battle_scene: Node3D, user: Character, effects_results: Dictionary) -> void:
@@ -24,11 +25,19 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	# 存储目标的原始位置
 	var target_original_position = target_sprite.global_position
 
-
+	#播放起始动画
+	var start_animation: AnimatedSprite3D = preload("res://Scenes/Animation/normal_start_yellow.tscn").instantiate()
+	battle_scene.get_node("Effects").add_child(start_animation)
+	start_animation.global_position = user_sprite.global_position
+	start_animation.global_position.z += 0.1
+	start_animation.global_position.y -= 0.3
+	start_animation.play("default")
+	await start_animation.animation_finished
 	# 1. 攻击者跳到目标位置
 	var attacker_tween = battle_scene.create_tween()
 	# 计算目标位置，在目标精灵前方稍近的位置
 	var jump_target_position = target_sprite.global_position + (move_direction * -1.4)
+	
 	# 保持y坐标不变，但x和z坐标都要移动到目标位置
 	attacker_tween.parallel().tween_property(user_sprite, "global_position:x", jump_target_position.x, 0.2)
 	attacker_tween.parallel().tween_property(user_sprite, "global_position:z", target_sprite.global_position.z, 0.2)
@@ -42,39 +51,20 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	var slash_effect: AnimatedSprite3D = preload("res://Scenes/Animation/Slash.tscn").instantiate()
 	battle_scene.get_node("Effects").add_child(slash_effect)
 	slash_effect.global_position = target_sprite.global_position + Vector3(0, 0, 0.1)
+	if not is_blue_team:
+		slash_effect.flip_h = true
 	slash_effect.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	slash_effect.pixel_size = 0.01
-	slash_effect.play("Slash")
+	slash_effect.play("default")
 
 	# 记录斩击动画开始时间
 	var slash_start_time = Time.get_ticks_msec()
 
 
 	if effects_results.hit_type == "dodge":
-		# 创建残影精灵
-		var after_image = Sprite3D.new()
-		battle_scene.get_node("Effects").add_child(after_image)
-		after_image.texture = target_sprite.texture
-		after_image.global_position = target_original_position
-		after_image.modulate = Color(1, 1, 1, 0.5)
-
-		# 目标向后闪避的动画 (使用缓动函数)
-		var dodge_direction = Vector3(0.4, 0, 0) if is_blue_team else Vector3(-0.4, 0, 0) # 稍微增加闪避距离
-		var dodge_tween = battle_scene.create_tween()
-		dodge_tween.tween_property(target_sprite, "global_position",
-			target_original_position + dodge_direction * 1.5, 0.3) \
-			.set_trans(Tween.TRANS_CUBIC) \
-			.set_ease(Tween.EASE_OUT)  # 使用Cubic缓动函数，先快后慢
-
-		# 稍微加长闪避动画的时间 0.2 -> 0.3
-
-		# 残影淡出 (与闪避动画同时进行)
-		var after_image_fade_tween = battle_scene.create_tween()
-		after_image_fade_tween.tween_property(after_image, "modulate:a", 0, 0.4) #残影消失时间稍微拉长
-		await after_image_fade_tween.finished
-		after_image.queue_free()
-
-
+		GeneralAnimation.play_dodge_animation(target_sprite, battle_scene)
+	elif effects_results.hit_type == "block":
+		GeneralAnimation.play_block_animation(target_sprite, effects_results["damage"], battle_scene)
 	elif effects_results.hit_type == "normal":
 		# 3. 目标闪红光和显示伤害数字
 		var hit_tween = battle_scene.create_tween()
@@ -101,22 +91,13 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	elif effects_results.hit_type == "block":
 		print("斩击动画完成，目标格挡")
 
-	# 4. 等待斩击动画播放完成 + 被击者返回
+	# 4. 等待斩击动画播放完成 
 	var elapsed_time = (Time.get_ticks_msec() - slash_start_time) / 1000.0  # 计算已经过的时间（秒）
 	var remaining_time = 0.25 - elapsed_time  # 假设斩击动画时长为0.25秒
 	if remaining_time > 0:
 		await battle_scene.get_tree().create_timer(remaining_time).timeout
 
 	slash_effect.queue_free()
-
-	# 被击者返回 (只有闪避时才返回)
-	if effects_results.hit_type == "dodge":
-		var return_tween = battle_scene.create_tween()
-		return_tween.tween_property(target_sprite, "global_position",
-			target_original_position, 0.2) \
-			.set_trans(Tween.TRANS_CUBIC) \
-			.set_ease(Tween.EASE_IN)  # 返回也使用缓动, 先慢后快
-		await return_tween.finished
 
 
 	# 5. 攻击者跳回原位

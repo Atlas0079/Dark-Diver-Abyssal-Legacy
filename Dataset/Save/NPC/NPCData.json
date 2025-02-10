@@ -41,6 +41,10 @@
       "stress": {
         "current": 20,
         "max": 100
+      },
+      "passive_point": {
+        "current": 0,
+        "max": 2
       }
     },
     

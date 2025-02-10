@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxnhkhav1661s"]
+[gd_scene load_steps=20 format=3 uid="uid://dxnhkhav1661s"]
 
 [ext_resource type="Texture2D" uid="uid://coj01fcgkqtmy" path="res://Assets/Custom Border and Panels Menu All Part/border4.png" id="1_ngvyu"]
 [ext_resource type="Texture2D" uid="uid://c026bopr0dscm" path="res://Assets/UI assets pack 2/UI books & more.png" id="2_5fkd6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cofxvhkal2ddf" path="res://Assets/UI/HPprogress.png" id="10_x2jay"]
 [ext_resource type="Texture2D" uid="uid://dxev7n53nroh2" path="res://Assets/UI/MPprogress.png" id="11_lyb70"]
 [ext_resource type="Texture2D" uid="uid://b1txovvwcp1pc" path="res://Assets/UI/QIprogress.png" id="12_mnwml"]
+[ext_resource type="Texture2D" uid="uid://by0xwpyv0c1bk" path="res://Assets/Character/guard.png" id="13_ttpmr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryjte"]
 resource_local_to_scene = true
@@ -840,3 +841,19 @@ offset_left = 480.0
 offset_top = 32.0
 offset_right = 992.0
 offset_bottom = 480.0
+
+[node name="CharacterName" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 13.0
+offset_right = 510.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("4_wumky")
+theme_override_font_sizes/font_size = 30
+text = "名字Name"
+
+[node name="Guard" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(526, 69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_ttpmr")

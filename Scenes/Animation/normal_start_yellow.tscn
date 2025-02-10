@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkab5tffxbtnh"]
+
+[ext_resource type="Texture2D" uid="uid://cwmi2qhj0013n" path="res://Assets/Animations/start (5).png" id="1_iuvuo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bghdy"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxeui"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wosa"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrsf2"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmswi"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvhbj"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epytw"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvp4r"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(448, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5vpc"]
+atlas = ExtResource("1_iuvuo")
+region = Rect2(512, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71pmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bghdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxeui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wosa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrsf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmswi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvhbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epytw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvp4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5vpc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.33922e-05, 0.00632071, -0.00276756)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_71pmk")
+frame = 8
+frame_progress = 1.0

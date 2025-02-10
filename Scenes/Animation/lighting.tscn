@@ -1,0 +1,151 @@
+[gd_scene load_steps=22 format=3 uid="uid://dywyo63d5ysm1"]
+
+[ext_resource type="Texture2D" uid="uid://dd2o28xllbpuv" path="res://Assets/Animations/元素祭司4.png" id="1_5tus2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oi7h"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp04t"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oihoj"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8fka"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f2qq"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2flu4"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw0so"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ugb"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h24f"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(512, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi1m1"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(576, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo5pd"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(640, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14g1w"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(704, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twgoo"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(768, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpawo"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(832, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr6jk"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(896, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rkt2"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(960, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu838"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(1024, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lks2"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(1088, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x6ke"]
+atlas = ExtResource("1_5tus2")
+region = Rect2(1152, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myua8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oi7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp04t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oihoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8fka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f2qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2flu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw0so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4ugb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h24f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi1m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo5pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14g1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twgoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpawo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr6jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rkt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu838")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lks2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x6ke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_myua8")
+frame_progress = 0.332946

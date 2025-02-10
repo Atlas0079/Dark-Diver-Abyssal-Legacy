@@ -4,12 +4,14 @@ var owner: Character
 
 # 这些属性由具体技能类定义
 var skill_name: String
+var skill_type: String
 var description: String
 var priority: int
 var tags: Array[String]
 var animation: String
 var use_conditions: Array
 var timings: Array
+var passive_trigger: String
 
 func _init() -> void:
 	_setup()

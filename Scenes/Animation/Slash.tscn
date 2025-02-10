@@ -1,50 +1,75 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0kpt2aaloivw"]
+[gd_scene load_steps=11 format=3 uid="uid://c0kpt2aaloivw"]
 
-[ext_resource type="Texture2D" uid="uid://c1uffyqbf26fl" path="res://Assets/Animations/Slash/精灵-0002.png" id="1_j080x"]
-[ext_resource type="Texture2D" uid="uid://dasesu3yjv3bi" path="res://Assets/Animations/Slash/精灵-0003.png" id="2_r5fma"]
-[ext_resource type="Texture2D" uid="uid://eq1hihhrrqj2" path="res://Assets/Animations/Slash/精灵-0004.png" id="3_kf1ss"]
-[ext_resource type="Texture2D" uid="uid://dq0pjc1ie611k" path="res://Assets/Animations/Slash/精灵-0005.png" id="4_v7d01"]
-[ext_resource type="Texture2D" uid="uid://glhqk0h6efuw" path="res://Assets/Animations/Slash/精灵-0006.png" id="5_31psp"]
-[ext_resource type="Texture2D" uid="uid://bkxl2nfco7fdu" path="res://Assets/Animations/Slash/精灵-0007.png" id="6_gxevl"]
-[ext_resource type="Texture2D" uid="uid://2716mkfalbmh" path="res://Assets/Animations/Slash/精灵-0008.png" id="7_dfi6m"]
+[ext_resource type="Texture2D" uid="uid://r7hmv6cnwcep" path="res://Assets/Animations/斩击 (2).png" id="1_haj0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3uv7"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2a47"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g506o"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwi34"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk601"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxcpr"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8pyo"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcs2l"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(448, 320, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71pmk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_j080x")
+"texture": SubResource("AtlasTexture_m3uv7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_r5fma")
+"texture": SubResource("AtlasTexture_q2a47")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kf1ss")
+"texture": SubResource("AtlasTexture_g506o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_v7d01")
+"texture": SubResource("AtlasTexture_uwi34")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_31psp")
+"texture": SubResource("AtlasTexture_fk601")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_gxevl")
+"texture": SubResource("AtlasTexture_uxcpr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dfi6m")
+"texture": SubResource("AtlasTexture_c8pyo")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_kcs2l")
 }],
 "loop": false,
-"name": &"Slash",
-"speed": 20.0
+"name": &"default",
+"speed": 15.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite3D"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_71pmk")
-animation = &"Slash"
 frame = 7
 frame_progress = 1.0

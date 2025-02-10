@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcgl5v14lspxg"]
+[gd_scene load_steps=30 format=3 uid="uid://dcgl5v14lspxg"]
 
 [ext_resource type="Script" path="res://Scripts/BattleScene.gd" id="1_k2nxt"]
 [ext_resource type="Texture2D" uid="uid://k14fl0aft4as" path="res://Assets/Tileset/floor2.png" id="2_ltwam"]
-[ext_resource type="Texture2D" uid="uid://cqe1bisbfsldx" path="res://Assets/111.png" id="3_2vrgq"]
+[ext_resource type="Texture2D" uid="uid://c0f3eeojliwaf" path="res://Assets/111.png" id="3_2vrgq"]
 [ext_resource type="Texture2D" uid="uid://3o1nuea52olj" path="res://Assets/Character/high_priest.png" id="4_w0xfp"]
 [ext_resource type="Texture2D" uid="uid://b80gm1jgg1fd" path="res://Assets/Character/acolyte.png" id="5_v6nd3"]
 [ext_resource type="Texture2D" uid="uid://dg47v0rcsxn4h" path="res://Assets/Character/female_hunter.png" id="6_gxian"]
@@ -15,7 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://dkcjpo42qa1yk" path="res://Assets/Character/barlgura.png" id="13_qm7ip"]
 [ext_resource type="Texture2D" uid="uid://cnbt3k2yrk5qc" path="res://Assets/Character/ancient_deep_dragon.png" id="14_o0t8c"]
 [ext_resource type="Texture2D" uid="uid://cof5m4hl6s12i" path="res://Assets/Character/lizardman.png" id="15_perxt"]
-[ext_resource type="PackedScene" uid="uid://bfulkgy1eb4tx" path="res://Scenes/BattleSceneFrame.tscn" id="16_jutnb"]
+[ext_resource type="Texture2D" uid="uid://bsnq55ahqindn" path="res://Assets/Custom Border and Panels Menu All Part/border1.png" id="16_5a2j7"]
+[ext_resource type="Texture2D" uid="uid://bt812loa51dob" path="res://Assets/Custom Border and Panels Menu All Part/border2.png" id="17_4e2bv"]
+[ext_resource type="Texture2D" uid="uid://drkaybjy8cocp" path="res://Assets/Avater/female3-1-1x-t.png" id="18_ixlg1"]
+[ext_resource type="SpriteFrames" uid="uid://c2xrkf278nxk8" path="res://Assets/UI/images/txk.tres" id="19_rgw1c"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="20_qttvx"]
+[ext_resource type="Texture2D" uid="uid://dxcftsbts36fm" path="res://Assets/UI/status_bar_bg.png" id="21_l5vq4"]
+[ext_resource type="Texture2D" uid="uid://lq74s5jcifch" path="res://Assets/UI/APprogress.png" id="22_vbq53"]
+[ext_resource type="Texture2D" uid="uid://728jencd4xg4" path="res://Assets/UI/status_bar_bg_h.png" id="23_cawdo"]
+[ext_resource type="Texture2D" uid="uid://cofxvhkal2ddf" path="res://Assets/UI/HPprogress.png" id="24_i1pa2"]
+[ext_resource type="Texture2D" uid="uid://dxev7n53nroh2" path="res://Assets/UI/MPprogress.png" id="25_lvama"]
+[ext_resource type="Texture2D" uid="uid://b1txovvwcp1pc" path="res://Assets/UI/QIprogress.png" id="26_fejfo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_befle"]
 albedo_texture = ExtResource("2_ltwam")
@@ -37,6 +47,7 @@ script = ExtResource("1_k2nxt")
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 4, 13)
 current = true
 fov = 32.0
+size = 12.815
 far = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -51,7 +62,7 @@ mesh = SubResource("PlaneMesh_cxi2p")
 [node name="Backgrounds" type="Node3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="Backgrounds"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3, -4.5)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3, -2)
 shaded = true
 texture_filter = 0
 texture = ExtResource("3_2vrgq")
@@ -155,7 +166,1426 @@ texture = ExtResource("15_perxt")
 
 [node name="Effects" type="Node3D" parent="."]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Effects"]
-
-[node name="CanvasLayer" parent="." instance=ExtResource("16_jutnb")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 9
+metadata/_edit_vertical_guides_ = [30.0, 420.0, 860.0, 640.0]
+metadata/_edit_horizontal_guides_ = [690.0, 530.0]
+
+[node name="Frame" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Frame"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 40.0
+
+[node name="CharacterBorder" type="NinePatchRect" parent="CanvasLayer/Frame"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 640.0
+offset_bottom = 610.0
+scale = Vector2(2, 2)
+texture = ExtResource("16_5a2j7")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DetailInfo" type="NinePatchRect" parent="CanvasLayer/Frame"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 420.0
+offset_top = 500.0
+offset_right = 640.0
+offset_bottom = 610.0
+scale = Vector2(2, 2)
+texture = ExtResource("17_4e2bv")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Team" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="left_team" type="Control" parent="CanvasLayer/Team"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="back_top" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 530.0
+offset_right = 220.0
+offset_bottom = 578.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/back_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/back_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/back_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="back_mid" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 586.0
+offset_right = 220.0
+offset_bottom = 634.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/back_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/back_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/back_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="back_bot" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 642.0
+offset_right = 220.0
+offset_bottom = 690.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/back_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/back_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/back_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_top" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 530.0
+offset_right = 420.0
+offset_bottom = 578.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/front_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/front_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/front_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_mid" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 586.0
+offset_right = 420.0
+offset_bottom = 634.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/front_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/front_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/front_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_bot" type="Panel" parent="CanvasLayer/Team/left_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 642.0
+offset_right = 420.0
+offset_bottom = 690.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/left_team/front_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/left_team/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/left_team/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/left_team/front_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/left_team/front_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/left_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="right_team" type="Control" parent="CanvasLayer/Team"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 830.0
+offset_right = 870.0
+offset_bottom = 40.0
+
+[node name="back_top" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 530.0
+offset_right = 420.0
+offset_bottom = 578.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/back_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/back_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/back_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/back_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="back_mid" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 586.0
+offset_right = 420.0
+offset_bottom = 634.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/back_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/back_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/back_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/back_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="back_bot" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 642.0
+offset_right = 420.0
+offset_bottom = 690.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/back_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/back_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/back_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_top" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 530.0
+offset_right = 220.0
+offset_bottom = 578.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/front_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/front_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/front_top/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_mid" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 586.0
+offset_right = 220.0
+offset_bottom = 634.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/front_mid"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/front_mid/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/front_mid"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/front_mid/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_mid/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="front_bot" type="Panel" parent="CanvasLayer/Team/right_team"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 642.0
+offset_right = 220.0
+offset_bottom = 690.0
+
+[node name="Avatar" type="Control" parent="CanvasLayer/Team/right_team/front_bot"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="CanvasLayer/Team/right_team/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_ixlg1")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="CanvasLayer/Team/right_team/front_bot/Avatar"]
+texture_filter = 1
+position = Vector2(24, 24)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("19_rgw1c")
+frame_progress = 0.679767
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/Team/right_team/front_bot"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Team/right_team/front_bot/StatusBar"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 20
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("21_l5vq4")
+texture_progress = ExtResource("22_vbq53")
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("24_i1pa2")
+
+[node name="MP" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 26.0
+offset_right = 94.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("25_lvama")
+
+[node name="QI" type="TextureProgressBar" parent="CanvasLayer/Team/right_team/front_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 158.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("23_cawdo")
+texture_progress = ExtResource("26_fejfo")
+
+[node name="SkillInfo" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/SkillInfo"]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 514.0
+offset_right = 845.0
+offset_bottom = 548.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 30
+text = "技能名字SkillName"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/SkillInfo"]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 549.0
+offset_right = 846.0
+offset_bottom = 655.0
+theme_override_fonts/normal_font = ExtResource("20_qttvx")
+theme_override_font_sizes/normal_font_size = 21
+text = "这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/SkillInfo"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 652.0
+offset_right = 844.0
+offset_bottom = 704.0
+
+[node name="TagLabel" type="Label" parent="CanvasLayer/SkillInfo/Panel"]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 40.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 24
+text = "(特性):"
+
+[node name="ATKRateLabel" type="Label" parent="CanvasLayer/SkillInfo/Panel"]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 24
+text = "伤害倍率:100%"
+horizontal_alignment = 1
+
+[node name="HITRateLabel" type="Label" parent="CanvasLayer/SkillInfo/Panel"]
+layout_mode = 0
+offset_left = 211.0
+offset_right = 408.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("20_qttvx")
+theme_override_font_sizes/font_size = 24
+text = "命中倍率:100%"
+horizontal_alignment = 1
+vertical_alignment = 1

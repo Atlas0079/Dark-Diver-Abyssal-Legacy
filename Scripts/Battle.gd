@@ -21,17 +21,19 @@ var active_characters: Array = []
 signal turn_start
 signal turn_end
 
-signal character_action_start
-signal character_action_end
+signal character_action_start(character: Character)
+signal character_action_end(character: Character)
 
 signal battle_start
 signal battle_end
 
-# 添加新的信号
 signal animation_completed
 signal action_completed
 
+signal skill_and_targets_selected(skill: BaseSkill, targets: Array)
+
 # 战场数据结构
+
 static var blue_team = {
 	Position.FRONT_TOP: null,  # null 表示空位置
 	Position.FRONT_MID: null,
@@ -125,7 +127,8 @@ func process_character_action(character: Character) -> void:
 		var skill = character.get_skill(available_skill_id)
 		var targets = skill.get_targets(character,self)
 		#选择目标的时点
-
+		emit_signal("skill_and_targets_selected", skill, targets)
+		
 		# 设置动画状态
 		is_animating = true
 
@@ -215,7 +218,7 @@ func handle_turn_end() -> void:
 	emit_signal("turn_end")  # 发出回合结束信号
 
 
-	#TODO: 处理“回合结束”状态
+	#TODO: 处理"回合结束"状态
 
 	#回合结束增加回合数
 	turn_count += 1
@@ -225,14 +228,14 @@ func handle_character_action_start(character: Character) -> void:
 	print("Battle.handle_character_action_start %s 行动开始" % character.character_name)
 	emit_signal("character_action_start", character)
 
-	#TODO: 处理“角色行动开始”状态
+	#TODO: 处理"角色行动开始"状态
 
 
 func handle_character_action_end(character: Character) -> void:
 	print("Battle.handle_character_action_end %s 行动结束" % character.character_name)
 	emit_signal("character_action_end", character)
 
-	#TODO: 处理“角色行动结束”状态
+	#TODO: 处理"角色行动结束"状态
 
 	# 从可行动角色列表中移除
 	active_characters.erase(character)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8lqyw2kv73q"]
+
+[ext_resource type="Texture2D" uid="uid://bfw00p2ks18jo" path="res://Assets/UI/skill_background.png" id="1_0vpdr"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="2_jqsep"]
+
+[node name="BlueSkillBackground" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(104, 21)
+scale = Vector2(2, 2)
+texture = ExtResource("1_0vpdr")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_top = 6.0
+offset_right = 188.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("2_jqsep")
+theme_override_font_sizes/font_size = 25
+text = "Slashabcdefghigk"
+horizontal_alignment = 1
+vertical_alignment = 1

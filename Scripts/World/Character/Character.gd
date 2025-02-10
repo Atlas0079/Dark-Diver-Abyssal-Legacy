@@ -40,7 +40,8 @@ var resources = {
 	"stamina": {"current": 0, "max": 0},
 	"qi": {"current": 0, "max": 0},
 	"energy": {"current": 0, "max": 0},
-	"stress": {"current": 0, "max": 0}
+	"stress": {"current": 0, "max": 0},
+	"passive_point": {"current": 0, "max": 0}
 }
 
 # 装备
@@ -54,7 +55,7 @@ var equipment = {
 var battle_stats = {
 	"action_point": 0,
 	"action_threshold": 0,
-	"active_skills": {}  # Dictionary<String, Skill>
+	"active_skills": {},  # Dictionary<String, Skill>
 }
 
 # 其他属性

@@ -3,6 +3,7 @@ extends BaseSkill
 
 func _setup() -> void:
 	skill_name = "Slash"
+	skill_type = "active"
 	description = "对单个敌人造成物理伤害"
 	priority = 0
 	tags = ["enemy_only","melee","single_target","physical"]
