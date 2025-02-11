@@ -6,6 +6,8 @@ extends Node
 var battle_scene: Node3D
 var battle: Battle
 
+signal skill_animation_completed 
+
 func setup_scene(scene: Node3D):
 	battle_scene = scene
 	battle = scene.battle  # 获取 Battle 实例的引用
@@ -50,6 +52,9 @@ func play_skill_animation(skill: BaseSkill, user: Character, effects_results: Di
 		"slash":
 			var slash = preload("res://Scripts/SkillAnimations/Slash.gd")
 			await slash.play(battle_scene, user, effects_results) 
+		"cover":
+			var cover = preload("res://Scripts/SkillAnimations/Cover.gd")
+			await cover.play(battle_scene, user, effects_results)
 		"fireball":
 			pass
 		_:
@@ -63,6 +68,7 @@ func _finish_animation() -> void:
 	print("动画完成 animation_completed")
 	if battle:
 		battle.emit_signal("animation_completed")
+		emit_signal("skill_animation_completed")
 	else:
 		push_error("Battle实例为空")
 	if battle_scene:

@@ -39,7 +39,7 @@
 		"action_point": 0,
 		"action_threshold": 10,
 		"active_skills": {
-		  "0005": {
+		  "S1005": {
 			"timings": [],
 			"priority": 1
 		  }
@@ -97,7 +97,7 @@
 		"action_point": 0,
 		"action_threshold": 12,
 		"active_skills": {
-		  "0005": {
+		  "S1005": {
 			"timings": [],
 			"priority": 1
 		  }

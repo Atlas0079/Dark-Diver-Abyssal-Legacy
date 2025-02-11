@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 DataManager="*res://Scripts/DataManager.gd"
 SkillAnimation="*res://Scripts/SkillAnimation.gd"
 SkillRegistry="*res://Scripts/World/SkillRegistry.gd"
+PassiveSkillManager="*res://Scripts/World/Skills/PassiveSkillManager.gd"
 
 [display]
 

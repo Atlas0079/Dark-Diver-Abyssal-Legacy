@@ -26,7 +26,7 @@ func start_battle(blue_team_id: String, red_team_id: String):
 	# 创建战斗实例
 	battle = Battle.new()
 	add_child(battle)
-	
+	PassiveSkillManager.battle_start(battle)
 	# 初始化动画系统 - 移到这里
 	SkillAnimation.setup_scene(self)
 	

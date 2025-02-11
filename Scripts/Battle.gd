@@ -107,6 +107,10 @@ func start_next_turn() -> void:
 	process_next_action()
 
 func process_next_action() -> void:
+	if battle_is_end():
+		handle_battle_end()
+		return
+		
 	if active_characters.is_empty():
 		# 所有角色行动完毕，结束回合
 		handle_turn_end()
@@ -120,14 +124,21 @@ func process_next_action() -> void:
 
 # 修改角色行动处理
 func process_character_action(character: Character) -> void: 
+	# 添加战斗结束检查
+	if battle_is_end():
+		handle_battle_end()
+		return
+		
 	handle_character_action_start(character)
 
-	var available_skill_id = character.get_available_skill(self)
+	var available_skill_id = character.get_available_active_skill(self)
 	if available_skill_id != null:
 		var skill = character.get_skill(available_skill_id)
 		var targets = skill.get_targets(character,self)
-		#选择目标的时点
-		emit_signal("skill_and_targets_selected", skill, targets)
+
+
+		# 被动技能时机 skill_and_targets_selected
+		targets = PassiveSkillManager._on_skill_and_targets_selected(skill, targets)
 		
 		# 设置动画状态
 		is_animating = true
@@ -166,7 +177,7 @@ func handle_turn_start() -> void:
 				character.battle_stats.action_point += 1
 				# 2. 检查是否达到行动阈值且有可用技能
 				if character.battle_stats.action_point >= character.battle_stats.action_threshold:
-					var available_skill_id = character.get_available_skill(self)
+					var available_skill_id = character.get_available_active_skill(self)
 					if available_skill_id != null:
 						active_characters.append(character)
 	

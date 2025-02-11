@@ -187,6 +187,17 @@ func has_state(state_name: String) -> bool:
 			return true
 	return false
 
+# 添加状态
+func add_state(state_name: String, value: int = 0) -> void:
+	states.append({state_name: value})
+
+# 移除状态
+func remove_state(state_name: String) -> void:
+	for state in states:
+		if state.has(state_name):
+			states.erase(state)
+			break
+
 # 获取状态值
 func get_state_value(state_name: String) -> int:
 	for state in states:
@@ -203,14 +214,36 @@ func get_skill(skill_id: String) -> BaseSkill:
 func has_skill(skill_id: String) -> bool:
 	return battle_stats.active_skills.has(skill_id)
 
-func get_available_skill(battle: Battle) -> String:
+func get_available_active_skill(battle: Battle) -> String:
 	# 创建一个包含技能ID和优先级的数组
 	var prioritized_skills = []
 	for skill_id in battle_stats.active_skills:
-		prioritized_skills.append({
-			"id": skill_id,
-			"priority": battle_stats.active_skills[skill_id].priority
-		})
+		if get_skill(skill_id).skill_type == "active":
+			prioritized_skills.append({
+				"id": skill_id,
+				"priority": battle_stats.active_skills[skill_id].priority
+			})
+	
+	# 按优先级从高到低排序
+	prioritized_skills.sort_custom(func(a, b): return a.priority > b.priority)
+	
+	# 返回第一个可用的技能ID
+	for skill_data in prioritized_skills:
+		var skill_id = skill_data.id
+		if get_skill(skill_id).get_targets(self,battle).size() > 0:
+			return skill_id
+	
+	return ""  # 如果没有可用技能则返回空字符串
+
+func get_available_passive_skill(battle: Battle,trigger_type: String) -> String:
+		# 创建一个包含技能ID和优先级的数组
+	var prioritized_skills = []
+	for skill_id in battle_stats.active_skills:
+		if get_skill(skill_id).skill_type == "passive" and get_skill(skill_id).passive_trigger == trigger_type:
+			prioritized_skills.append({
+				"id": skill_id,
+				"priority": battle_stats.active_skills[skill_id].priority
+			})
 	
 	# 按优先级从高到低排序
 	prioritized_skills.sort_custom(func(a, b): return a.priority > b.priority)

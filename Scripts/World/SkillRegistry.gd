@@ -2,7 +2,11 @@ extends Node
 
 # 技能类映射表
 var _skill_classes = {
-	"0005": preload("res://Scripts/World/Skills/Slash.gd"),
+	#"0001": preload("res://Scripts/World/Skills/Slash.gd"),
+	#"0002": preload("res://Scripts/World/Skills/Fireball.gd"),
+	#"0003": preload("res://Scripts/World/Skills/FrostNova.gd"),
+	"S2004": preload("res://Scripts/World/Skills/Cover.gd"),
+	"S1005": preload("res://Scripts/World/Skills/Slash.gd"),
 }
 
 # 获取技能实例

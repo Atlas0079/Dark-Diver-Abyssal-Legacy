@@ -31,6 +31,13 @@ static func resolve_combat(attacker: Character, defender: Character, base_damage
 	return result
 
 static func judge_dodge(attacker: Character, defender: Character, battle: Battle) -> Dictionary:
+	# 如果有闪避禁止状态，直接返回不能闪避
+	if defender.has_state("cover_dodge_prohibition"):
+		return {
+			"target": defender,
+			"hit_type": "normal"
+		}
+		
 	var dodge_rate = defender.get_actual_combat_stat("dodge_rate")
 	var hit_rate = attacker.get_actual_combat_stat("hit_rate")
 	var final_dodge_rate = clamp(dodge_rate - hit_rate, 0, 100)

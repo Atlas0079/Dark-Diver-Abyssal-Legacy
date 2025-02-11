@@ -3,7 +3,7 @@
       "describe": "冒险者小队1",
       "positions": {
           "FRONT_TOP": "00001",
-          "FRONT_MID": null,
+          "FRONT_MID": "00002",
           "FRONT_BOT": null,
           "BACK_TOP": null,
           "BACK_MID": null,

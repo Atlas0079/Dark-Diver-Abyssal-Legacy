@@ -91,21 +91,5 @@
         "value": 100
       }
     ]
-  },
-  "0005": {
-    "name": "挥砍",
-    "description": "挥砍敌人",
-    "priority": 1,
-    "tag": [
-      "enemy_only"
-    ],
-    "animation": "slash",
-    "use_conditions": [],
-    "effects": [
-      {
-        "type": "physical_damage",
-        "value": 100
-      }
-    ]
   }
 }

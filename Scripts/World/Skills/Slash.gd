@@ -2,7 +2,7 @@ class_name Slash
 extends BaseSkill
 
 func _setup() -> void:
-	skill_name = "Slash"
+	skill_name = "斩击"
 	skill_type = "active"
 	description = "对单个敌人造成物理伤害"
 	priority = 0
