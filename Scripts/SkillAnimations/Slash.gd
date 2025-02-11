@@ -33,6 +33,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	start_animation.global_position.y -= 0.3
 	start_animation.play("default")
 	await start_animation.animation_finished
+
 	# 1. 攻击者跳到目标位置
 	var attacker_tween = battle_scene.create_tween()
 	# 计算目标位置，在目标精灵前方稍近的位置
@@ -51,6 +52,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	var slash_effect: AnimatedSprite3D = preload("res://Scenes/Animation/Slash.tscn").instantiate()
 	battle_scene.get_node("Effects").add_child(slash_effect)
 	slash_effect.global_position = target_sprite.global_position + Vector3(0, 0, 0.1)
+	
 	if not is_blue_team:
 		slash_effect.flip_h = true
 	slash_effect.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -59,38 +61,17 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 
 	# 记录斩击动画开始时间
 	var slash_start_time = Time.get_ticks_msec()
-
-
+	
 	if effects_results.hit_type == "dodge":
 		GeneralAnimation.play_dodge_animation(target_sprite, battle_scene)
 	elif effects_results.hit_type == "block":
 		GeneralAnimation.play_block_animation(target_sprite, effects_results["damage"], battle_scene)
 	elif effects_results.hit_type == "normal":
-		# 3. 目标闪红光和显示伤害数字
-		var hit_tween = battle_scene.create_tween()
-		hit_tween.tween_property(target_sprite, "modulate", Color(1, 0, 0), 0.1)
-		hit_tween.tween_property(target_sprite, "modulate", Color(1, 1, 1), 0.1)
-
-		# 显示伤害数字
-		if effects_results.has("damage"):
-			var damage_label = create_damage_label(effects_results["damage"])
-			battle_scene.get_node("Effects").add_child(damage_label)
-			damage_label.global_position = target_sprite.global_position + Vector3(0, 0.8, -0.2)
-
-			var label_tween = battle_scene.create_tween()
-			label_tween.tween_property(damage_label, "global_position:y",
-				damage_label.global_position.y + 0.5, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-			label_tween.tween_property(damage_label, "global_position:y",
-				damage_label.global_position.y + 0.3, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-			await battle_scene.get_tree().create_timer(0.5).timeout
-			var fade_tween = battle_scene.create_tween()
-			fade_tween.tween_property(damage_label, "modulate:a", 0, 0.3)
-			await fade_tween.finished
-			damage_label.queue_free()
-
-	elif effects_results.hit_type == "block":
-		print("斩击动画完成，目标格挡")
-
+		GeneralAnimation.play_hit_animation(target_sprite, effects_results["damage"], battle_scene)
+	elif effects_results.hit_type == "critical":
+		GeneralAnimation.play_critical_animation(target_sprite, effects_results["damage"], battle_scene)
+	else:
+		push_error("未知的斩击类型: " + effects_results.hit_type)
 	# 4. 等待斩击动画播放完成 
 	var elapsed_time = (Time.get_ticks_msec() - slash_start_time) / 1000.0  # 计算已经过的时间（秒）
 	var remaining_time = 0.25 - elapsed_time  # 假设斩击动画时长为0.25秒

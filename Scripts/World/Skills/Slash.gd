@@ -31,31 +31,30 @@ func apply_effects(user: Character, targets: Array[Character], battle: Battle) -
 		print("Slash apply_effects dodge success")
 		return result
 	
-
-
 	# 3. 格挡判定
 	var block_result = CombatResolver.judge_block(user, targets[0], battle)
 	if block_result.hit_type == "block":
 		result.merge(block_result, true)
 		result.damage = CombatResolver.calculate_damage(user, targets[0], base_damage, attack_type, battle)
+		# 应用格挡伤害
+		targets[0].modify_health(-max(result.damage - block_result.block_value, 1))
 		print("Slash apply_effects block success ,block_value:",block_result.block_value)
 		return result
-
 
 	# 4. 暴击判定
 	var crit_result = CombatResolver.judge_crit(user, targets[0], base_damage, battle)
 	if crit_result.hit_type == "critical":
 		result.merge(crit_result, true)
-		result.damage = crit_result.crit_value
-		print("Slash apply_effects crit success")
+		result.damage = CombatResolver.calculate_damage(user, targets[0], base_damage, attack_type, battle)
+		# 应用暴击伤害
+		targets[0].modify_health(-result.damage)
+		print("Slash apply_effects crit success ,damage:",result.damage)
 		return result
 	
-
 	# 5. 普通命中
 	result.hit_type = "normal"
 	result.damage = CombatResolver.calculate_damage(user, targets[0], base_damage, attack_type, battle)
+	# 应用普通伤害
+	targets[0].modify_health(-result.damage)
 	print("Slash apply_effects normal success ,damage:",result.damage)
 	return result
-
-func final_damage(attack: int,defense: int) -> int:
-	return int(max(attack - defense, 1))

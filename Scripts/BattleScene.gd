@@ -36,6 +36,7 @@ func start_battle(blue_team_id: String, red_team_id: String):
 	battle.character_action_start.connect(_on_character_action_start)
 	battle.character_action_end.connect(_on_character_action_end)
 	battle.battle_end.connect(_on_battle_end)
+	battle.animation_completed.connect(_on_animation_completed)
 	
 	# 初始化战斗
 	battle.init_battle(blue_team_id, red_team_id)
@@ -94,6 +95,10 @@ func _on_character_action_end(character: Character):
 
 func _on_battle_end():
 	print("战斗结束")
+
+func _on_animation_completed():
+	update_all_positions()
+	update_all_ui()
 
 # 添加一个用于查找角色精灵的辅助函数
 func find_character_sprite(character: Character) -> Sprite3D:

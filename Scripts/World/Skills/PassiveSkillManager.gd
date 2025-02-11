@@ -34,12 +34,29 @@ func _on_character_action_end(current_character: Character) -> void:
 
 	
 func _check_and_trigger_passive_skills(current_character: Character, trigger_type: String) -> void:
+	# 1. 收集所有角色到一个数组中
+	var all_characters: Array[Character] = []
 	var teams = [Battle.blue_team, Battle.red_team]
 	for team in teams:
 		for position in team:
 			var character = team[position]
 			if character:
-				_process_character_skills(character, trigger_type)
+				all_characters.append(character)
+	
+	# 2. 对角色进行排序
+	# 首先按照行动阙值排序，相同的随机打乱
+	all_characters.sort_custom(func(a: Character, b: Character):
+		var threshold_a = a.battle_stats.action_threshold
+		var threshold_b = b.battle_stats.action_threshold
+		if threshold_a != threshold_b:
+			return threshold_a < threshold_b
+		# 如果阙值相同，随机返回true或false
+		return randf() > 0.5
+	)
+	
+	# 3. 按排序后的顺序处理每个角色的被动技能
+	for character in all_characters:
+		_process_character_skills(character, trigger_type)
 
 
 func _process_character_skills(character: Character, trigger_type: String) -> void:

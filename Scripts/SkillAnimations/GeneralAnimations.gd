@@ -89,11 +89,15 @@ static func play_hit_animation(target_sprite: Sprite3D, damage: int, battle_scen
 				damage_label.global_position.y + 0.5, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		label_tween.tween_property(damage_label, "global_position:y",
 				damage_label.global_position.y + 0.3, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		await battle_scene.get_tree().create_timer(0.5).timeout
-		var fade_tween = battle_scene.create_tween()
-		fade_tween.tween_property(damage_label, "modulate:a", 0, 0.3)
-		await fade_tween.finished
-		damage_label.queue_free()
+		
+		# 创建一个新的计时器来处理标签的淡出和删除
+		var timer = battle_scene.get_tree().create_timer(0.5)
+		timer.timeout.connect(func():
+			var fade_tween = battle_scene.create_tween()
+			fade_tween.tween_property(damage_label, "modulate:a", 0, 0.3)
+			await fade_tween.finished
+			damage_label.queue_free()
+		)
 
 # 静态函数，用于创建伤害数字标签
 static func create_damage_label(damage: int) -> Label3D:
@@ -116,9 +120,11 @@ static func create_damage_label(damage: int) -> Label3D:
 
 # 静态函数，用于播放格挡动画
 static func play_block_animation(target_sprite: Sprite3D, damage: int, battle_scene: Node3D):
-	var spark_particles_scene = load("res://Scenes/spark.tscn")
+	var is_blue_team = target_sprite.get_parent().name == "left_team"
+	var spark_particles_scene = load("res://Scenes/spark_particles_right.tscn") if is_blue_team else load("res://Scenes/spark_particles_left.tscn")
 	var spark_particles = spark_particles_scene.instantiate()
 	battle_scene.get_node("Effects").add_child(spark_particles)
+	
 	spark_particles.global_position = target_sprite.global_position
 	spark_particles.global_position.y += 0.1
 	spark_particles.emitting = true
@@ -176,3 +182,61 @@ static func _shake_sprite(target_sprite: Sprite3D, shake_intensity: float, shake
 		shake_timer += battle_scene.get_process_delta_time()
 		await battle_scene.get_tree().process_frame
 	target_sprite.position = original_position
+
+# 静态函数，用于播放暴击动画
+static func play_critical_animation(target_sprite: Sprite3D, damage: int, battle_scene: Node3D):
+	# 判断队伍并加载对应方向的血液粒子效果
+	var is_blue_team = target_sprite.get_parent().name == "left_team"
+	var blood_particles_scene = load("res://Scenes/blood_particles_left.tscn") if is_blue_team else load("res://Scenes/blood_particles_right.tscn")
+	var blood_particles = blood_particles_scene.instantiate()
+	battle_scene.get_node("Effects").add_child(blood_particles)
+	
+	blood_particles.global_position = target_sprite.global_position
+	blood_particles.global_position.y += 0.1
+	blood_particles.emitting = true
+
+	# 目标闪红光并震动（比普通攻击更剧烈）
+	var hit_tween = battle_scene.create_tween()
+	hit_tween.tween_callback(func(): _shake_sprite(target_sprite, 0.08, 0.08, battle_scene))  # 更强的震动
+	hit_tween.tween_property(target_sprite, "modulate", Color(1.5, 0, 0), 0.1)  # 更亮的红色
+	hit_tween.tween_property(target_sprite, "modulate", Color(1, 1, 1), 0.1)
+
+	# 显示暴击伤害数字
+	if damage > 0:
+		var damage_label = create_critical_damage_label(damage)
+		battle_scene.get_node("Effects").add_child(damage_label)
+		damage_label.global_position = target_sprite.global_position + Vector3(0, 0.8, -0.2)
+
+		var label_tween = battle_scene.create_tween()
+		label_tween.tween_property(damage_label, "global_position:y",
+				damage_label.global_position.y + 0.5, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		label_tween.tween_property(damage_label, "global_position:y",
+				damage_label.global_position.y + 0.3, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
+		# 创建一个新的计时器来处理标签的淡出和删除
+		var timer = battle_scene.get_tree().create_timer(0.5)
+		timer.timeout.connect(func():
+			var fade_tween = battle_scene.create_tween()
+			fade_tween.tween_property(damage_label, "modulate:a", 0, 0.3)
+			await fade_tween.finished
+			damage_label.queue_free()
+		)
+
+# 静态函数，用于创建暴击伤害数字标签（红色+!!!）
+static func create_critical_damage_label(damage: int) -> Label3D:
+	var label = Label3D.new()
+	var font = load("res://Assets/UI/Xim-Sans-Brahmic-3.ttf")
+	if font:
+		label.font = font
+	label.text = str(damage) + " !"
+	label.font_size = 96
+	label.modulate = Color(1, 0, 0)  # 红色
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.no_depth_test = true
+	label.render_priority = 100
+	label.double_sided = true
+	label.outline_size = 12
+	label.outline_modulate = Color.BLACK
+	label.outline_render_priority = 99
+	label.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return label

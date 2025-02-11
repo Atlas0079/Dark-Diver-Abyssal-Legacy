@@ -93,7 +93,7 @@ static func calculate_damage(attacker: Character, defender: Character,attack_val
 		return int(max(attack_value - defense, 1))
 	else:
 		push_error("Combat_resolver _calculate_physical_block_damage Invalid attack type: " + attack_type)
-		return 0
+		return 1
 
 
 # 检查闪避

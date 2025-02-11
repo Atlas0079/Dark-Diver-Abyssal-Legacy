@@ -64,14 +64,14 @@
 		"perception": 10,
 		"charisma": 6,
 		"dodge_rate": 5,
-		"block_rate": 100,
+		"block_rate": 10,
 		"crit_rate": 10
 	  },
 	  
 	  "resources": {
 		"health": {
-		  "current": 50,
-		  "max": 50
+		  "current": 20,
+		  "max": 20
 		},
 		"mana": {
 		  "current": 28,

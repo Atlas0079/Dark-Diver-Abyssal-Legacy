@@ -159,7 +159,7 @@ func modify_health(amount: int) -> void:
 		0,
 		resources.health.max
 	)
-	
+	print("modify_health %s 当前生命值: %s，变化量: %s" % [self.character_name, resources.health.current, amount])
 	# 如果角色刚死亡，重置行动点
 	if was_alive and is_dead():
 		battle_stats.action_point = 0
@@ -268,7 +268,7 @@ func get_actual_combat_stat(stat_name: String) -> float:
 			var boosts = equipped_item.calculate_current_attributes()
 			if boosts.has(stat_name):
 				base_value += boosts[stat_name]
-				print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
+				#print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
 
 
 	return base_value
