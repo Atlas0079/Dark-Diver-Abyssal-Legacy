@@ -26,7 +26,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	var target_original_position = target_sprite.global_position
 
 	#播放起始动画
-	var start_animation: AnimatedSprite3D = preload("res://Scenes/Animation/normal_start_yellow.tscn").instantiate()
+	var start_animation: AnimatedSprite3D = preload("res://Scenes/Animation/normal_start_white.tscn").instantiate()
 	battle_scene.get_node("Effects").add_child(start_animation)
 	start_animation.global_position = user_sprite.global_position
 	start_animation.global_position.z += 0.1

@@ -11,7 +11,7 @@ static func play_dodge_animation(target_sprite: Sprite3D, battle_scene: Node3D):
 		miss_label.font = font
 	miss_label.text = "MISS"
 	miss_label.font_size = 96
-	miss_label.modulate = Color(0.5, 0.5, 1)  # 蓝色
+	miss_label.modulate = Color(0.5, 0.5, 0.5)  # 灰色
 	miss_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	miss_label.no_depth_test = true
 	miss_label.render_priority = 100
@@ -72,8 +72,9 @@ static func play_dodge_animation(target_sprite: Sprite3D, battle_scene: Node3D):
 
 # 静态函数，用于播放普通受击动画
 static func play_hit_animation(target_sprite: Sprite3D, damage: int, battle_scene: Node3D):
-	# 目标闪红光
+	# 目标闪红光并震动
 	var hit_tween = battle_scene.create_tween()
+	hit_tween.tween_callback(func(): _shake_sprite(target_sprite, 0.05, 0.05, battle_scene))  # 添加震动效果
 	hit_tween.tween_property(target_sprite, "modulate", Color(1, 0, 0), 0.1)
 	hit_tween.tween_property(target_sprite, "modulate", Color(1, 1, 1), 0.1)
 
@@ -115,14 +116,17 @@ static func create_damage_label(damage: int) -> Label3D:
 
 # 静态函数，用于播放格挡动画
 static func play_block_animation(target_sprite: Sprite3D, damage: int, battle_scene: Node3D):
-	# 目标闪白光
-	var material = target_sprite.material_override
-	if material is StandardMaterial3D:
-		var original_color = material.albedo_color
-		material.albedo_color = Color.WHITE
-		await battle_scene.get_tree().create_timer(0.1).timeout
-		material.albedo_color = original_color
+	var spark_particles_scene = load("res://Scenes/spark.tscn")
+	var spark_particles = spark_particles_scene.instantiate()
+	battle_scene.get_node("Effects").add_child(spark_particles)
+	spark_particles.global_position = target_sprite.global_position
+	spark_particles.global_position.y += 0.1
+	spark_particles.emitting = true
 
+	var hit_tween = battle_scene.create_tween()
+	hit_tween.tween_callback(func(): _shake_sprite(target_sprite, 0.05, 0.05, battle_scene))  # 调用震动函数
+	hit_tween.tween_property(target_sprite, "modulate", Color(1, 1, 0.5), 0.1)
+	hit_tween.tween_property(target_sprite, "modulate", Color(1, 1, 1), 0.1)
 	# 显示格挡伤害数字
 	if damage > 0:
 		var damage_label = create_block_damage_label(damage)
@@ -160,3 +164,15 @@ static func create_block_damage_label(damage: int) -> Label3D:
 	label.outline_render_priority = 99
 	label.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	return label
+
+
+# 静态函数，用于震动精灵
+static func _shake_sprite(target_sprite: Sprite3D, shake_intensity: float, shake_duration: float, battle_scene: Node3D):
+	var original_position = target_sprite.position
+	var shake_timer = 0.0
+	while shake_timer < shake_duration:
+		var random_offset = Vector3(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity), 0)
+		target_sprite.position = original_position + random_offset
+		shake_timer += battle_scene.get_process_delta_time()
+		await battle_scene.get_tree().process_frame
+	target_sprite.position = original_position

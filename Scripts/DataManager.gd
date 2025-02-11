@@ -34,8 +34,8 @@ func _load_all_data() -> void:
 	_load_event_data()
 	_load_dungeon_templates()
 	_create_all_character_instances()
-	for npc in _character_instances:
-		print("DataManager _load_all_data npc: %s" % npc)
+	#for npc in _character_instances:
+	#	print("DataManager _load_all_data npc: %s" % npc)
 
 # 加载队伍数据
 func _load_team_data() -> void:
