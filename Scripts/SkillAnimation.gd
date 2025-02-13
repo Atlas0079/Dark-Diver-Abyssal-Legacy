@@ -5,6 +5,7 @@ extends Node
 
 var battle_scene: Node3D
 var battle: Battle
+var current_animation: BaseSkillAnimation = null
 
 signal skill_animation_completed 
 
@@ -46,20 +47,38 @@ func play_skill_animation(skill: BaseSkill, user: Character, effects_results: Di
 	else:
 		play_passive_label_animation(skill.skill_name,false)
 
-	
 	# 根据技能类型播放对应动画
 	match skill.animation:
 		"slash":
-			var slash = preload("res://Scripts/SkillAnimations/Slash.gd")
-			await slash.play(battle_scene, user, effects_results) 
+			var SlashAnimation = preload("res://Scripts/SkillAnimations/Slash.gd")
+			var slash_animation = SlashAnimation.new()
+			slash_animation.setup(battle_scene, user, effects_results)
+			current_animation = slash_animation
+			await slash_animation.play()
 		"cover":
-			var cover = preload("res://Scripts/SkillAnimations/Cover.gd")
-			await cover.play(battle_scene, user, effects_results)
+			var CoverAnimation = preload("res://Scripts/SkillAnimations/Cover.gd")
+			var cover_animation = CoverAnimation.new()
+			cover_animation.setup(battle_scene, user, effects_results)
+			current_animation = cover_animation
+			
+			# 等待掩护动画准备完成
+			var ready_completed = false
+			cover_animation.animation_ready.connect(func(): ready_completed = true)
+			cover_animation.play()  # 注意这里不使用await
+			
+			# 等待掩护准备完成
+			while not ready_completed:
+				await get_tree().process_frame
+			
+			# 发出主动技能可以开始的信号
+			emit_signal("skill_animation_completed")
+			
+			# 等待掩护动画完全结束
+			await cover_animation.animation_completed
 		"fireball":
 			pass
 		_:
 			pass
-	
 
 	_finish_animation()
 
@@ -73,6 +92,7 @@ func _finish_animation() -> void:
 		push_error("Battle实例为空")
 	if battle_scene:
 		battle_scene.is_animation_playing = false
+	current_animation = null
 
 func play_passive_label_animation(skill_name: String, is_blue_team: bool = true) -> void:
 	# 加载并实例化技能名称背景场景

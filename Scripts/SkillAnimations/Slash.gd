@@ -1,12 +1,10 @@
 #res://Scripts/SkillAnimations/Slash.gd
-extends RefCounted
+extends BaseSkillAnimation
 
-static func play(battle_scene: Node3D, user: Character, effects_results: Dictionary) -> void:
-
+func play() -> void:
 	print("播放斩击动画")
 	
-	var user_sprite: Sprite3D = battle_scene.find_character_sprite(user)
-
+	var user_sprite: Sprite3D = find_sprite(user)
 	if not user_sprite:
 		print("未找到用户精灵节点")
 		return
@@ -17,7 +15,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	var move_direction = Vector3(1, 0, 0) if is_blue_team else Vector3(-1, 0, 0)
 
 	# 获取目标精灵
-	var target_sprite = battle_scene.find_character_sprite(effects_results["target"])
+	var target_sprite = find_sprite(effects_results["target"])
 	if not target_sprite:
 		print("未找到目标精灵节点")
 		return
@@ -27,7 +25,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 
 	#播放起始动画
 	var start_animation: AnimatedSprite3D = preload("res://Scenes/Animation/normal_start_white.tscn").instantiate()
-	battle_scene.get_node("Effects").add_child(start_animation)
+	get_effects_node().add_child(start_animation)
 	start_animation.global_position = user_sprite.global_position
 	start_animation.global_position.z += 0.1
 	start_animation.global_position.y -= 0.3
@@ -35,7 +33,7 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	await start_animation.animation_finished
 
 	# 1. 攻击者跳到目标位置
-	var attacker_tween = battle_scene.create_tween()
+	var attacker_tween = create_tween()
 	# 计算目标位置，在目标精灵前方稍近的位置
 	var jump_target_position = target_sprite.global_position + (move_direction * -1.4)
 	
@@ -47,10 +45,9 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 
 	await attacker_tween.finished
 
-
 	# 2. 加载斩击特效 (无论是否闪避都加载)
 	var slash_effect: AnimatedSprite3D = preload("res://Scenes/Animation/Slash.tscn").instantiate()
-	battle_scene.get_node("Effects").add_child(slash_effect)
+	get_effects_node().add_child(slash_effect)
 	slash_effect.global_position = target_sprite.global_position + Vector3(0, 0, 0.1)
 	
 	if not is_blue_team:
@@ -80,9 +77,8 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 
 	slash_effect.queue_free()
 
-
 	# 5. 攻击者跳回原位
-	var return_jump_tween = battle_scene.create_tween()
+	var return_jump_tween = create_tween()
 	return_jump_tween.parallel().tween_property(user_sprite, "global_position:x", original_position.x, 0.2)
 	return_jump_tween.parallel().tween_property(user_sprite, "global_position:z", original_position.z, 0.2)
 	return_jump_tween.parallel().tween_property(user_sprite, "global_position:y", original_position.y + 1.5, 0.1)
@@ -91,7 +87,8 @@ static func play(battle_scene: Node3D, user: Character, effects_results: Diction
 	await return_jump_tween.finished
 
 	print("斩击动画完成")
-	
+	emit_signal("animation_completed")
+
 static func create_damage_label(damage: int) -> Label3D:
 	var label = Label3D.new()
 	var font = load("res://Assets/UI/Xim-Sans-Brahmic-3.ttf")
