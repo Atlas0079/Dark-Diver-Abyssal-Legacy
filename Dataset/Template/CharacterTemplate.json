@@ -1,0 +1,36 @@
+{
+	"character_template":
+	{
+	"base_info": {
+		"id": "",
+		"name": "",
+		"class": "",
+		"rank": 1,
+		"experience": 0,
+
+		"description": ""
+	},
+	"resources": {
+		"health": {
+			"current": 100,
+			"max": 100
+		},
+		"mana": {
+			"current": 50,
+			"max": 50
+		}
+	},
+	"equipment": {
+		"weapon": null,
+		"armor": null,
+		"accessories": []
+	},
+	"active_skills": [],
+	"passive_skills": [],
+	"status_effects": [],
+	"inventory": [],
+	"traits": []
+
+
+	}
+}

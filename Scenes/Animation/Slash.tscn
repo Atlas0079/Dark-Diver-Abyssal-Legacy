@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0kpt2aaloivw"]
+
+[ext_resource type="Texture2D" uid="uid://r7hmv6cnwcep" path="res://Assets/Animations/斩击 (2).png" id="1_haj0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3uv7"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2a47"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g506o"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwi34"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk601"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxcpr"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8pyo"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcs2l"]
+atlas = ExtResource("1_haj0n")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71pmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3uv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2a47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g506o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwi34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk601")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxcpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8pyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcs2l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_71pmk")
+frame = 7
+frame_progress = 1.0

@@ -1,0 +1,64 @@
+{
+	"vn_scene_id": {
+		"scene_name": "场景名称",
+		"background": {
+			"image": "背景图片路径",
+			"transition": {
+				"type": "fade/slide/etc",
+				"duration": 1.0
+			}
+		},
+		"bgm": {
+			"music": "bgm文件路径",
+			"fade_in": 2.0,
+			"fade_out": 2.0,
+			"volume": 1.0
+		},
+		"sequences": [
+			{
+				"type": "dialogue",
+				"character": "角色ID",
+				"position": "left/right/center",
+				"expression": "表情状态",
+				"text": "对话内容",
+				"sound_effect": {
+					"se": "音效文件路径",
+					"volume": 1.0
+				}
+			},
+			{
+				"type": "choice",
+				"text": "选项提示文本",
+				"options": [
+					{
+						"text": "选项1文本",
+						"next_sequence": 5,
+						"condition": {
+							"item_required": "item_id",
+							"flag_required": "flag_name"
+						}
+					}
+				]
+			},
+			{
+				"type": "cg",
+				"image": "CG图片路径",
+				"transition": {
+					"type": "fade",
+					"duration": 1.0
+				}
+			},
+			{
+				"type": "animation",
+				"animation_type": "shake/flash/etc",
+				"duration": 1.0,
+				"parameters": {}
+			}
+		],
+		"on_exit": {
+			"set_flag": "flag_name",
+			"give_item": "item_id",
+			"trigger_battle": "battle_id"
+		}
+	}
+}

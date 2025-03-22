@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://j5pn3nu2ht3o"]
+
+[node name="AttributeNormal" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Type" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 1
+
+[node name="ValueEdit" type="LineEdit" parent="."]
+layout_mode = 2
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+text = "Delete
+"

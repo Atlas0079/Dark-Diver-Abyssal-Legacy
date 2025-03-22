@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://blvyo8lcgdw1t"]
+
+[node name="ItemEqupment" type="Panel"]
+offset_left = 310.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBC" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 970.0
+offset_bottom = 720.0
+
+[node name="HBC_ID_NAME" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="IDLabel" type="Label" parent="VBC/HBC_ID_NAME"]
+layout_mode = 2
+text = "ID:"
+
+[node name="IDEdit" type="LineEdit" parent="VBC/HBC_ID_NAME"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="VBC/HBC_ID_NAME"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameEdit" type="LineEdit" parent="VBC/HBC_ID_NAME"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBC_TYPE_VALUE" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="TypeLabel" type="Label" parent="VBC/HBC_TYPE_VALUE"]
+layout_mode = 2
+text = "Type:"
+
+[node name="TypeEdit" type="OptionButton" parent="VBC/HBC_TYPE_VALUE"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+popup/item_0/text = "weapon"
+popup/item_1/text = "armor"
+popup/item_1/id = 1
+popup/item_2/text = "accessory"
+popup/item_2/id = 2
+
+[node name="ValueLabel" type="Label" parent="VBC/HBC_TYPE_VALUE"]
+layout_mode = 2
+text = "Item_Value:"
+
+[node name="ValueEdit" type="LineEdit" parent="VBC/HBC_TYPE_VALUE"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBC_DESCRIPTION" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="VBC/HBC_DESCRIPTION"]
+layout_mode = 2
+text = "Description:
+ 
+ "
+
+[node name="DescriptionEdit" type="LineEdit" parent="VBC/HBC_DESCRIPTION"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBC_TAGS" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="TagsLabel" type="Label" parent="VBC/HBC_TAGS"]
+layout_mode = 2
+text = "Tags:
+
+
+ "
+
+[node name="AddButton" type="Button" parent="VBC/HBC_TAGS"]
+layout_mode = 2
+text = "Add new 
+tag
+"
+
+[node name="SC" type="ScrollContainer" parent="VBC/HBC_TAGS"]
+layout_mode = 2
+
+[node name="Lists" type="HBoxContainer" parent="VBC/HBC_TAGS/SC"]
+layout_mode = 2
+
+[node name="HBC_SKILLS" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="SkillsLabel" type="Label" parent="VBC/HBC_SKILLS"]
+layout_mode = 2
+text = "Skills:
+
+
+ "
+
+[node name="AddButton" type="Button" parent="VBC/HBC_SKILLS"]
+layout_mode = 2
+text = "Add new 
+skill"
+
+[node name="SC" type="ScrollContainer" parent="VBC/HBC_SKILLS"]
+layout_mode = 2
+
+[node name="Lists" type="HBoxContainer" parent="VBC/HBC_SKILLS/SC"]
+layout_mode = 2
+
+[node name="HBC_ATTRIBUTES" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="AttributeLabel" type="Label" parent="VBC/HBC_ATTRIBUTES"]
+layout_mode = 2
+text = "Attributes:
+
+
+ "
+
+[node name="AddButton" type="Button" parent="VBC/HBC_ATTRIBUTES"]
+layout_mode = 2
+text = "Add new 
+Attribute
+"
+
+[node name="SC" type="ScrollContainer" parent="VBC/HBC_ATTRIBUTES"]
+layout_mode = 2
+
+[node name="Lists" type="HBoxContainer" parent="VBC/HBC_ATTRIBUTES/SC"]
+layout_mode = 2
+
+[node name="HBC_CONDITIONS" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="ConditionLabel" type="Label" parent="VBC/HBC_CONDITIONS"]
+layout_mode = 2
+text = "Condition:
+
+
+ "
+
+[node name="AddButton" type="Button" parent="VBC/HBC_CONDITIONS"]
+layout_mode = 2
+text = "Add new 
+Condition
+"
+
+[node name="SC" type="ScrollContainer" parent="VBC/HBC_CONDITIONS"]
+layout_mode = 2
+
+[node name="Lists" type="HBoxContainer" parent="VBC/HBC_CONDITIONS/SC"]
+layout_mode = 2

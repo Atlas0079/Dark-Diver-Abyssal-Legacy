@@ -1,0 +1,158 @@
+{
+  "00001": {
+    "name": "马特",
+    "race": "人类",
+    "creature_type": "adventurer",
+    "image": "res://Assets/Character/male_knight.png",
+    
+    "base_attributes": {
+      "dodge_rate": 10,
+      "block_rate": 10,
+      "crit_rate": 10,
+      "hit_rate": 100
+    },
+    
+    "resources": {
+      "health": {
+        "current": 10,
+        "max": 20
+      },
+      "mana": {
+        "current": 44,
+        "max": 44
+      },
+      "stamina": {
+        "current": 60,
+        "max": 100
+      },
+      "qi": {
+        "current": 22,
+
+        "max": 22
+      },
+      "energy": {
+        "current": 100,
+        "max": 100
+      },
+      "stress": {
+        "current": 20,
+        "max": 100
+      },
+      "passive_point": {
+        "current": 0,
+        "max": 2
+      }
+    },
+    
+    "equipment": {
+      "weapon": "I11003",
+      "armor": "I12002",
+      "accessories": ["I13006"]
+    },
+    
+    "battle": {
+      "action_point": 9,
+      "action_threshold": 10,
+      "active_skills": {
+        "S1005": {
+          "timings": [
+          ],
+          "priority": 1
+        },
+        "S2004": {
+          "timings": [
+          ],
+          "priority": 2
+        }
+      }
+    },
+    
+    "inventory": {
+      "capacity": 10,
+      "items": ["望远镜"],
+      "money": 100
+    },
+    
+    "learned_skills": ["0001", "0002", "0003", "0004", "0005"],
+    "traits": ["0001", "0002"],
+    "states": [{"burn": 1}],
+    "location": "地下城"
+  },
+    "00002": {
+
+      "name": "艾琳",
+      "race": "人类",
+
+      "creature_type": "adventurer",
+      "image": "res://Assets/Character/EileenCastoville.png",
+      
+      "base_attributes": {
+        "dodge_rate": 100,
+        "block_rate": 10,
+        "crit_rate": 10,
+        "hit_rate": 100
+      },
+      
+      "resources": {
+        "health": {
+          "current": 10,
+          "max": 20
+        },
+        "mana": {
+          "current": 44,
+          "max": 44
+        },
+        "stamina": {
+          "current": 60,
+          "max": 100
+        },
+        "qi": {
+          "current": 22,
+  
+          "max": 22
+        },
+        "energy": {
+          "current": 100,
+          "max": 100
+        },
+        "stress": {
+          "current": 20,
+          "max": 100
+        },
+        "passive_point": {
+          "current": 0,
+          "max": 2
+        }
+      },
+      
+      "equipment": {
+        "weapon": "I11003",
+        "armor": "I12002",
+        "accessories": ["I13006"]
+      },
+      
+      "battle": {
+        "action_point": 0,
+        "action_threshold": 10,
+        "active_skills": {
+          "S1002": {
+            "timings": [
+
+            ],
+            "priority": 1
+          }
+        }
+      },
+      
+      "inventory": {
+        "capacity": 10,
+        "items": ["望远镜"],
+        "money": 100
+      },
+      
+      "learned_skills": ["0001", "0002", "0003", "0004", "0005"],
+      "traits": ["0001", "0002"],
+      "states": [{"burn": 1}],
+      "location": "地下城" 
+    }
+}

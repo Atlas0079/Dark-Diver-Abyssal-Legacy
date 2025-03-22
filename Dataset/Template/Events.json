@@ -1,0 +1,59 @@
+{
+	"EA001": {
+		"name": "EA001",
+		"type": "ENTER",
+		"conditions": {
+			"states": {
+				"first_visit_square": false
+			}
+		},
+		"actions": [
+			{
+				"type": "dialog",
+				"dialog_id": "welcome_to_square"
+			},
+			{
+				"type": "modify_state",
+				"operation": "add",
+				"state": {"first_visit_square": true}
+			}
+		],
+		"one_time": true
+	},
+	"EA002": {
+		"name": "A0002",
+		"type": "ENTER",
+		"conditions": {
+			"time_range": {
+				"start": "18:00",
+				"end": "22:00"
+			}
+		},
+		"actions": [
+			{
+				"type": "dialog",
+				"dialog_id": "night_market_welcome"
+			}
+		],
+		"one_time": false
+	},
+	"EA003": {
+		"name": "EA003",
+		"type": "INTERACT",
+		"conditions": {
+			"target": "fountain"
+		},
+		"actions": [
+			{
+				"type": "dialog",
+				"dialog_id": "fountain_interact"
+			},
+			{
+				"type": "give_item",
+				"item_id": "lucky_coin",
+				"count": 1
+			}
+		],
+		"one_time": true
+	}
+} 

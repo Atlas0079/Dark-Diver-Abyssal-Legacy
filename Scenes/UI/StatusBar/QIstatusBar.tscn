@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d38seq1fsxr7s"]
+
+[ext_resource type="Texture2D" uid="uid://728jencd4xg4" path="res://Assets/UI/status_bar_bg_h.png" id="1_eqw6h"]
+[ext_resource type="Texture2D" uid="uid://b1txovvwcp1pc" path="res://Assets/UI/QIprogress.png" id="2_k4lgr"]
+
+[node name="APstatusBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 5.0
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("1_eqw6h")
+texture_progress = ExtResource("2_k4lgr")

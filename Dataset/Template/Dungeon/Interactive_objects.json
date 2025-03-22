@@ -1,0 +1,172 @@
+{
+    "IO0000": {
+        "name": "string",
+        "type": "string",
+        "description": {
+            "default": "string",
+            "after_search": "string",
+            "locked": "string",
+            "unlocked": "string",
+            "active": "string",
+            "depleted": "string",
+            "trapped": "string",
+            "disarmed": "string"
+        },
+        "interaction": {
+            "type": "search",
+            "times_allowed": 1,
+            "search_time": 2.0,
+            "animation": "search_bookshelf",
+            "sound": "paper_rustle"
+        },
+        "loot": {
+            "table": "bookshelf_common",
+            "condition": {
+            },
+            "quality_multiplier": 1.0
+        }
+    },
+    "IO0001": {
+        "name": "破旧的书架",
+        "type": "container",
+        "description": {
+            "default": "一个布满灰尘的书架，上面的书籍大多蒙上了厚厚的灰尘，封面也已经破损不堪。",
+            "after_search": "你已经搜索过这个书架了，只剩下一些碎纸片。"
+        },
+        "interaction": {
+            "type": "搜索",
+            "times_allowed": 1,
+            "search_time": 2.0,
+            "SE": "paper_rustle"
+        },
+        "loot": {
+            "table": "bookshelf_common",
+            "condition": {
+            },
+            "quality_multiplier": 1.0
+        }
+    },
+    
+
+    "IO0002": {
+        "name": "古老的雕像",
+        "type": "mechanism",
+        "description": {
+            "default": "一座造型古怪的雕像，似乎可以转动它的头部。",
+            "after_use": "雕像的头部已经无法再转动了。"
+        },
+        "interaction": {
+            "type": "转动雕像",
+            "times_allowed": 1,
+            "activation_time": 1.5,
+            "SE": "stone_grinding"
+        },
+        "effects": [
+            {
+                "type": "modify_variable",
+                "target": "room_light_level",
+                "operation": "add",
+                "value": 2
+            },
+            {
+                "type": "spawn_item",
+                "item_id": "hidden_key",
+                "chance": 0.5
+            }
+        ]
+    },
+
+    "IO0003": {
+        "name": "生锈的保险箱",
+        "type": "container",
+        "description": {
+            "default": "一个看起来年代久远的保险箱，上面有一个简单的密码锁。",
+            "locked": "保险箱被牢牢锁住。",
+            "unlocked": "保险箱已经被打开了。"
+        },
+        "interaction": {
+            "type": "解锁并搜索",
+            "times_allowed": 1,
+            "unlock_time": 3.0,
+            "search_time": 2.0,
+            "SE": "metal_click"
+        },
+        "lock": {
+            "type": "skill_check",
+            "skill": "lockpicking",
+            "difficulty": 2,
+            "key_item": "safe_combination"
+        },
+        "loot": {
+            "table": "safe_valuable",
+            "quality_multiplier": 1.5
+        }
+    },
+
+    "IO0004": {
+        "name": "祭坛",
+        "type": "ritual",
+        "description": {
+            "default": "一座神秘的祭坛，上面刻着奇怪的符文。",
+            "active": "祭坛上的符文正在发光。",
+            "depleted": "祭坛的能量已经耗尽。"
+        },
+        "interaction": {
+            "type": "ritual",
+            "times_allowed": -1,
+            "ritual_time": 5.0,
+            "SE": "magic_hum",
+            "cooldown": 300
+        },
+        "effects": [
+            {
+                "type": "buff",
+                "buff_id": "ritual_blessing",
+                "duration": 180,
+                "chance": 0.8
+            },
+            {
+                "type": "modify_variable",
+                "target": "player_corruption",
+                "operation": "add",
+                "value": 1
+            }
+        ],
+        "requirements": {
+            "items": ["ritual_candle", "magic_herb"],
+            "min_magic": 2,
+            "consume_items": true
+        }
+    },
+
+    "IO0005": {
+        "name": "藏宝箱",
+        "type": "container",
+        "description": {
+            "default": "一个精美的箱子，似乎藏着贵重物品。",
+            "trapped": "你注意到箱子上有些可疑的机关。",
+            "disarmed": "箱子上的陷阱已经被解除。",
+            "opened": "箱子已经被打开，里面空空如也。"
+        },
+        "interaction": {
+            "type": "trapped_container",
+            "times_allowed": 1,
+            "disarm_time": 3.0,
+            "search_time": 2.0,
+            "SE": "chest_open"
+        },
+        "trap": {
+            "detection_difficulty": 2,
+            "disarm_difficulty": 3,
+            "damage": {
+                "type": "poison",
+                "amount": 20
+            }
+        },
+        "loot": {
+            "table": "treasure_chest",
+            "quality_multiplier": 2.0,
+            "guaranteed_items": ["rare_coin"]
+        }
+    }
+}
