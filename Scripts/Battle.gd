@@ -185,7 +185,9 @@ func execute_skill(character: Character, skill: BaseSkill) -> Dictionary:
 		}
 
 		if skill.skill_type == "active": #只有主动技能才会触发被动技能。Cover类技能的特殊时点：技能选择目标时
-			targets = check_cover_skills(context) if check_cover_skills(context) != null else targets
+			var new_targets = check_cover_skills(context) # 只调用一次保存到变量中
+			if new_targets != null:
+				targets = new_targets
 
 		#被动时点：技能发动前
 

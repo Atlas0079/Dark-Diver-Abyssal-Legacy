@@ -238,6 +238,7 @@ func get_available_passive_skill(battle: Battle,trigger_type: String) -> String:
 				"priority": battle_stats.active_skills[skill_id].priority
 			})
 	
+
 	# 按优先级从高到低排序
 	prioritized_skills.sort_custom(func(a, b): return a.priority > b.priority)
 	
