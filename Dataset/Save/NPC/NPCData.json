@@ -6,7 +6,7 @@
     "image": "res://Assets/Character/male_knight.png",
     
     "base_attributes": {
-      "dodge_rate": 10,
+      "dodge_rate": 100,
       "block_rate": 10,
       "crit_rate": 10,
       "hit_rate": 100
@@ -87,7 +87,7 @@
       "image": "res://Assets/Character/EileenCastoville.png",
       
       "base_attributes": {
-        "dodge_rate": 100,
+        "dodge_rate": 10,
         "block_rate": 10,
         "crit_rate": 10,
         "hit_rate": 100
@@ -126,7 +126,7 @@
       },
       
       "equipment": {
-        "weapon": "I11003",
+        "weapon": "I11002",
         "armor": "I12002",
         "accessories": ["I13006"]
       },

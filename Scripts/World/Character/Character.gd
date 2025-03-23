@@ -293,7 +293,33 @@ func get_actual_combat_stat(stat_name: String) -> float:
 			if boosts.has(stat_name):
 				base_value += boosts[stat_name]
 				#print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
-
+	
+	# 应用状态效果对属性的加成
+	if stat_name == "physical_attack" and has_state("physical_attack_up"):
+		var state_value = get_state_value("physical_attack_up")
+		var state = StateManager.get_state("physical_attack_up")
+		if state != null:
+			var bonus_percent = state.get_attack_bonus_percent(state_value)
+			var bonus_value = base_value * bonus_percent
+			base_value += bonus_value
+			print("物理攻击力状态加成：基础值 %s + %.1f%% = %s" % [
+				base_value - bonus_value, 
+				bonus_percent * 100,
+				base_value
+			])
+	
+	if stat_name == "magical_attack" and has_state("magical_attack_up"):
+		var state_value = get_state_value("magical_attack_up")
+		var state = StateManager.get_state("magical_attack_up")
+		if state != null:
+			var bonus_percent = state.get_attack_bonus_percent(state_value)
+			var bonus_value = base_value * bonus_percent
+			base_value += bonus_value
+			print("魔法攻击力状态加成：基础值 %s + %.1f%% = %s" % [
+				base_value - bonus_value, 
+				bonus_percent * 100,
+				base_value
+			])
 
 	return base_value
 

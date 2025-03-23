@@ -199,7 +199,10 @@ func execute_skill(character: Character, skill: BaseSkill) -> Dictionary:
 		
 
 		#状态时点：技能发动后
-
+		# 检查状态时点：skill_end，处理如cover_dodge_prohibit等需要在技能结束时清除的状态
+		var state_events = StateManager.check_states_at_timing("skill_end", self, character)
+		record_state_events(state_events)
+		
 		#被动时点：技能发动后
 		if skill.skill_type == "active": #只有主动技能才会触发被动技能
 			check_passive_skills("on_skill_used", context)
@@ -311,6 +314,8 @@ func check_cover_skills(context: Dictionary):
 		# 直接调用apply_cover_effects获取新的目标列表
 		var cover_result_skill_info = cover_skill.apply_effects(cover_character, context["trigger_targets"], self, context)
 		battle_info.append(_create_passive_skill_event(cover_character, cover_skill, cover_result_skill_info.effects[0].new_targets, cover_result_skill_info))
+		print("Battle.check_cover_skills %s 发动Cover技能 %s ，原目标：%s，新目标：%s" % [cover_character.character_name, cover_skill.skill_name, context["trigger_targets"], cover_result_skill_info.effects[0].new_targets])
+		
 		return cover_result_skill_info.effects[0].new_targets
 	
 	# 如果没有掩护技能触发，返回原始目标列表

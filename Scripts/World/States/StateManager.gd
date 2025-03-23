@@ -8,6 +8,9 @@ var state_registry = {
 	#"slow": preload("res://Scripts/World/States/SlowState.gd"), 
 	"heal": preload("res://Scripts/World/States/HealState.gd"),  
 	#"blind": preload("res://Scripts/World/States/BlindState.gd") #实现了
+	"cover_dodge_prohibit": preload("res://Scripts/World/States/CoverDodgeProhibitState.gd"),
+	"physical_attack_up": preload("res://Scripts/World/States/PhysicalAttackUpState.gd"),
+	"magical_attack_up": preload("res://Scripts/World/States/MagicalAttackUpState.gd")
 }
 
 # 状态实例缓存 - 每种状态只创建一次实例

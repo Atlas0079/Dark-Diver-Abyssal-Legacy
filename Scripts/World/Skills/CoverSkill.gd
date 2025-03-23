@@ -18,6 +18,7 @@ func _setup(custom_timings: Array = [], custom_priority: int = -1) -> void:
 
 # 将输入的列表中的一个队友替换为施法者，
 func apply_effects(user: Character, original_targets: Array[Character], battle: Battle, context: Dictionary = {}) -> Dictionary:
+	StateManager.add_state(user, "cover_dodge_prohibit", 1)
 	var cover_targets = get_targets_with_context(user, battle, context) 
 	
 	# 创建新的目标数组，而不是直接修改原数组
