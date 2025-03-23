@@ -18,9 +18,9 @@ func apply_effect(battle: Battle, character: Character, value: int) -> Dictionar
 		"state_effect": {"bonus_percent": value * 10}
 	}
 
-# 计算加成到魔法攻击力的百分比值
+# 获取攻击力加成百分比
 func get_attack_bonus_percent(value: int) -> float:
-	return value * 0.1  # 每层提供10%加成
+	return value * 0.1  # 每层提供10%的加成
 
 func nature_decay(battle: Battle, character: Character) -> Dictionary:
 	# 如果有减少层数的需求，可以在这里实现

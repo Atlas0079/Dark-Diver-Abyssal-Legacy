@@ -52,7 +52,10 @@ var battle_stats = {
 # 其他属性
 var learned_skills: Array = []
 var traits: Array = []
+
+#[{state_name: state_value}]
 var states: Array = []
+
 var inventory: Inventory
 var location: String = ""
 
@@ -182,18 +185,27 @@ func get_resource(resource_name: String) -> Dictionary:
 	return resources.get(resource_name, {"current": 0, "max": 0})
 
 # 检查状态
+# 注意：虽然状态数据存储在Character的states数组中，
+# 但为了统一管理状态逻辑，这里通过StateManager进行访问
+# 设计说明：这种模式使状态逻辑集中在StateManager中，便于维护，
+# 同时每种状态类型只需一个实例，由StateManager管理
 func has_state(state_name: String) -> bool:
 	return StateManager.has_state(self, state_name)
 
 # 添加状态
+# 状态通过{state_name: state_value}的字典形式存储在states数组中
+# StateManager负责处理状态的添加、合并和互相抵消等逻辑
 func add_state(state_name: String, value: int = 1) -> void:
 	StateManager.add_state(self, state_name, value)
 
 # 移除状态
+# 委托给StateManager处理，保持状态逻辑的一致性
 func remove_state(state_name: String) -> void:
 	StateManager.remove_state(self, state_name) 
 
 # 获取状态值
+# 状态相关代码统一在StateManager.gd中实现
+# 这种设计允许在不修改Character类的情况下扩展状态系统
 func get_state_value(state_name: String) -> int:
 	return StateManager.get_state_value(self, state_name)
 
@@ -282,10 +294,15 @@ func _update_combat_stats() -> void:
 func get_combat_stat(stat_name: String) -> float:
 	return combat_stats.get(stat_name, 0.0)
 
-# 获取实际战斗属性（包含随机加成）
+# 获取实际战斗属性（包含装备随机加成，包含状态）
+# 该方法计算角色在战斗中的实际属性值，考虑以下因素：
+# 1. 基础战斗属性
+# 2. 装备提供的属性加成
+# 3. 状态效果提供的属性修正
+# 注意：状态效果通过StateManager获取，但状态数据来自角色自身
 func get_actual_combat_stat(stat_name: String) -> float:
 	var base_value = get_combat_stat(stat_name)
-	# 获取所有装备的当前属性加成
+	# 获取装备加成
 	var all_equipment = [equipment.weapon, equipment.armor] + equipment.accessories
 	for equipped_item in all_equipment:
 		if equipped_item:
@@ -295,8 +312,10 @@ func get_actual_combat_stat(stat_name: String) -> float:
 				#print("get_actual_combat_stat %s 计算 %s 装备随机值 %s: %s" % [self.character_name, equipped_item.custom_name, stat_name, boosts[stat_name]])
 	
 	# 应用状态效果对属性的加成
+	# 对于物理攻击力，检查是否有物理攻击力提升状态
 	if stat_name == "physical_attack" and has_state("physical_attack_up"):
 		var state_value = get_state_value("physical_attack_up")
+		# 从StateManager获取状态实例
 		var state = StateManager.get_state("physical_attack_up")
 		if state != null:
 			var bonus_percent = state.get_attack_bonus_percent(state_value)
@@ -308,8 +327,10 @@ func get_actual_combat_stat(stat_name: String) -> float:
 				base_value
 			])
 	
+	# 对于魔法攻击力，检查是否有魔法攻击力提升状态
 	if stat_name == "magical_attack" and has_state("magical_attack_up"):
 		var state_value = get_state_value("magical_attack_up")
+		# 从StateManager获取状态实例
 		var state = StateManager.get_state("magical_attack_up")
 		if state != null:
 			var bonus_percent = state.get_attack_bonus_percent(state_value)

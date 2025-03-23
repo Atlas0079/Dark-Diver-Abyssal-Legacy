@@ -4,7 +4,7 @@ class_name PoisonState
 func _setup() -> void:
 	state_name = "poison"
 
-	description = "行动开始时造成当前生命值的10%伤害"
+	description = "行动开始时，每层造成当前生命值的10%伤害"
 	animation = "poison_effect"
 	effect_trigger = "turn_start" 
 	reduce_trigger = "" 

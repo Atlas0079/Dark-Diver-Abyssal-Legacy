@@ -4,7 +4,7 @@ class_name BurnState
 func _setup() -> void:
 	state_name = "burn"
 	effect_trigger = "action_start"
-	description = "行动开始时造成4点伤害，与寒冷状态抵消"
+	description = "行动开始时，每层造成2点伤害，与寒冷状态抵消"
 	animation = "burn_effect"
 	counter_state = "cold"
 

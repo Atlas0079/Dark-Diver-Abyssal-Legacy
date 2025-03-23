@@ -27,5 +27,5 @@ func nature_decay(battle: Battle, character: Character) -> Dictionary:
 		"state_name": state_name,
 		"animation": "",
 		"state_duration": 0,
-		"state_effect": {"dodge_prohibited_removed": true}
+		"state_effect": {"removed": true}
 	} 

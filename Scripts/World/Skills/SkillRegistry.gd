@@ -8,6 +8,8 @@ static var skill_classes = {
 	# 可以添加更多技能映射
 	"S1002": FireballSkill, 
 	# "S1003": HealSkill,
+	"S2005": ShieldBlockSkill,
+	"S1006": CleaveSkill,
 	# 等等...
 }
 

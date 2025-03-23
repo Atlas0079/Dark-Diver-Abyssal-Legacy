@@ -108,6 +108,11 @@ static func get_modified_attributes(attacker: Character, target: Character) -> D
 # 检查闪避是否成功
 # 返回true表示闪避成功，返回false表示闪避失败
 static func check_evasion(attacker: Character, target: Character, attacker_accuracy: int, target_evasion: int) -> bool:
+	# 如果目标有shield_block_state状态，则无法闪避
+	if target.has_state("shield_block_state"):
+		print("命中判定 - 目标%s处于盾格挡状态，无法闪避" % target.character_name)
+		return false
+		
 	# 如果目标有cover_dodge_prohibit状态，则无法闪避
 	if target.has_state("cover_dodge_prohibit"):
 		print("命中判定 - 目标%s处于闪避禁止状态，跳过闪避判定" % target.character_name)
@@ -131,6 +136,11 @@ static func check_evasion(attacker: Character, target: Character, attacker_accur
 # 检查格挡是否成功
 # 返回true表示格挡成功，返回false表示格挡失败
 static func check_block(attacker: Character, target: Character, target_block_rate: int) -> bool:
+	# 如果目标有shield_block_state状态，则必定格挡
+	if target.has_state("shield_block_state"):
+		print("格挡判定 - 目标%s处于盾格挡状态，必定格挡" % target.character_name)
+		return true
+		
 	# 如果攻击者有"unblockable"状态，则目标无法格挡
 	if attacker.has_state("unblockable"):
 		print("格挡判定 - 攻击者%s拥有无法格挡状态，跳过格挡判定" % attacker.character_name)
@@ -138,10 +148,6 @@ static func check_block(attacker: Character, target: Character, target_block_rat
 	
 	# 计算格挡率
 	var block_chance = target_block_rate
-	
-
-
-	
 	block_chance = clamp(block_chance, 0, 100)
 	
 	# 掷骰
@@ -200,11 +206,15 @@ static func calculate_damage(attacker: Character, target: Character, hit_type: S
 	return final_damage
 
 # 获取角色的攻击力和防御力数值
+#Character.get_actual_combat_stat包含装备随机加成，但不包含状态
+#状态在这里计算
 static func get_attack_defense_stats(attacker: Character, target: Character, attack_type: String) -> Dictionary:
 	# 获取实际战斗属性
 	var attack_power = attacker.get_actual_combat_stat("physical_attack") if attack_type == "physical" else attacker.get_actual_combat_stat("magical_attack")
 	var defense = target.get_actual_combat_stat("physical_defense") if attack_type == "physical" else target.get_actual_combat_stat("magical_defense")
 	
+	
+
 	print("伤害计算 - 攻击力:%s, 防御力:%s" % [attack_power, defense])
 	
 	return {

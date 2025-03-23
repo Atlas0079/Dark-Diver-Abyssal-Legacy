@@ -190,6 +190,8 @@ func execute_skill(character: Character, skill: BaseSkill) -> Dictionary:
 				targets = new_targets
 
 		#被动时点：技能发动前
+		if skill.skill_type == "active": #只有主动技能才会触发被动技能
+			check_passive_skills("on_skill_before", context)
 
 		character.battle_stats["action_point"] = 0
 		var result_skill_info = skill.apply_effects(character, targets, self, context)
