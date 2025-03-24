@@ -1,100 +1,97 @@
 [跳转到末尾](#destination)
 # 项目介绍
 
+这是一个基于Godot引擎开发的回合制角色扮演游戏，融合了搜刮、战斗与撤离机制。游戏采用自动战斗系统，战斗机制借鉴了《圣兽之王》。玩家将扮演一名冒险者，率领小队进入随机生成的地下城，劫掠财宝并成功撤离。
 
+## 核心玩法
+- **自动战斗**：基于角色属性、技能和状态的回合制战斗系统
+- **资源管理**：管理小队成员的生命值、法力值和其他资源
+- **风险决策**：决定是否继续探索或带着已获得的宝藏撤离
+- **队伍构建**：通过招募不同职业的角色组建最优小队
+
+## 开发进度
+- **已完成**：单场战斗的完整逻辑，包括技能系统和状态效果
+- **进行中**：根据战斗事件列表生成对话和叙事内容
+- **计划中**：小队状态管理系统、随机地下城生成、装备与技能系统扩展、视觉小说模块
 
 # 文件介绍
 
-## Assets
-
-|name|describtion|
-|---|---|
-|Animation||
-|Avater||
-|Character||
-|Custom Border and Panels Menu All Part||
-|FEgba||
-|New_All_Fire_Bullet_Pixel_16x16||
-|Pixel UI pack 3||
-|Portrait||
-|RF_Catacombs_v1.0||
-|rpg icon collection v1.2.1||
-|Tileset||
-|UI||
-|UI assets pack 2||
-
-## Datasets
-
-|name|describtion|
-|---|---|
-|Editor|   |
-|Save||
-|schemas||
-|Template||
-
-
-## Prompts
-
-|name|describtion|
-|---|---|
-
-
-## Scenes
-
-|name|describtion|
-|---|---|
-|Animation||
-|StyleBoxFlat||
-|TestScene||
-|UI||
-|root||
-
 ## Scripts
 
-|name|describtion|
+|name|description|
 |---|---|
-|Shader||
-|SkillAnimations||
-|UI||
-|VisualNovel||
-|World||
-|other||
+|Battle.gd|战斗核心逻辑，包括回合处理、角色行动和战斗结算|
+|BattleEvent.gd|战斗事件类，记录技能使用和状态变化|
+|BattleAnimationManager.gd|管理战斗中的动画效果|
+|BattleScene.gd|3D战斗场景控制器|
+|DataManager.gd|游戏数据管理，加载和缓存各类游戏数据|
+|Shader|自定义着色器效果|
+|SkillAnimations|技能视觉效果实现|
+|UI|用户界面相关组件|
+|VisualNovel|视觉小说系统实现|
+|World|游戏世界相关实现|
+|World/Character|角色系统实现，包括属性、技能和状态|
+|World/States|状态效果系统，如中毒、眩晕、治愈等|
 
+## Dataset
 
-
-
+|name|description|
+|---|---|
+|Template|游戏模板数据，包括技能、物品、怪物和地下城模板|
+|Save|存档数据，包括当前战斗、角色状态等|
 
 ## test
 
-|name|describtion|
+|name|description|
 |---|---|
-|book||
-|visualizer||
-
+|book|测试游戏内的书籍和知识库系统|
+|visualizer|数据可视化工具，用于平衡测试|
 
 ## workflows
 
-|name|describtion|
+|name|description|
 |---|---|
-|   |   |
-
+|build|自动构建和发布流程|
+|test|自动化测试流程|
 
 ## 额外杂项
 
-|name|describtion|
+|name|description|
 |---|---|
-|   |   |
+|Assets|游戏素材资源|
+|Docs|项目文档和设计说明|
 
+# 游戏系统
 
+## 战斗系统
+战斗基于回合制自动战斗机制，每个角色根据其行动阈值积累行动点，达到阈值后执行行动。战斗包含主动技能、被动技能和状态效果三种主要事件类型。
 
-# dots 
+## 职业系统
+游戏包含多种职业分支：
+- 守卫系：盾卫、圣骑士、角斗士
+- 决斗系：战士、剑客、刺客、奥法剑士
+- 射手系：奥术法师、灵能术士、元素祭司、狙击手
+- 控场系：炼金术师、牧师、游侠
 
+## 地下城系统
+计划实现基于程序生成的随机地下城，包含不同区域、房间和通道。玩家需要在探索与撤离之间做出选择，越深入风险和奖励越高。
 
+# 开发指南
 
-# 一些建议
+## 贡献指南
+1. 使用Tab进行缩进
+2. 遵循GDScript的编码规范
+3. 为新功能编写文档注释
+4. 遵循现有的架构设计
+
+## 一些建议
 [这是godot 手册](https://docs.godotengine.org/zh-cn/4.x/)
 
-
-
+## 近期开发计划
+1. 完成战斗对话生成系统
+2. 实现小队状态管理系统
+3. 开发随机地下城生成逻辑
+4. 扩充装备、怪物、道具和技能内容
+5. 实现视觉小说模块，增强叙事性
 
 <a id="destination"></a>

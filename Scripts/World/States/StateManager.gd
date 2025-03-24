@@ -27,6 +27,8 @@ var state_registry = {
 	"cover_dodge_prohibit": preload("res://Scripts/World/States/CoverDodgeProhibitState.gd"),
 	"physical_attack_up": preload("res://Scripts/World/States/PhysicalAttackUpState.gd"),
 	"magical_attack_up": preload("res://Scripts/World/States/MagicalAttackUpState.gd"),
+	"physical_attack_down": preload("res://Scripts/World/States/PhysicalAttackDownState.gd"),
+	"magical_attack_down": preload("res://Scripts/World/States/MagicalAttackDownState.gd"),
 	"shield_block_state": preload("res://Scripts/World/States/ShieldBlockState.gd")
 }
 
@@ -76,17 +78,19 @@ func get_state_value(character: Character, state_name: String) -> int:
 # - state_name: 要添加的状态名称
 # - value: 状态的初始值/层数
 # 说明: 如果角色已有该状态，则叠加层数；否则创建新状态
-func add_state(character: Character, state_name: String, value: int = 1) -> void:
+func add_state(character: Character, state_name: String, value: int = 1) -> Dictionary:
 	# 检查是否已存在该状态
 	for state in character.states:
 		if state.has(state_name):
 			state[state_name] += value
 			check_counter_states(character)
-			return
+			return {"target": character, state_name: value}
 	
 	# 不存在则添加新状态
 	character.states.append({state_name: value})
 	check_counter_states(character)
+
+	return {"target": character,state_name: value}
 
 # 移除角色指定状态
 # 完全移除指定名称的状态，不论其层数

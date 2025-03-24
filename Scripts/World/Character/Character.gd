@@ -327,6 +327,21 @@ func get_actual_combat_stat(stat_name: String) -> float:
 				base_value
 			])
 	
+	# 对于物理攻击力，检查是否有物理攻击力下降状态
+	if stat_name == "physical_attack" and has_state("physical_attack_down"):
+		var state_value = get_state_value("physical_attack_down")
+		# 从StateManager获取状态实例
+		var state = StateManager.get_state("physical_attack_down")
+		if state != null:
+			var penalty_percent = state.get_attack_penalty_percent(state_value)
+			var penalty_value = base_value * penalty_percent
+			base_value -= penalty_value
+			print("物理攻击力状态减益：基础值 %s - %.1f%% = %s" % [
+				base_value + penalty_value, 
+				penalty_percent * 100,
+				base_value
+			])
+	
 	# 对于魔法攻击力，检查是否有魔法攻击力提升状态
 	if stat_name == "magical_attack" and has_state("magical_attack_up"):
 		var state_value = get_state_value("magical_attack_up")
@@ -339,6 +354,21 @@ func get_actual_combat_stat(stat_name: String) -> float:
 			print("魔法攻击力状态加成：基础值 %s + %.1f%% = %s" % [
 				base_value - bonus_value, 
 				bonus_percent * 100,
+				base_value
+			])
+			
+	# 对于魔法攻击力，检查是否有魔法攻击力下降状态
+	if stat_name == "magical_attack" and has_state("magical_attack_down"):
+		var state_value = get_state_value("magical_attack_down")
+		# 从StateManager获取状态实例
+		var state = StateManager.get_state("magical_attack_down")
+		if state != null:
+			var penalty_percent = state.get_attack_penalty_percent(state_value)
+			var penalty_value = base_value * penalty_percent
+			base_value -= penalty_value
+			print("魔法攻击力状态减益：基础值 %s - %.1f%% = %s" % [
+				base_value + penalty_value, 
+				penalty_percent * 100,
 				base_value
 			])
 
