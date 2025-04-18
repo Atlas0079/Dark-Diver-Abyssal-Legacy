@@ -90,7 +90,7 @@ offset_left = 1960.0
 offset_right = 2560.0
 offset_bottom = 1440.0
 
-[node name="Button" type="Button" parent="InfoPanel/Panel"]
+[node name="RestartButton" type="Button" parent="InfoPanel/Panel"]
 visible = false
 layout_mode = 0
 offset_left = 156.0
@@ -200,7 +200,7 @@ offset_top = 100.0
 offset_right = 1520.0
 offset_bottom = 1070.0
 
-[node name="StartButton" type="Button" parent="."]
+[node name="GameControlButton" type="Button" parent="."]
 offset_left = 21.0
 offset_top = 18.0
 offset_right = 406.0
@@ -239,4 +239,4 @@ theme_override_fonts/font = ExtResource("3_ew8kt")
 theme_override_font_sizes/font_size = 60
 text = "test：教程"
 
-[connection signal="pressed" from="StartButton" to="." method="start_game"]
+[connection signal="pressed" from="GameControlButton" to="." method="start_game"]
