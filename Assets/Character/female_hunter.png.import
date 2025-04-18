@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg47v0rcsxn4h"
 path.s3tc="res://.godot/imported/female_hunter.png-092b6860de6f33f6b130ff7a9ccb89ce.s3tc.ctex"
+path.etc2="res://.godot/imported/female_hunter.png-092b6860de6f33f6b130ff7a9ccb89ce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/female_hunter.png"
-dest_files=["res://.godot/imported/female_hunter.png-092b6860de6f33f6b130ff7a9ccb89ce.s3tc.ctex"]
+dest_files=["res://.godot/imported/female_hunter.png-092b6860de6f33f6b130ff7a9ccb89ce.s3tc.ctex", "res://.godot/imported/female_hunter.png-092b6860de6f33f6b130ff7a9ccb89ce.etc2.ctex"]
 
 [params]
 

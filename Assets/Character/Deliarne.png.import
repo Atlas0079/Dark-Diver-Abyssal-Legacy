@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://pblpmjsync6c"
 path.s3tc="res://.godot/imported/Deliarne.png-6ac7bc0592e05a2cdbc4ec6f1e2e70ff.s3tc.ctex"
+path.etc2="res://.godot/imported/Deliarne.png-6ac7bc0592e05a2cdbc4ec6f1e2e70ff.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/Deliarne.png"
-dest_files=["res://.godot/imported/Deliarne.png-6ac7bc0592e05a2cdbc4ec6f1e2e70ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/Deliarne.png-6ac7bc0592e05a2cdbc4ec6f1e2e70ff.s3tc.ctex", "res://.godot/imported/Deliarne.png-6ac7bc0592e05a2cdbc4ec6f1e2e70ff.etc2.ctex"]
 
 [params]
 

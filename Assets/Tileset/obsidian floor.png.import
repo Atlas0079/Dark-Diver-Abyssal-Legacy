@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rhiliahckfsy"
 path.s3tc="res://.godot/imported/obsidian floor.png-df406cb1d041da025b80080f89fa7755.s3tc.ctex"
+path.etc2="res://.godot/imported/obsidian floor.png-df406cb1d041da025b80080f89fa7755.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Tileset/obsidian floor.png"
-dest_files=["res://.godot/imported/obsidian floor.png-df406cb1d041da025b80080f89fa7755.s3tc.ctex"]
+dest_files=["res://.godot/imported/obsidian floor.png-df406cb1d041da025b80080f89fa7755.s3tc.ctex", "res://.godot/imported/obsidian floor.png-df406cb1d041da025b80080f89fa7755.etc2.ctex"]
 
 [params]
 

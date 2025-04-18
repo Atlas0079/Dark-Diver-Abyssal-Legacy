@@ -15,7 +15,7 @@ var battle_info: Array = []
 
 var turn_count = 1
 
-
+var battle_scene: BattleScene
 
 var active_characters: Array = []
 
@@ -144,6 +144,11 @@ func process_character_action(character: Character) -> void:
 	var state_events = StateManager.check_states_at_timing("action_start", self, character)
 	record_state_events(state_events)
 	
+	# 检查角色是否因状态效果而死亡
+	if not character.is_alive():
+		print("Battle.handle_character_action %s 因状态效果死亡，取消行动" % character.character_name)
+		return
+	
 	# 1. 使用主动技能
 	var skill = character.get_available_active_skill(self)
 
@@ -245,13 +250,7 @@ func handle_battle_end() -> void:
 	print("Battle.handle_battle_end 战斗结束")
 	print_battle_info()
 
-	# 重置所有角色状态（而不是删除实例）
-	for team in [blue_team, red_team]:
-		for pos in team:
-			var character = team[pos]
-			if character != null:
-				character.reset_battle_state()
-				team[pos] = null
+	battle_scene.process_battle_animation(battle_info)
 
 	# TODO: 处理战斗结束
 
@@ -349,6 +348,8 @@ func _create_passive_skill_event(user: Character, skill: BaseSkill, targets: Arr
 	event.turn_number = turn_count
 	event.source = user
 	event.targets = targets
+	
+	# 基本信息
 	event.skill_info = {
 		"skill_name": skill.skill_name,
 		"skill_type": skill.skill_type,
@@ -356,6 +357,11 @@ func _create_passive_skill_event(user: Character, skill: BaseSkill, targets: Arr
 		"effects": skill_result.effects,
 		"trigger": skill.passive_trigger,
 	}
+	
+	# 合并skill_result中的其他字段
+	for key in skill_result:
+		if key != "effects" and not event.skill_info.has(key):
+			event.skill_info[key] = skill_result[key]
 	
 	return event
 

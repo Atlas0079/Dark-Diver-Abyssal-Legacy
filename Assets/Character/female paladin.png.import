@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chg0gojhftv1k"
 path.s3tc="res://.godot/imported/female paladin.png-9f3c2c70858ee1c97f0a32ac740a6aad.s3tc.ctex"
+path.etc2="res://.godot/imported/female paladin.png-9f3c2c70858ee1c97f0a32ac740a6aad.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/female paladin.png"
-dest_files=["res://.godot/imported/female paladin.png-9f3c2c70858ee1c97f0a32ac740a6aad.s3tc.ctex"]
+dest_files=["res://.godot/imported/female paladin.png-9f3c2c70858ee1c97f0a32ac740a6aad.s3tc.ctex", "res://.godot/imported/female paladin.png-9f3c2c70858ee1c97f0a32ac740a6aad.etc2.ctex"]
 
 [params]
 

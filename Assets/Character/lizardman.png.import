@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cof5m4hl6s12i"
 path.s3tc="res://.godot/imported/lizardman.png-930abf552791d8cd5e8586e55a7d826f.s3tc.ctex"
+path.etc2="res://.godot/imported/lizardman.png-930abf552791d8cd5e8586e55a7d826f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/lizardman.png"
-dest_files=["res://.godot/imported/lizardman.png-930abf552791d8cd5e8586e55a7d826f.s3tc.ctex"]
+dest_files=["res://.godot/imported/lizardman.png-930abf552791d8cd5e8586e55a7d826f.s3tc.ctex", "res://.godot/imported/lizardman.png-930abf552791d8cd5e8586e55a7d826f.etc2.ctex"]
 
 [params]
 

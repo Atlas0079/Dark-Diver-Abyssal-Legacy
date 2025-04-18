@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnbt3k2yrk5qc"
 path.s3tc="res://.godot/imported/ancient_deep_dragon.png-d5a53acaf2b6d329a8af288602d7388f.s3tc.ctex"
+path.etc2="res://.godot/imported/ancient_deep_dragon.png-d5a53acaf2b6d329a8af288602d7388f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/ancient_deep_dragon.png"
-dest_files=["res://.godot/imported/ancient_deep_dragon.png-d5a53acaf2b6d329a8af288602d7388f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ancient_deep_dragon.png-d5a53acaf2b6d329a8af288602d7388f.s3tc.ctex", "res://.godot/imported/ancient_deep_dragon.png-d5a53acaf2b6d329a8af288602d7388f.etc2.ctex"]
 
 [params]
 

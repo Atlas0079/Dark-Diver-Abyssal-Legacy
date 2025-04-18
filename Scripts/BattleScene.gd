@@ -1,15 +1,26 @@
 # Scripts/HD2DBattleScene.gd
 extends Node3D
 
+class_name BattleScene
+
 var battle: Battle
 var blue_team_nodes = {}
 var red_team_nodes = {}
 var is_animation_playing: bool = false
+# UI相关实例变量
+var canvas_layer
+var team_node
+var blue_team_status_bars = {}
+var red_team_status_bars = {}
+var animation_manager
 
 func _ready():
 	# 初始化节点引用
 	init_team_nodes()
+	# 初始化UI节点引用
+	init_ui_nodes()
 	# 初始化动画系统
+	init_animation_system()
 
 	start_battle("10001", "20001")
 
@@ -21,10 +32,32 @@ func init_team_nodes():
 		blue_team_nodes[pos] = $left_team.get_node(node_name)  # 改为 left_team
 		red_team_nodes[pos] = $right_team.get_node(node_name)  # 改为 right_team
 
+func init_animation_system():
+	animation_manager = BattleAnimationManager.new(self)
+	add_child(animation_manager)
+
+
+# 初始化UI节点引用
+func init_ui_nodes():
+	canvas_layer = $CanvasLayer
+	team_node = canvas_layer.get_node("Team")
+	
+	# 初始化蓝队UI面板引用
+	for pos in Battle.Position.values():
+		var node_name = pos_to_node_name(pos)
+		blue_team_status_bars[pos] = team_node.get_node("left_team/" + node_name + "/StatusBar")
+	
+	# 初始化红队UI面板引用
+	for pos in Battle.Position.values():
+		var node_name = pos_to_node_name(pos)
+		red_team_status_bars[pos] = team_node.get_node("right_team/" + node_name + "/StatusBar")
+
+
 # 开始战斗的主函数
 func start_battle(blue_team_id: String, red_team_id: String):
 	# 创建战斗实例
 	battle = Battle.new()
+	battle.battle_scene = self
 	add_child(battle)
 	
 	# 初始化战斗
@@ -32,10 +65,13 @@ func start_battle(blue_team_id: String, red_team_id: String):
 	
 	# 更新场景显示
 	update_all_positions()
-	update_all_ui()
 	
 	# 开始战斗流程
 	battle.process_battle()
+
+func process_battle_animation(battle_events: Array):
+	var animation_queue = animation_manager.build_animation_queue(battle_events)
+	animation_manager.play_animation_with_queue(animation_queue)
 
 # 更新所有位置的显示
 func update_all_positions():
@@ -66,31 +102,12 @@ func pos_to_node_name(pos: Battle.Position) -> String:
 		Battle.Position.BACK_BOT: return "back_bot"
 		_: return ""
 
-# 信号处理函数
-func _on_turn_start():
-	update_all_positions()
-	update_all_ui()
 
-func _on_turn_end():
-	update_all_positions()
-	update_all_ui()
-
-func _on_character_action_start(character: Character):
-	pass
-
-func _on_character_action_end(character: Character):
-	update_all_positions()
-	update_all_ui()
-
-func _on_battle_end():
-	print("战斗结束")
-
-func _on_animation_completed():
-	update_all_positions()
-	update_all_ui()
 
 # 添加一个用于查找角色精灵的辅助函数
 func find_character_sprite(character: Character) -> Sprite3D:
+	#print("BattleScene.find_character_sprite %s" % character.character_name)
+
 	for pos in Battle.Position.values():
 		if battle.blue_team[pos] == character:
 			return blue_team_nodes[pos]
@@ -98,60 +115,41 @@ func find_character_sprite(character: Character) -> Sprite3D:
 			return red_team_nodes[pos]
 	return null
 
-#test 更新ui
-# Scripts/BattleScene.gd
+func find_character_status_bar(character: Character) -> Control:
+	for pos in Battle.Position.values():
+		if battle.blue_team[pos] == character:
+			return blue_team_status_bars[pos]
+		if battle.red_team[pos] == character:
+			return red_team_status_bars[pos]
+	return null
 
-# 更新单个角色的UI显示
-func update_character_ui(character: Character, panel: Panel):
-	if not character:
-		panel.visible = false
-		return
+
+# 根据角色和UI类型获取对应的UI组件
+func find_character_ui(character: Character, ui_type: String):
+	var status_bar = find_character_status_bar(character)
+	if status_bar == null:
+		return null
 		
-	panel.visible = true
-	
-	# 更新头像
-	var avatar = panel.get_node("Avatar/Avatar")
-	if character.image_path:
-		avatar.texture = load(character.image_path)
-		# 设置头像大小为48x48
-		avatar.scale = Vector2(0.375, 0.375)  # 因为原始大小是128x128，所以用0.375缩放到48x48
-		avatar.position = Vector2(24, 24)  # 保持在中心位置
-	
-	# 更新名字
-	var name_label = panel.get_node("StatusBar/CharacterName")
-	name_label.text = character.character_name
-	
-	# 更新状态条
-	var hp_bar = panel.get_node("StatusBar/HP")
-	hp_bar.max_value = character.resources.health.max
-	hp_bar.value = character.resources.health.current
-	
-	var mp_bar = panel.get_node("StatusBar/MP")
-	mp_bar.max_value = character.resources.mana.max
-	mp_bar.value = character.resources.mana.current
-	
-	var ap_bar = panel.get_node("StatusBar/AP")
-	ap_bar.max_value = character.battle_stats.action_threshold
-	ap_bar.value = character.battle_stats.action_point
-	
-	var qi_bar = panel.get_node("StatusBar/QI")
-	qi_bar.max_value = character.resources.qi.max
-	qi_bar.value = character.resources.qi.current
+	match ui_type:
+		"HP":
+			return status_bar.get_node("HP")
+		"MP":
+			return status_bar.get_node("MP")
+		"AP":
+			return status_bar.get_node("AP")
+		"QI":
+			return status_bar.get_node("QI")
+		"CharacterName":
+			return status_bar.get_node("CharacterName")
+		"StatusBar":
+			return status_bar
+		_:
+			return null
 
-
-# 更新所有角色的UI
-func update_all_ui():
-	var canvas_layer = $CanvasLayer
-	var team_node = canvas_layer.get_node("Team")
-	
-	# 更新蓝队UI
+func get_character_team(character: Character):
 	for pos in Battle.Position.values():
-		var character = battle.blue_team[pos]
-		var panel = team_node.get_node("left_team/" + pos_to_node_name(pos))
-		update_character_ui(character, panel)
-	
-	# 更新红队UI
-	for pos in Battle.Position.values():
-		var character = battle.red_team[pos]
-		var panel = team_node.get_node("right_team/" + pos_to_node_name(pos))
-		update_character_ui(character, panel)
+		if battle.blue_team[pos] == character:
+			return "blue"
+		if battle.red_team[pos] == character:
+			return "red"
+	return null

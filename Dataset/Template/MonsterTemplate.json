@@ -65,8 +65,8 @@
 	  
 	  "resources": {
 		"health": {
-		  "current": 21,
-		  "max": 21
+		  "current": 31,
+		  "max": 31
 		},
 		"mana": {
 		  "current": 28,

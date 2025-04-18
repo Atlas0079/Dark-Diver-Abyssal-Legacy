@@ -4,7 +4,8 @@ class_name BattleEvent
 enum EventType {
 	ACTIVE_SKILL,    # 主动技能
 	PASSIVE_SKILL,   # 被动技能
-	STATE_RESOLVE    # 状态结算
+	STATE_RESOLVE,   # 状态结算
+	MARK_EVENT       # 标记事件
 }
 
 var event_type: EventType

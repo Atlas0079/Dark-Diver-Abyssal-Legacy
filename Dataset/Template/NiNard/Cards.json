@@ -1,0 +1,147 @@
+{
+    "S0001":{
+        "value":1,
+        "suit":"SPADE",
+        "card_name":"SA",
+        "card_description":"A is the highest card in the game.",
+        "skill":null
+    },
+    "S0002":{
+        "value":2,
+        "suit":"SPADE",
+        "card_name":"S2",
+        "card_description":"2 is the second highest card in the game.",
+        "skill":null
+    },
+    "S0003":{
+        "value":3,
+        "suit":"SPADE",
+        "card_name":"S3",
+        "card_description":"3 is the third highest card in the game.",
+        "skill":null
+        },
+    "S0004":{
+        "value":4,
+        "suit":"SPADE",
+        "card_name":"S4",
+        "card_description":"4 is the fourth highest card in the game.",
+        "skill":null
+    },
+    "S0005":{
+        "value":5,
+        "suit":"SPADE",
+        "card_name":"S5",
+        "card_description":"5 is the fifth highest card in the game.",
+        "skill":null
+    },
+    "H0001":{
+        "value":1,
+        "suit":"HEART",
+        "card_name":"HA",
+        "card_description":"A is the highest card in the game.",
+        "skill":null
+    },
+    "H0002":{
+        "value":2,
+        "suit":"HEART",
+        "card_name":"H2",
+        "card_description":"2 is the second highest card in the game.",
+        "skill":null
+    },
+    "H0003":{
+        "value":3,
+        "suit":"HEART",
+        "card_name":"H3",
+        "card_description":"3 is the third highest card in the game.",
+        "skill":null
+    },
+    "H0004":{
+        "value":4,
+        "suit":"HEART",
+        "card_name":"H4",
+        "card_description":"4 is the fourth highest card in the game.",
+        "skill":null
+    },
+    "H0005":{
+        "value":5,
+        "suit":"HEART",
+        "card_name":"H5",
+        "card_description":"5 is the fifth highest card in the game.",
+        "skill":null
+    },
+    "D0001":{
+        "value":1,      
+        "suit":"DIAMOND",
+        "card_name":"DA",
+        "card_description":"A is the highest card in the game.",
+        "skill":null
+    },
+    "D0002":{
+        "value":2,
+        "suit":"DIAMOND",
+        "card_name":"D2",
+        "card_description":"2 is the second highest card in the game.",
+        "skill":null
+    },
+    "D0003":{
+        "value":3,
+        "suit":"DIAMOND",
+        "card_name":"D3",
+        "card_description":"3 is the third highest card in the game.",
+        "skill":null    
+    },
+    "D0004":{
+        "value":4,
+        "suit":"DIAMOND",
+        "card_name":"D4",
+        "card_description":"4 is the fourth highest card in the game.",
+        "skill":null    
+    },
+    "D0005":{
+        "value":5,
+        "suit":"DIAMOND",
+        "card_name":"D5",
+        "card_description":"5 is the fifth highest card in the game.",
+        "skill":null
+    },
+    "C0001":{
+        "value":1,
+        "suit":"CLUB",
+        "card_name":"CA",
+        "sprite_path":"res://Assets/NiNard/Cards/C0001.png",
+        "card_description":"A is the highest card in the game.",
+        "skill":null
+    },
+    "C0002":{
+        "value":2,
+        "suit":"CLUB",
+        "card_name":"C2",
+        "sprite_path":"res://Assets/NiNard/Cards/C0002.png",
+        "card_description":"2 is the second highest card in the game.",
+        "skill":null
+    },
+    "C0003":{
+        "value":3,
+        "suit":"CLUB",
+        "card_name":"C3",
+        "sprite_path":"res://Assets/NiNard/Cards/C0003.png",
+        "card_description":"3 is the third highest card in the game.",
+        "skill":null
+    },
+    "C0004":{
+        "value":4,
+        "suit":"CLUB",
+        "card_name":"C4",
+        "sprite_path":"res://Assets/NiNard/Cards/C0004.png",
+        "card_description":"4 is the fourth highest card in the game.",
+        "skill":null
+    },
+    "C0005":{
+        "value":5,
+        "suit":"CLUB",
+        "card_name":"C5",
+        "sprite_path":"res://Assets/NiNard/Cards/C0005.png",
+        "card_description":"5 is the fifth highest card in the game.",
+        "skill":null
+    }
+}

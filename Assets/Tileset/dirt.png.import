@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2f7xhteskad"
 path.s3tc="res://.godot/imported/dirt.png-146024345025dd8e8e3652307811155b.s3tc.ctex"
+path.etc2="res://.godot/imported/dirt.png-146024345025dd8e8e3652307811155b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Tileset/dirt.png"
-dest_files=["res://.godot/imported/dirt.png-146024345025dd8e8e3652307811155b.s3tc.ctex"]
+dest_files=["res://.godot/imported/dirt.png-146024345025dd8e8e3652307811155b.s3tc.ctex", "res://.godot/imported/dirt.png-146024345025dd8e8e3652307811155b.etc2.ctex"]
 
 [params]
 

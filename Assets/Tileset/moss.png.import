@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6n8ie06vvib4"
 path.s3tc="res://.godot/imported/moss.png-96775247d90ed114e056a52684338b43.s3tc.ctex"
+path.etc2="res://.godot/imported/moss.png-96775247d90ed114e056a52684338b43.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Tileset/moss.png"
-dest_files=["res://.godot/imported/moss.png-96775247d90ed114e056a52684338b43.s3tc.ctex"]
+dest_files=["res://.godot/imported/moss.png-96775247d90ed114e056a52684338b43.s3tc.ctex", "res://.godot/imported/moss.png-96775247d90ed114e056a52684338b43.etc2.ctex"]
 
 [params]
 

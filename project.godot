@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Cereal Fish New"
+run/main_scene="res://Scenes/NiNard/root.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,10 +22,12 @@ StateManager="*res://Scripts/World/States/StateManager.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 window/stretch/mode="canvas_items"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -33,8 +33,10 @@ func apply_effects(user: Character, original_targets: Array[Character], battle: 
 	var skill_info = _build_skill_info(user, battle)
 	skill_info.effects.append({
 		"type": "cover",
-		"new_targets": new_targets  # 使用新的目标数组
+		"new_targets": new_targets,  # 使用新的目标数组
 	})
+	skill_info["protected_target"] = cover_targets[0]
+
 	return skill_info
 
 

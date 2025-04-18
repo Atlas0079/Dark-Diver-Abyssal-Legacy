@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://l0hm7lwbq5i7"]
+
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="1_iyt3l"]
+[ext_resource type="Texture2D" uid="uid://hobg5teedkgv" path="res://Assets/NiNard/Tutorial/Page1.png" id="1_jixun"]
+[ext_resource type="Texture2D" uid="uid://cwb1uphhc80sv" path="res://Assets/NiNard/Tutorial/Page2.png" id="2_nsq8b"]
+[ext_resource type="Texture2D" uid="uid://dlkby2pa3syxb" path="res://Assets/NiNard/Tutorial/Page3.png" id="4_lkk70"]
+[ext_resource type="Texture2D" uid="uid://dh0rk4gvsrdcd" path="res://Assets/NiNard/Tutorial/Page4.png" id="5_4v4jk"]
+[ext_resource type="Texture2D" uid="uid://467g8ux3jt7r" path="res://Assets/NiNard/Tutorial/Page5.png" id="6_gt4wk"]
+[ext_resource type="Texture2D" uid="uid://bc601gvo1io82" path="res://Assets/NiNard/Tutorial/Page6.png" id="7_5e74i"]
+
+[node name="Tutorial" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2360.0
+offset_top = 1340.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+theme_override_fonts/font = ExtResource("1_iyt3l")
+theme_override_font_sizes/font_size = 50
+text = "下一页"
+
+[node name="PreviousButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 1340.0
+offset_right = 200.0
+offset_bottom = 1440.0
+theme_override_fonts/font = ExtResource("1_iyt3l")
+theme_override_font_sizes/font_size = 50
+text = "上一页"
+
+[node name="Page" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Page1Image" type="Sprite2D" parent="Page"]
+visible = false
+position = Vector2(1280, 720)
+texture = ExtResource("1_jixun")
+
+[node name="Page2Image" type="Sprite2D" parent="Page"]
+visible = false
+texture_filter = 2
+position = Vector2(1280, 720)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_nsq8b")
+
+[node name="Page3Image" type="Sprite2D" parent="Page"]
+visible = false
+position = Vector2(1280, 720)
+texture = ExtResource("4_lkk70")
+
+[node name="Page4Image" type="Sprite2D" parent="Page"]
+visible = false
+position = Vector2(1280, 720)
+texture = ExtResource("5_4v4jk")
+
+[node name="Page5Image" type="Sprite2D" parent="Page"]
+visible = false
+position = Vector2(1228, 634)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_gt4wk")
+
+[node name="Page6Image" type="Sprite2D" parent="Page"]
+visible = false
+position = Vector2(1280, 720)
+texture = ExtResource("7_5e74i")
+
+[node name="PageCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 1350.0
+offset_right = 1427.0
+offset_bottom = 1417.0
+theme_override_fonts/font = ExtResource("1_iyt3l")
+theme_override_font_sizes/font_size = 60
+text = "第 9  /  9 页"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2350.0
+offset_right = 2558.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("1_iyt3l")
+theme_override_font_sizes/font_size = 50
+text = "关闭教程"

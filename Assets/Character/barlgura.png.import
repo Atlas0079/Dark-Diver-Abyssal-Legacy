@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkcjpo42qa1yk"
 path.s3tc="res://.godot/imported/barlgura.png-8023c81dedb5fd69471dc546a481030a.s3tc.ctex"
+path.etc2="res://.godot/imported/barlgura.png-8023c81dedb5fd69471dc546a481030a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/barlgura.png"
-dest_files=["res://.godot/imported/barlgura.png-8023c81dedb5fd69471dc546a481030a.s3tc.ctex"]
+dest_files=["res://.godot/imported/barlgura.png-8023c81dedb5fd69471dc546a481030a.s3tc.ctex", "res://.godot/imported/barlgura.png-8023c81dedb5fd69471dc546a481030a.etc2.ctex"]
 
 [params]
 

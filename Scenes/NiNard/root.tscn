@@ -1,0 +1,242 @@
+[gd_scene load_steps=7 format=3 uid="uid://b280qdr7galpr"]
+
+[ext_resource type="Script" path="res://Scripts/World/NiNard/NiNardGame.gd" id="1_xyymq"]
+[ext_resource type="Texture2D" uid="uid://dhgdkijyi3upi" path="res://Assets/NiNard/ComfyUI_00061_.png" id="1_yc6e6"]
+[ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="3_ew8kt"]
+[ext_resource type="Script" path="res://Scripts/World/NiNard/NiNardUI.gd" id="4_8dg67"]
+[ext_resource type="Script" path="res://Scripts/World/NiNard/NiNardAIPlayer.gd" id="4_wa1m4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_132dx"]
+size = Vector2(309, 343)
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_xyymq")
+
+[node name="BoardContainer" type="Node2D" parent="."]
+
+[node name="BoardPositions" type="Node2D" parent="BoardContainer"]
+position = Vector2(-60, 0)
+
+[node name="Position_0_0" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_0_0"]
+position = Vector2(658, 244.5)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_0_1" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_0_1"]
+position = Vector2(1003.5, 244)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_0_2" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_0_2"]
+position = Vector2(1340, 240)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_1_0" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_1_0"]
+position = Vector2(650.5, 586)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_1_1" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_1_1"]
+position = Vector2(999, 584)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_1_2" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_1_2"]
+position = Vector2(1344, 587)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_2_0" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_2_0"]
+position = Vector2(654, 950.5)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_2_1" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_2_1"]
+position = Vector2(1002, 950)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="Position_2_2" type="Area2D" parent="BoardContainer/BoardPositions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/BoardPositions/Position_2_2"]
+position = Vector2(1345.5, 950.5)
+shape = SubResource("RectangleShape2D_132dx")
+
+[node name="BoardSpirit" type="Sprite2D" parent="BoardContainer"]
+position = Vector2(1037, 774)
+scale = Vector2(1, 1.017)
+texture = ExtResource("1_yc6e6")
+
+[node name="CardsLayer" type="Node2D" parent="BoardContainer"]
+
+[node name="InfoPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 1960.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="Button" type="Button" parent="InfoPanel/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 156.0
+offset_top = 1334.0
+offset_right = 413.0
+offset_bottom = 1409.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "重新开始"
+
+[node name="Player1EScore" type="Label" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 1979.0
+offset_top = 28.0
+offset_right = 2449.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "你的当前得分：99"
+
+[node name="Player2EScore" type="Label" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 1977.0
+offset_top = 93.0
+offset_right = 2447.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "对手当前得分：99"
+
+[node name="TurnCount" type="Label" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 1979.0
+offset_top = 166.0
+offset_right = 2365.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "当前回合数：3"
+
+[node name="GameMessage" type="Label" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 1977.0
+offset_top = 247.0
+offset_right = 2504.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "GameMessage"
+autowrap_mode = 2
+
+[node name="InitialCardChoice" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="InitialCardChoice"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 144.0
+offset_right = 1789.0
+offset_bottom = 1344.0
+
+[node name="Button" type="Button" parent="InitialCardChoice/Panel"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 1076.0
+offset_right = 1040.0
+offset_bottom = 1151.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "选择这张放到上面"
+
+[node name="Player1Label" type="Label" parent="InitialCardChoice/Panel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 15.0
+offset_right = 460.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "你的牌"
+
+[node name="Player2Label" type="Label" parent="InitialCardChoice/Panel"]
+layout_mode = 0
+offset_left = 1147.0
+offset_top = 15.0
+offset_right = 1387.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "对手的牌"
+
+[node name="Card1Container" type="Control" parent="InitialCardChoice/Panel"]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 100.0
+offset_right = 760.0
+offset_bottom = 1070.0
+
+[node name="Card2Container" type="Control" parent="InitialCardChoice/Panel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 800.0
+offset_top = 100.0
+offset_right = 1520.0
+offset_bottom = 1070.0
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 406.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "test：开始游戏"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_8dg67")
+
+[node name="HandContainer" type="HBoxContainer" parent="."]
+offset_left = 186.0
+offset_top = 1153.0
+offset_right = 1945.0
+offset_bottom = 1427.0
+mouse_filter = 2
+
+[node name="AIPlayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wa1m4")
+
+[node name="TutorialButton" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 119.0
+offset_right = 289.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("3_ew8kt")
+theme_override_font_sizes/font_size = 60
+text = "test：教程"
+
+[connection signal="pressed" from="StartButton" to="." method="start_game"]

@@ -1,9 +1,10 @@
 extends RefCounted
 class_name BaseSkillAnimation
 
+signal animation_completed  # 添加动画完成信号
+
 var battle_scene: Node3D
-var user: Character
-var effects_results: Dictionary
+var battle_event: BattleEvent
 
 enum AnimationPhase {
 	PREPARE,    # 准备阶段 (如起手动作)
@@ -11,16 +12,14 @@ enum AnimationPhase {
 	FINISH      # 结束阶段 (收招动作)
 }
 
-func _init() -> void:
-	pass
 
-func setup(p_battle_scene: Node3D, p_user: Character, p_effects_results: Dictionary) -> void:
+func setup(p_battle_scene: Node3D,) -> void:
 	battle_scene = p_battle_scene
-	user = p_user
-	effects_results = p_effects_results
 
-func play(phase: AnimationPhase) -> void:
+
+func play(phase: AnimationPhase, battle_event: BattleEvent) -> void: 
 	push_error("BaseSkillAnimation.play() 需要被子类重写")
 
-func extra_event(event: Dictionary) -> void:
+func extra_event(animation_queue: Array, current_event: BattleEvent):
+	#push_error("BaseSkillAnimation.extra_event() 需要被子类重写")
 	pass

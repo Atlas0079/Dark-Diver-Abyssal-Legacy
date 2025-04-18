@@ -1,0 +1,64 @@
+.tutorial-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #4a4a82;
+	color: #e6e6e6;
+	border: none;
+	border-radius: 50px;
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+	z-index: 100;
+}
+
+.tutorial-button:hover {
+	background-color: #f0a500;
+	color: #1a1a2e;
+	transform: translateY(-2px);
+}
+
+.tutorial-icon {
+	background-color: #1a1a2e;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.tutorial-button:hover .tutorial-icon {
+	background-color: #4a4a82;
+	color: #e6e6e6;
+}
+
+.tutorial-text {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+	.tutorial-button {
+		bottom: 15px;
+		right: 15px;
+		padding: 8px 16px;
+	}
+	
+	.tutorial-icon {
+		width: 20px;
+		height: 20px;
+		font-size: 14px;
+	}
+	
+	.tutorial-text {
+		font-size: 12px;
+	}
+} 
