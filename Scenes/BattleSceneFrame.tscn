@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b1txovvwcp1pc" path="res://Assets/UI/QIprogress.png" id="10_lyox7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-metadata/_edit_vertical_guides_ = [30.0, 420.0, 860.0, 640.0]
-metadata/_edit_horizontal_guides_ = [690.0, 530.0]
+metadata/_edit_horizontal_guides_ = [1060.0, 1380.0, 1028.0, 1412.0]
+metadata/_edit_vertical_guides_ = [60.0, 836.0, 868.0, 1692.0, 1715.0, 2500.0]
 
 [node name="Frame" type="Control" parent="."]
 layout_mode = 3
@@ -25,17 +25,17 @@ offset_bottom = 40.0
 [node name="Panel2" type="Panel" parent="Frame"]
 texture_filter = 1
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 40.0
+offset_right = 2560.0
+offset_bottom = 80.0
 
 [node name="CharacterBorder" type="NinePatchRect" parent="Frame"]
 texture_filter = 1
 layout_mode = 1
-offset_left = 10.0
-offset_top = 510.0
-offset_right = 640.0
-offset_bottom = 610.0
-scale = Vector2(2, 2)
+offset_left = 20.0
+offset_top = 1020.0
+offset_right = 650.0
+offset_bottom = 1120.0
+scale = Vector2(4, 4)
 texture = ExtResource("1_fvg00")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -47,11 +47,11 @@ axis_stretch_vertical = 1
 [node name="DetailInfo" type="NinePatchRect" parent="Frame"]
 texture_filter = 1
 layout_mode = 1
-offset_left = 420.0
-offset_top = 500.0
-offset_right = 640.0
-offset_bottom = 610.0
-scale = Vector2(2, 2)
+offset_left = 840.0
+offset_top = 1000.0
+offset_right = 1060.0
+offset_bottom = 1110.0
+scale = Vector2(4, 4)
 texture = ExtResource("2_x1fr1")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -74,10 +74,10 @@ offset_bottom = 40.0
 
 [node name="back_top" type="Panel" parent="Team/left_team"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 530.0
-offset_right = 220.0
-offset_bottom = 578.0
+offset_left = 60.0
+offset_top = 1060.0
+offset_right = 440.0
+offset_bottom = 1156.0
 
 [node name="Avatar" type="Control" parent="Team/left_team/back_top"]
 anchors_preset = 0
@@ -86,14 +86,14 @@ offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/left_team/back_top/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/back_top/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
 
 [node name="StatusBar" type="Control" parent="Team/left_team/back_top"]
@@ -101,11 +101,11 @@ anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/left_team/back_top/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/left_team/back_top/StatusBar"]
@@ -113,7 +113,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -128,11 +128,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/left_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -146,11 +146,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/left_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -164,11 +164,11 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/left_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -181,38 +181,40 @@ texture_progress = ExtResource("10_lyox7")
 
 [node name="back_mid" type="Panel" parent="Team/left_team"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 586.0
-offset_right = 220.0
-offset_bottom = 634.0
+offset_left = 60.0
+offset_top = 1173.0
+offset_right = 440.0
+offset_bottom = 1269.0
 
 [node name="Avatar" type="Control" parent="Team/left_team/back_mid"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/left_team/back_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/back_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
 
 [node name="StatusBar" type="Control" parent="Team/left_team/back_mid"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/left_team/back_mid/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/left_team/back_mid/StatusBar"]
@@ -220,7 +222,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -235,11 +237,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/left_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -253,11 +255,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/left_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -271,226 +273,11 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/left_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("10_lyox7")
-
-[node name="back_bot" type="Panel" parent="Team/left_team"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 642.0
-offset_right = 220.0
-offset_bottom = 690.0
-
-[node name="Avatar" type="Control" parent="Team/left_team/back_bot"]
-anchors_preset = 0
-offset_left = 12.0
-offset_right = 12.0
-
-[node name="Avatar" type="Sprite2D" parent="Team/left_team/back_bot/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_m12ll")
-
-[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/back_bot/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_rxaoa")
-
-[node name="StatusBar" type="Control" parent="Team/left_team/back_bot"]
-anchors_preset = 0
-
-[node name="CharacterName" type="Label" parent="Team/left_team/back_bot/StatusBar"]
-layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
-text = "名字Name"
-
-[node name="AP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 5.0
-offset_bottom = 24.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 3.0
-fill_mode = 3
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("5_wi147")
-texture_progress = ExtResource("6_2kpcg")
-
-[node name="HP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("8_spqvq")
-
-[node name="MP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("9_gladj")
-
-[node name="QI" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("10_lyox7")
-
-[node name="front_top" type="Panel" parent="Team/left_team"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 530.0
-offset_right = 420.0
-offset_bottom = 578.0
-
-[node name="Avatar" type="Control" parent="Team/left_team/front_top"]
-anchors_preset = 0
-offset_left = 12.0
-offset_right = 12.0
-
-[node name="Avatar" type="Sprite2D" parent="Team/left_team/front_top/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_m12ll")
-
-[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/front_top/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
-
-[node name="StatusBar" type="Control" parent="Team/left_team/front_top"]
-anchors_preset = 0
-
-[node name="CharacterName" type="Label" parent="Team/left_team/front_top/StatusBar"]
-layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
-text = "名字Name"
-
-[node name="AP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 5.0
-offset_bottom = 24.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 3.0
-fill_mode = 3
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("5_wi147")
-texture_progress = ExtResource("6_2kpcg")
-
-[node name="HP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("8_spqvq")
-
-[node name="MP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("9_gladj")
-
-[node name="QI" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -503,39 +290,40 @@ texture_progress = ExtResource("10_lyox7")
 
 [node name="front_mid" type="Panel" parent="Team/left_team"]
 layout_mode = 0
-offset_left = 230.0
-offset_top = 586.0
-offset_right = 420.0
-offset_bottom = 634.0
+offset_left = 456.0
+offset_top = 1173.0
+offset_right = 836.0
+offset_bottom = 1269.0
 
 [node name="Avatar" type="Control" parent="Team/left_team/front_mid"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/left_team/front_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/front_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/left_team/front_mid"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/left_team/front_mid/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/left_team/front_mid/StatusBar"]
@@ -543,7 +331,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -558,11 +346,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/left_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -576,11 +364,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/left_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -594,11 +382,120 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/left_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("10_lyox7")
+
+[node name="back_bot" type="Panel" parent="Team/left_team"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 1284.0
+offset_right = 440.0
+offset_bottom = 1380.0
+
+[node name="Avatar" type="Control" parent="Team/left_team/back_bot"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Team/left_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_m12ll")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_rxaoa")
+
+[node name="StatusBar" type="Control" parent="Team/left_team/back_bot"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Team/left_team/back_bot/StatusBar"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_3hllu")
+theme_override_font_sizes/font_size = 30
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_wi147")
+texture_progress = ExtResource("6_2kpcg")
+
+[node name="HP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("8_spqvq")
+
+[node name="MP" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("9_gladj")
+
+[node name="QI" type="TextureProgressBar" parent="Team/left_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -610,40 +507,40 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_bot" type="Panel" parent="Team/left_team"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 642.0
-offset_right = 420.0
-offset_bottom = 690.0
+offset_left = 456.0
+offset_top = 1284.0
+offset_right = 836.0
+offset_bottom = 1380.0
 
 [node name="Avatar" type="Control" parent="Team/left_team/front_bot"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/left_team/front_bot/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/front_bot/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/left_team/front_bot"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/left_team/front_bot/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/left_team/front_bot/StatusBar"]
@@ -651,7 +548,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -666,11 +563,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/left_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -684,11 +581,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/left_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -702,11 +599,117 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/left_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("10_lyox7")
+
+[node name="front_top" type="Panel" parent="Team/left_team"]
+offset_left = 456.0
+offset_top = 1060.0
+offset_right = 836.0
+offset_bottom = 1156.0
+
+[node name="Avatar" type="Control" parent="Team/left_team/front_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Team/left_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_m12ll")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/left_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_rxaoa")
+
+[node name="StatusBar" type="Control" parent="Team/left_team/front_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Team/left_team/front_top/StatusBar"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_3hllu")
+theme_override_font_sizes/font_size = 30
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_wi147")
+texture_progress = ExtResource("6_2kpcg")
+
+[node name="HP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("8_spqvq")
+
+[node name="MP" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("9_gladj")
+
+[node name="QI" type="TextureProgressBar" parent="Team/left_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -725,11 +728,10 @@ offset_right = 870.0
 offset_bottom = 40.0
 
 [node name="back_top" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 530.0
-offset_right = 420.0
-offset_bottom = 578.0
+offset_left = 894.0
+offset_top = 1060.0
+offset_right = 1274.0
+offset_bottom = 1156.0
 
 [node name="Avatar" type="Control" parent="Team/right_team/back_top"]
 anchors_preset = 0
@@ -738,27 +740,26 @@ offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/right_team/back_top/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/back_top/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/right_team/back_top"]
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/right_team/back_top/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/right_team/back_top/StatusBar"]
@@ -766,7 +767,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -781,11 +782,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/right_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -799,11 +800,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/right_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -817,11 +818,11 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/right_team/back_top/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -833,40 +834,40 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="back_mid" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 586.0
-offset_right = 420.0
-offset_bottom = 634.0
+offset_left = 894.0
+offset_top = 1173.0
+offset_right = 1274.0
+offset_bottom = 1269.0
 
 [node name="Avatar" type="Control" parent="Team/right_team/back_mid"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/right_team/back_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/back_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/right_team/back_mid"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/right_team/back_mid/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/right_team/back_mid/StatusBar"]
@@ -874,7 +875,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -889,11 +890,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/right_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -907,11 +908,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/right_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -925,227 +926,11 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/right_team/back_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("10_lyox7")
-
-[node name="back_bot" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 642.0
-offset_right = 420.0
-offset_bottom = 690.0
-
-[node name="Avatar" type="Control" parent="Team/right_team/back_bot"]
-anchors_preset = 0
-offset_left = 12.0
-offset_right = 12.0
-
-[node name="Avatar" type="Sprite2D" parent="Team/right_team/back_bot/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_m12ll")
-
-[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/back_bot/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
-
-[node name="StatusBar" type="Control" parent="Team/right_team/back_bot"]
-anchors_preset = 0
-
-[node name="CharacterName" type="Label" parent="Team/right_team/back_bot/StatusBar"]
-layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
-text = "名字Name"
-
-[node name="AP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 5.0
-offset_bottom = 24.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 3.0
-fill_mode = 3
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("5_wi147")
-texture_progress = ExtResource("6_2kpcg")
-
-[node name="HP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("8_spqvq")
-
-[node name="MP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("9_gladj")
-
-[node name="QI" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("10_lyox7")
-
-[node name="front_top" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 530.0
-offset_right = 220.0
-offset_bottom = 578.0
-
-[node name="Avatar" type="Control" parent="Team/right_team/front_top"]
-anchors_preset = 0
-offset_left = 12.0
-offset_right = 12.0
-
-[node name="Avatar" type="Sprite2D" parent="Team/right_team/front_top/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_m12ll")
-
-[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/front_top/Avatar"]
-texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
-
-[node name="StatusBar" type="Control" parent="Team/right_team/front_top"]
-anchors_preset = 0
-
-[node name="CharacterName" type="Label" parent="Team/right_team/front_top/StatusBar"]
-layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
-text = "名字Name"
-
-[node name="AP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 5.0
-offset_bottom = 24.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 3.0
-fill_mode = 3
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("5_wi147")
-texture_progress = ExtResource("6_2kpcg")
-
-[node name="HP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("8_spqvq")
-
-[node name="MP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
-max_value = 32.0
-value = 15.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = ExtResource("7_bun4i")
-texture_progress = ExtResource("9_gladj")
-
-[node name="QI" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1157,40 +942,40 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_mid" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 586.0
-offset_right = 220.0
-offset_bottom = 634.0
+offset_left = 1290.0
+offset_top = 1173.0
+offset_right = 1670.0
+offset_bottom = 1269.0
 
 [node name="Avatar" type="Control" parent="Team/right_team/front_mid"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/right_team/front_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/front_mid/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/right_team/front_mid"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/right_team/front_mid/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/right_team/front_mid/StatusBar"]
@@ -1198,7 +983,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -1213,11 +998,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/right_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1231,11 +1016,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/right_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1249,11 +1034,119 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/right_team/front_mid/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("10_lyox7")
+
+[node name="back_bot" type="Panel" parent="Team/right_team"]
+offset_left = 894.0
+offset_top = 1284.0
+offset_right = 1274.0
+offset_bottom = 1380.0
+
+[node name="Avatar" type="Control" parent="Team/right_team/back_bot"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Team/right_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_m12ll")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/back_bot/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_rxaoa")
+
+[node name="StatusBar" type="Control" parent="Team/right_team/back_bot"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Team/right_team/back_bot/StatusBar"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_3hllu")
+theme_override_font_sizes/font_size = 30
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_wi147")
+texture_progress = ExtResource("6_2kpcg")
+
+[node name="HP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("8_spqvq")
+
+[node name="MP" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("9_gladj")
+
+[node name="QI" type="TextureProgressBar" parent="Team/right_team/back_bot/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1265,40 +1158,40 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_bot" type="Panel" parent="Team/right_team"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 642.0
-offset_right = 220.0
-offset_bottom = 690.0
+offset_left = 1290.0
+offset_top = 1284.0
+offset_right = 1670.0
+offset_bottom = 1380.0
 
 [node name="Avatar" type="Control" parent="Team/right_team/front_bot"]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.0
 offset_right = 12.0
 
 [node name="Avatar" type="Sprite2D" parent="Team/right_team/front_bot/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(0.75, 0.75)
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m12ll")
 
 [node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/front_bot/Avatar"]
 texture_filter = 1
-position = Vector2(24, 24)
-scale = Vector2(2, 2)
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_rxaoa")
-frame_progress = 0.679767
 
 [node name="StatusBar" type="Control" parent="Team/right_team/front_bot"]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="CharacterName" type="Label" parent="Team/right_team/front_bot/StatusBar"]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 141.0
-offset_bottom = 23.0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "名字Name"
 
 [node name="AP" type="TextureProgressBar" parent="Team/right_team/front_bot/StatusBar"]
@@ -1306,7 +1199,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 5.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 3.0
 fill_mode = 3
@@ -1321,11 +1214,11 @@ texture_progress = ExtResource("6_2kpcg")
 [node name="HP" type="TextureProgressBar" parent="Team/right_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 38.0
-offset_right = 126.0
-offset_bottom = 43.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1339,11 +1232,11 @@ texture_progress = ExtResource("8_spqvq")
 [node name="MP" type="TextureProgressBar" parent="Team/right_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 62.0
-offset_top = 26.0
-offset_right = 94.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1357,11 +1250,117 @@ texture_progress = ExtResource("9_gladj")
 [node name="QI" type="TextureProgressBar" parent="Team/right_team/front_bot/StatusBar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 126.0
-offset_top = 26.0
-offset_right = 158.0
-offset_bottom = 31.0
-scale = Vector2(2, 2)
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("10_lyox7")
+
+[node name="front_top" type="Panel" parent="Team/right_team"]
+offset_left = 1290.0
+offset_top = 1060.0
+offset_right = 1670.0
+offset_bottom = 1156.0
+
+[node name="Avatar" type="Control" parent="Team/right_team/front_top"]
+anchors_preset = 0
+offset_left = 12.0
+offset_right = 12.0
+
+[node name="Avatar" type="Sprite2D" parent="Team/right_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_m12ll")
+
+[node name="AvatarFrame" type="AnimatedSprite2D" parent="Team/right_team/front_top/Avatar"]
+texture_filter = 1
+position = Vector2(60, 48)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_rxaoa")
+
+[node name="StatusBar" type="Control" parent="Team/right_team/front_top"]
+anchors_preset = 0
+
+[node name="CharacterName" type="Label" parent="Team/right_team/front_top/StatusBar"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 380.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_3hllu")
+theme_override_font_sizes/font_size = 30
+text = "名字Name"
+
+[node name="AP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 3.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("5_wi147")
+texture_progress = ExtResource("6_2kpcg")
+
+[node name="HP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 76.0
+offset_right = 188.0
+offset_bottom = 81.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("8_spqvq")
+
+[node name="MP" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 124.0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
+max_value = 32.0
+value = 15.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("7_bun4i")
+texture_progress = ExtResource("9_gladj")
+
+[node name="QI" type="TextureProgressBar" parent="Team/right_team/front_top/StatusBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 252.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 57.0
+scale = Vector2(4, 4)
 max_value = 32.0
 value = 15.0
 nine_patch_stretch = true
@@ -1380,19 +1379,20 @@ offset_bottom = 40.0
 
 [node name="Name" type="Label" parent="SkillInfo"]
 layout_mode = 0
-offset_left = 434.0
-offset_top = 516.0
-offset_right = 835.0
-offset_bottom = 543.0
+offset_left = 872.0
+offset_top = 1030.0
+offset_right = 1330.0
+offset_bottom = 1097.0
 theme_override_fonts/font = ExtResource("3_3hllu")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 60
 text = "技能名字SkillName"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SkillInfo"]
 layout_mode = 0
-offset_left = 435.0
-offset_top = 548.0
-offset_right = 842.0
-offset_bottom = 701.0
+offset_left = 871.0
+offset_top = 1111.0
+offset_right = 1692.0
+offset_bottom = 1372.0
 theme_override_fonts/normal_font = ExtResource("3_3hllu")
-text = "这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本"
+theme_override_font_sizes/normal_font_size = 45
+text = "这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本这是富文本"

@@ -9,6 +9,7 @@ signal initial_cards_drawn(player1_card, player2_card, first_player)
 signal initial_card_placed(top_card, bottom_card)
 signal player_turn
 signal scores_updated(player1_score, player2_score)
+signal ai_move_requested(card, position, direction)
 
 var player1_hand = []
 var player2_hand = []
@@ -353,6 +354,14 @@ func end_game():
 
 # 计算最终得分
 func calculate_scores():
+	# 0. 重置所有棋盘上卡牌的顺子/同花状态
+	for y_reset in range(3):
+		for x_reset in range(3):
+			var card_to_reset = board[y_reset][x_reset]
+			if card_to_reset != null:
+				card_to_reset.is_in_straight = false
+				card_to_reset.is_in_flush = false
+
 	# 1. 初始化：重置所有卡牌的基础得分
 	for y in range(3):
 		for x in range(3):
@@ -370,10 +379,6 @@ func calculate_scores():
 	# 3. 遍历所有非中心牌，检查其是否属于顺子或同花
 	for y in range(3):
 		for x in range(3):
-			# 跳过中心牌
-			if x == 1 and y == 1:
-				continue
-
 			var current_card = board[y][x]
 			if current_card == null:
 				continue
@@ -425,13 +430,18 @@ func calculate_scores():
 					if check_flush(line_cards):
 						is_part_of_flush = true
 
-			# 4. 根据检查结果更新当前卡牌的分数
-			if is_part_of_straight:
-				current_card.score *= 2
-			if is_part_of_flush:
-				current_card.score *= 2
+			# 4. 根据检查结果更新当前卡牌的分数和状态
+			current_card.is_in_straight = is_part_of_straight # 更新状态
+			current_card.is_in_flush = is_part_of_flush      # 更新状态
+			
+			# 仅对非中心牌应用分数翻倍
+			if x != 1 or y != 1: 
+				if is_part_of_straight:
+					current_card.score *= 2
+				if is_part_of_flush:
+					current_card.score *= 2
 
-			# 5. 更新卡牌视觉
+			# 5. 更新卡牌视觉 (这个函数稍后可以用来触发着色器)
 			current_card.update_visuals()
 
 	# 6. 最后计算总分
@@ -483,16 +493,22 @@ func bot_action():
 	# 使用AI玩家执行回合
 	ai_player.execute_turn()
 
-func process_turn():
+# 异步处理回合逻辑，以便加入AI思考延迟
+func process_turn() -> void: # 添加 -> void 返回类型，如果需要async
 	# 更新游戏状态
 	update_estimated_scores()
 	
 	# 检查是否是AI玩家的回合
 	if current_player == "player2":  # 假设player2是AI
-		bot_action()
-	else:
-		emit_signal("player_turn")
-		# 玩家回合，等待玩家操作
+		# === AI 思考延迟 ===
+		# 创建一个2秒的计时器并等待它完成
+		await get_tree().create_timer(2.0).timeout
+		# 延迟结束后，执行AI行动
+		if game_phase == "playing": # 再次检查游戏状态，防止计时期间游戏结束
+			bot_action()
+	else: # current_player == "player1"
+		# 玩家回合，发出 turn_changed 信号，UI会据此显示手牌和提示
+		emit_signal("turn_changed", "player1")
 		# 玩家的操作通过UI事件触发place_card()
 		pass
 

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c36b2511tucgv"]
+
+[ext_resource type="Texture2D" uid="uid://btssnvh0jmng5" path="res://Assets/NiNard/downarrow.png" id="1_a1ub6"]
+[ext_resource type="Texture2D" uid="uid://b2wvaccwbnx8e" path="res://Assets/NiNard/uparrow.png" id="2_q04br"]
+[ext_resource type="Texture2D" uid="uid://bfodfh4i2ij3" path="res://Assets/NiNard/rightarrow.png" id="3_qhkuj"]
+[ext_resource type="Texture2D" uid="uid://w240lixe28se" path="res://Assets/NiNard/leftarrow.png" id="4_f7g7l"]
+[ext_resource type="Texture2D" uid="uid://dum3q7hqb6ilw" path="res://Assets/NiNard/cancelbutton.png" id="5_tijpo"]
+
+[node name="DirectionArrows" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.6, 0.6)
+
+[node name="DownButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -190.0
+offset_top = 100.0
+offset_right = 190.0
+offset_bottom = 400.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_a1ub6")
+
+[node name="UpButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -190.0
+offset_top = -400.0
+offset_right = 190.0
+offset_bottom = -100.0
+texture_normal = ExtResource("2_q04br")
+
+[node name="RightButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 100.0
+offset_top = -189.0
+offset_right = 480.0
+offset_bottom = 191.0
+texture_normal = ExtResource("3_qhkuj")
+
+[node name="LeftButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -400.0
+offset_top = -189.0
+offset_right = -100.0
+offset_bottom = 191.0
+texture_normal = ExtResource("4_f7g7l")
+
+[node name="CancelButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -141.0
+offset_top = -143.0
+offset_right = 209.0
+offset_bottom = 207.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_tijpo")

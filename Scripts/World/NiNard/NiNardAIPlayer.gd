@@ -520,8 +520,9 @@ func get_offset_for_orientation(orientation: int) -> Vector2i:
 
 # 执行卡片放置
 func play_card(card: NiNardCard, position: Vector2i, orientation: int):
-	# 调用游戏逻辑中的放置卡片函数
-	game.place_card("player2", card, position, orientation)
+	# 不再直接调用游戏逻辑，而是发出信号通知UI
+	game.emit_signal("ai_move_requested", card, position, orientation)
+	# game.place_card("player2", card, position, orientation)
 
 # 用于排序的比较函数
 func _compare_moves(a, b) -> bool:

@@ -3,6 +3,8 @@
         "value":1,
         "suit":"SPADE",
         "card_name":"SA",
+        "sprite_path":"res://Assets/NiNard/Cards/S0001.png",
+
         "card_description":"A is the highest card in the game.",
         "skill":null
     },
@@ -10,6 +12,8 @@
         "value":2,
         "suit":"SPADE",
         "card_name":"S2",
+        "sprite_path":"res://Assets/NiNard/Cards/S0002.png",
+
         "card_description":"2 is the second highest card in the game.",
         "skill":null
     },
@@ -17,6 +21,8 @@
         "value":3,
         "suit":"SPADE",
         "card_name":"S3",
+        "sprite_path":"res://Assets/NiNard/Cards/S0003.png",
+
         "card_description":"3 is the third highest card in the game.",
         "skill":null
         },
@@ -24,6 +30,8 @@
         "value":4,
         "suit":"SPADE",
         "card_name":"S4",
+        "sprite_path":"res://Assets/NiNard/Cards/S0004.png",
+
         "card_description":"4 is the fourth highest card in the game.",
         "skill":null
     },
@@ -31,6 +39,8 @@
         "value":5,
         "suit":"SPADE",
         "card_name":"S5",
+        "sprite_path":"res://Assets/NiNard/Cards/S0005.png",
+
         "card_description":"5 is the fifth highest card in the game.",
         "skill":null
     },
@@ -38,6 +48,8 @@
         "value":1,
         "suit":"HEART",
         "card_name":"HA",
+        "sprite_path":"res://Assets/NiNard/Cards/H0001.png",
+
         "card_description":"A is the highest card in the game.",
         "skill":null
     },
@@ -45,6 +57,7 @@
         "value":2,
         "suit":"HEART",
         "card_name":"H2",
+        "sprite_path":"res://Assets/NiNard/Cards/H0002.png",
         "card_description":"2 is the second highest card in the game.",
         "skill":null
     },
@@ -52,6 +65,7 @@
         "value":3,
         "suit":"HEART",
         "card_name":"H3",
+        "sprite_path":"res://Assets/NiNard/Cards/H0003.png",
         "card_description":"3 is the third highest card in the game.",
         "skill":null
     },
@@ -59,6 +73,7 @@
         "value":4,
         "suit":"HEART",
         "card_name":"H4",
+        "sprite_path":"res://Assets/NiNard/Cards/H0004.png",
         "card_description":"4 is the fourth highest card in the game.",
         "skill":null
     },
@@ -66,6 +81,7 @@
         "value":5,
         "suit":"HEART",
         "card_name":"H5",
+        "sprite_path":"res://Assets/NiNard/Cards/H0005.png",
         "card_description":"5 is the fifth highest card in the game.",
         "skill":null
     },
@@ -73,6 +89,7 @@
         "value":1,      
         "suit":"DIAMOND",
         "card_name":"DA",
+        "sprite_path":"res://Assets/NiNard/Cards/D0001.png",
         "card_description":"A is the highest card in the game.",
         "skill":null
     },
@@ -80,6 +97,7 @@
         "value":2,
         "suit":"DIAMOND",
         "card_name":"D2",
+        "sprite_path":"res://Assets/NiNard/Cards/D0002.png",
         "card_description":"2 is the second highest card in the game.",
         "skill":null
     },
@@ -87,6 +105,7 @@
         "value":3,
         "suit":"DIAMOND",
         "card_name":"D3",
+        "sprite_path":"res://Assets/NiNard/Cards/D0003.png",
         "card_description":"3 is the third highest card in the game.",
         "skill":null    
     },
@@ -94,6 +113,7 @@
         "value":4,
         "suit":"DIAMOND",
         "card_name":"D4",
+        "sprite_path":"res://Assets/NiNard/Cards/D0004.png",
         "card_description":"4 is the fourth highest card in the game.",
         "skill":null    
     },
@@ -101,6 +121,7 @@
         "value":5,
         "suit":"DIAMOND",
         "card_name":"D5",
+        "sprite_path":"res://Assets/NiNard/Cards/D0005.png",
         "card_description":"5 is the fifth highest card in the game.",
         "skill":null
     },
@@ -143,5 +164,14 @@
         "sprite_path":"res://Assets/NiNard/Cards/C0005.png",
         "card_description":"5 is the fifth highest card in the game.",
         "skill":null
+    },
+    "S0011":{
+        "value":5,
+        "suit":"SPADE",
+        "card_name":"碧夏尔",
+        "sprite_path":"res://Assets/NiNard/Cards/黑桃1-碧夏尔.png",
+        "card_description":"结束计分前发动，你可以选择该牌变为任意一个花色。",
+        "skill":null
     }
+
 }

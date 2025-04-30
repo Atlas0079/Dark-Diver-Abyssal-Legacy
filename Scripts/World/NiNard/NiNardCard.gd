@@ -5,8 +5,6 @@ enum Orientation {UP, RIGHT, DOWN, LEFT}
 enum Suit {SPADE, HEART, DIAMOND, CLUB}
 
 signal card_clicked(card, is_on_board)
-signal direction_selected(card, direction)
-signal cancel_selected(card)
 
 @export var value: int = 1
 @export var suit: Suit = Suit.SPADE
@@ -21,31 +19,34 @@ signal cancel_selected(card)
 @onready var card_sprite = $CardSprite
 @onready var value_label = $ValueLabel
 @onready var suit_sprite = $SuitSprite
-#@onready var owner_indicator = $OwnerIndicator
-#@onready var direction_indicator = $DirectionIndicator
-@onready var direction_arrow = $DirectionArrows
 @onready var card_owner_sprite = $CardOwnerSprite
 @onready var click_button = $ClickButton  # 引用新添加的按钮
+@onready var glow_sprite = $GlowSprite    # 引用辉光精灵
 
 var is_selectable = false
 var is_on_board = false  # 新增属性，标记卡牌是否在场上
-var original_position = Vector2.ZERO
+var original_position = Vector2.ZERO # 这个变量似乎未使用，可以考虑移除或另作他用
+var original_hand_position: Vector2 = Vector2.ZERO # 新增：存储在手牌中的原始相对位置
+var is_in_straight: bool = false # 卡片是否处于顺子中
+var is_in_flush: bool = false    # 卡片是否处于同花中
 
 func _ready(): 
-	direction_arrow.visible = false
 	card_owner_sprite.visible = false
+	
+	# 初始化辉光精灵
+	if glow_sprite:
+		glow_sprite.visible = false    # 默认隐藏辉光
+
+		
+		# 由于辉光贴图尺寸比卡片大（每边多45像素），确保它位于卡片的正中心
+		# 辉光和卡片已经在场景中居中对齐，无需额外偏移
+		# 如果需要调整，可以在这里设置 glow_sprite.position
+	
 	# 更新卡牌视觉效果
 	update_visuals()
 	
 	# 连接按钮信号而不是Area2D
 	click_button.pressed.connect(_on_button_pressed)
-	
-	# 连接方向按钮信号
-	$DirectionArrows/UpButton.pressed.connect(_on_up_button_pressed)
-	$DirectionArrows/RightButton.pressed.connect(_on_right_button_pressed)
-	$DirectionArrows/DownButton.pressed.connect(_on_down_button_pressed)
-	$DirectionArrows/LeftButton.pressed.connect(_on_left_button_pressed)
-	$DirectionArrows/CancelButton.pressed.connect(_on_cancel_button_pressed)
 
 func update_visuals():
 	# 更新数值文本
@@ -73,16 +74,20 @@ func update_visuals():
 	else:
 		card_owner_sprite.visible = false
 	
-	# 更新方向指示器
-	match orientation:
-		Orientation.UP:
-			direction_arrow.rotation = 0
-		Orientation.RIGHT:
-			direction_arrow.rotation = PI/2
-		Orientation.DOWN:
-			direction_arrow.rotation = PI
-		Orientation.LEFT:
-			direction_arrow.rotation = 3*PI/2
+	# 更新辉光效果
+	if glow_sprite:
+		# 根据顺子/同花状态设置辉光颜色
+		if is_in_straight and is_in_flush:
+			glow_sprite.modulate = Color(0.7, 0, 0.7, 1.0) # 紫色辉光
+			glow_sprite.visible = true
+		elif is_in_straight:
+			glow_sprite.modulate = Color(0, 0.7, 0, 1.0)   # 绿色辉光
+			glow_sprite.visible = true
+		elif is_in_flush:
+			glow_sprite.modulate = Color(0, 0, 0.7, 1.0)   # 蓝色辉光
+			glow_sprite.visible = true
+		else:
+			glow_sprite.visible = false  # 如果不在顺子也不在同花中，隐藏辉光
 
 func set_selectable(selectable: bool):
 	is_selectable = selectable
@@ -90,72 +95,6 @@ func set_selectable(selectable: bool):
 	if click_button:
 		click_button.disabled = !selectable
 
-func show_direction_selection():
-	direction_arrow.visible = true
-	click_button.visible = false
-	click_button.disabled = true
-	
-	# 确保所有方向按钮的z_index高于卡片
-	for button in direction_arrow.get_children():
-		if button is TextureButton:
-			button.z_index = 10
-			# 确保按钮是可交互的
-			button.mouse_filter = Control.MOUSE_FILTER_STOP
-			button.disabled = false
-	
-	# 将整个方向箭头控件提到前面
-	direction_arrow.z_index = 10
-	
-	# 打印调试信息
-	#print("显示方向选择，按钮状态：")
-	for button_name in ["UpButton", "RightButton", "DownButton", "LeftButton", "CancelButton"]:
-		var button = direction_arrow.get_node(button_name)
-		if button:
-			#print(button_name + " 可见: " + str(button.visible) + ", 禁用: " + str(button.disabled))
-			pass
-
-func hide_direction_selection():
-	direction_arrow.visible = false
-	# 恢复卡片点击按钮
-	if is_selectable:
-		click_button.visible = true
-
-# 新的按钮点击处理函数
 func _on_button_pressed():
 	if is_selectable:
-		print("card clicked: " + card_owner + ", value: " + str(value) + ", selectable: " + str(is_selectable) + ", on board: " + str(is_on_board))
 		emit_signal("card_clicked", self, is_on_board)
-
-func _input(event):
-	pass
-
-func on_direction_selected(dir: int):
-	print("direction selected: " + str(dir))
-	orientation = Orientation.values()[dir]  # 显式转换整数为枚举
-	update_visuals()
-	emit_signal("direction_selected", self, dir)
-	hide_direction_selection()
-
-func on_cancel_selected():
-	emit_signal("cancel_selected", self)
-	hide_direction_selection()
-
-func _on_up_button_pressed():
-	print("上箭头按钮被点击")
-	on_direction_selected(0)
-
-func _on_right_button_pressed():
-	print("右箭头按钮被点击")
-	on_direction_selected(1)
-
-func _on_down_button_pressed():
-	print("下箭头按钮被点击")
-	on_direction_selected(2)
-
-func _on_left_button_pressed():
-	print("左箭头按钮被点击")
-	on_direction_selected(3)
-
-func _on_cancel_button_pressed():
-	print("取消按钮被点击")
-	on_cancel_selected()

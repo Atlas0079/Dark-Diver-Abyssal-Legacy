@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://l0hm7lwbq5i7"]
+[gd_scene load_steps=10 format=3 uid="uid://l0hm7lwbq5i7"]
 
 [ext_resource type="FontFile" uid="uid://cxw2kysn118an" path="res://Assets/UI/Xim-Sans-Brahmic-3.ttf" id="1_iyt3l"]
 [ext_resource type="Texture2D" uid="uid://hobg5teedkgv" path="res://Assets/NiNard/Tutorial/Page1.png" id="1_jixun"]
+[ext_resource type="Script" path="res://Scripts/World/NiNard/TutorialPanel.gd" id="1_llb5o"]
 [ext_resource type="Texture2D" uid="uid://cwb1uphhc80sv" path="res://Assets/NiNard/Tutorial/Page2.png" id="2_nsq8b"]
 [ext_resource type="Texture2D" uid="uid://dlkby2pa3syxb" path="res://Assets/NiNard/Tutorial/Page3.png" id="4_lkk70"]
 [ext_resource type="Texture2D" uid="uid://dh0rk4gvsrdcd" path="res://Assets/NiNard/Tutorial/Page4.png" id="5_4v4jk"]
 [ext_resource type="Texture2D" uid="uid://467g8ux3jt7r" path="res://Assets/NiNard/Tutorial/Page5.png" id="6_gt4wk"]
 [ext_resource type="Texture2D" uid="uid://bc601gvo1io82" path="res://Assets/NiNard/Tutorial/Page6.png" id="7_5e74i"]
+[ext_resource type="Texture2D" uid="uid://g66ii4wfqaek" path="res://Assets/NiNard/Tutorial/Page7.png" id="8_q1xkw"]
 
 [node name="Tutorial" type="Panel"]
 anchors_preset = 15
@@ -14,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_llb5o")
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -71,6 +74,10 @@ texture = ExtResource("6_gt4wk")
 visible = false
 position = Vector2(1280, 720)
 texture = ExtResource("7_5e74i")
+
+[node name="Page7Image" type="Sprite2D" parent="Page"]
+position = Vector2(1329, 699)
+texture = ExtResource("8_q1xkw")
 
 [node name="PageCount" type="Label" parent="."]
 layout_mode = 0
