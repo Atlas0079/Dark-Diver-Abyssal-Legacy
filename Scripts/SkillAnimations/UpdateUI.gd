@@ -119,15 +119,32 @@ func show_damage_popup(character, damage: int) -> void:
 		push_error("UpdateUI: 找不到角色精灵")
 		return
 	
-	# 创建伤害数字实例
-	# 注意：这里假设您有一个伤害数字场景，根据实际情况调整
-	var damage_popup = load("res://Scenes/UI/DamagePopup.tscn").instantiate()
-	battle_scene.add_child(damage_popup)
+	# 1. 用代码创建 Label3D
+	var label = Label3D.new()
+	label.text = str(damage)
+	label.font_size = 32
+	label.modulate = Color.RED # 伤害用红色
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.pixel_size = 0.01 # Godot 4.x 的写法，替代 set_flag
 	
-	# 设置伤害数字属性
-	damage_popup.global_position = sprite.global_position + Vector3(0, 0.5, 0)
-	damage_popup.set_damage(damage)
-	damage_popup.pop()
+	# 2. 【修正】先将节点添加到场景树
+	battle_scene.add_child(label)
+	
+	# 3. 【修正】然后再设置它的全局位置
+	var start_pos = sprite.global_position + Vector3(0, 1.5, 0) # 在角色头顶
+	label.global_position = start_pos
+	
+	# 4. 创建动画
+	var tween = label.create_tween() # 绑定到 label 自身
+	# 动画目标：向上飘动1个单位
+	var end_pos = start_pos + Vector3(0, 1, 0)
+	# 让标签在0.8秒内向上移动
+	tween.tween_property(label, "global_position", end_pos, 0.8).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	# 同时，在0.3秒的延迟后，用0.5秒的时间让标签淡出
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 0.5).set_delay(0.3)
+	
+	# 5. 动画完成后，自动释放节点
+	tween.tween_callback(label.queue_free)
 
 # 显示治疗数字
 func show_heal_popup(character, heal: int) -> void:
@@ -136,15 +153,29 @@ func show_heal_popup(character, heal: int) -> void:
 		push_error("UpdateUI: 找不到角色精灵")
 		return
 	
-	# 创建治疗数字实例
-	# 注意：这里假设您有一个治疗数字场景，根据实际情况调整
-	var heal_popup = load("res://Scenes/UI/HealPopup.tscn").instantiate()
-	battle_scene.add_child(heal_popup)
+	# 1. 用代码创建 Label3D
+	var label = Label3D.new()
+	label.text = str(heal)
+	label.font_size = 32
+	label.modulate = Color.GREEN # 治疗用绿色
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.pixel_size = 0.01 # Godot 4.x 的写法，替代 set_flag
 	
-	# 设置治疗数字属性
-	heal_popup.global_position = sprite.global_position + Vector3(0, 0.5, 0)
-	heal_popup.set_heal(heal)
-	heal_popup.pop()
+	# 2. 【修正】先将节点添加到场景树
+	battle_scene.add_child(label)
+	
+	# 3. 【修正】然后再设置它的全局位置
+	var start_pos = sprite.global_position + Vector3(0, 1.5, 0)
+	label.global_position = start_pos
+	
+	# 4. 创建动画
+	var tween = label.create_tween() # 绑定到 label 自身
+	var end_pos = start_pos + Vector3(0, 1, 0)
+	tween.tween_property(label, "global_position", end_pos, 0.8).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 0.5).set_delay(0.3)
+	
+	# 5. 动画完成后，自动释放节点
+	tween.tween_callback(label.queue_free)
 
 # 添加状态效果图标
 func add_buff(character, buff_data: Dictionary) -> void:

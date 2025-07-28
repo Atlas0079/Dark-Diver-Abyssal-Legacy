@@ -7,12 +7,8 @@ var ui_updater: UpdateUI
 # 特效资源路径
 const EFFECT_PATHS = {
 	"hit": "res://Scenes/Effects/HitEffect.tscn",
-	"slash": "res://Scenes/Effects/SlashEffect.tscn",
-	"fire": "res://Scenes/Effects/FireEffect.tscn",
-	"ice": "res://Scenes/Effects/IceEffect.tscn",
-	"lightning": "res://Scenes/Effects/LightningEffect.tscn",
 	"heal": "res://Scenes/Effects/HealEffect.tscn",
-	"shield": "res://Scenes/Effects/ShieldEffect.tscn",
+	"block": "res://Scenes/Effects/ShieldEffect.tscn",
 	"buff": "res://Scenes/Effects/BuffEffect.tscn",
 	"debuff": "res://Scenes/Effects/DebuffEffect.tscn",
 }
@@ -52,21 +48,7 @@ func play_hit_effect(target, effect_type: String = "hit") -> void:
 	await effect.animation_finished
 	effect.queue_free()
 
-# 播放治疗特效
-func play_heal_effect(target) -> void:
-	play_hit_effect(target, "heal")
 
-# 播放护盾特效
-func play_shield_effect(target) -> void:
-	play_hit_effect(target, "shield")
-
-# 播放增益效果特效
-func play_buff_effect(target) -> void:
-	play_hit_effect(target, "buff")
-
-# 播放减益效果特效
-func play_debuff_effect(target) -> void:
-	play_hit_effect(target, "debuff")
 
 # ------------ 角色移动函数 ------------
 
@@ -113,7 +95,7 @@ func shake(character, intensity: float = 0.05, duration: float = 0.2) -> void:
 		var tween = battle_scene.create_tween()
 		tween.tween_property(sprite, "global_position", original_position + offset, shake_time)
 		await tween.finished
-	
+	 
 	# 恢复原位
 	var tween = battle_scene.create_tween()
 	tween.tween_property(sprite, "global_position", original_position, shake_time)
@@ -152,62 +134,95 @@ func update_hp(character, change_amount: int) -> void:
 func update_mp(character, change_amount: int) -> void:
 	ui_updater.update_mp(character, change_amount)
 
-# 播放伤害动画组合（特效+数字+抖动+HP更新）
-func play_damage_sequence(target, damage: int, effect_type: String = "hit") -> void:
-	# 播放特效
-	play_hit_effect(target, effect_type)
+# 播放完整的受击动画序列（异步）
+# 这个函数现在是异步的，调用方可以 await 它
+func play_hit_sequence(target: Character, effect_package: Dictionary) -> void:
 	
-	# 显示伤害数字
-	show_damage(target, damage)
+	var hit_type = effect_package.get("hit_type", "normal")
+	var damage = effect_package.get("damage", 0)
+	var heal = effect_package.get("heal", 0)
 	
-	# 角色抖动
-	shake(target)
-	
-	# 更新HP
-	update_hp(target, -damage)
+	# 根据命中类型播放不同效果
+	match hit_type:
+		"miss":
+			_popup_text(target, "闪避", Color.GRAY)
+			# TODO: 在这里播放闪避动画
+			await battle_scene.get_tree().create_timer(0.6) # 等待一个动画时间
+			return # 闪避了，直接结束，不处理伤害
 
-# 播放治疗动画组合（特效+数字+HP更新）
-func play_heal_sequence(target, heal: int) -> void:
-	# 播放特效
-	play_heal_effect(target)
-	
-	# 显示治疗数字
-	show_heal(target, heal)
-	
-	# 更新HP
-	update_hp(target, heal)
+		"block":
+			_popup_text(target, "格挡", Color.CYAN)
+			# TODO: 在这里播放格挡动画
+			play_hit_effect(target, "block")
+			# 格挡后可能依然有伤害，所以流程继续
 
-# 从BattleEvent自动处理UI和动画效果
+		"crit":
+			_popup_text(target, "暴击!", Color.ORANGE_RED)
+			# 暴击流程继续，处理伤害
+			play_hit_effect(target, "crit")
+
+		"normal":
+			# 普通命中，流程继续
+			pass 
+
+	# --- 处理伤害/治疗的视觉效果 ---
+	if damage > 0:
+		# 播放伤害特效
+		var effect_type = effect_package.get("element", "hit")
+		play_hit_effect(target, effect_type)
+		
+		# 显示伤害数字
+		show_damage(target, damage)
+		
+		# 更新HP
+		update_hp(target, -damage)
+		
+		# 等待角色抖动动画完成
+		await shake(target)
+
+	if heal > 0:
+		# 播放治疗特效
+		play_hit_effect(target, "heal")
+		
+		# 显示治疗数字
+		show_heal(target, heal)
+		
+		# 更新HP
+		update_hp(target, heal)
+		
+		# 等待一个短暂的延迟
+		await battle_scene.get_tree().create_timer(0.3).timeout
+
+# 创建一个通用的文字弹出函数（发射后不管）
+func _popup_text(target: Character, text: String, color: Color) -> void:
+	var sprite = battle_scene.find_character_sprite(target)
+	if not sprite:
+		return
+		
+	var label = Label3D.new()
+	label.text = text
+	label.font_size = 28
+	label.modulate = color
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.pixel_size = 0.01
+	
+	battle_scene.add_child(label)
+	
+	var start_pos = sprite.global_position + Vector3(0, 1.8, 0) # 放在比伤害数字稍高一点的位置
+	label.global_position = start_pos
+	
+	# 创建一个 tween，并绑定到 label 节点上
+	# 这样即使 GeneralAnimation 对象被销毁，tween 也能继续执行
+	var tween = label.create_tween() 
+	
+	var end_pos = start_pos + Vector3(0, 0.5, 0)
+	tween.tween_property(label, "global_position", end_pos, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 0.4).set_delay(0.2)
+	
+	# 让 tween 在完成后自动调用 label 的 queue_free 方法
+	tween.tween_callback(label.queue_free)
+
+# 从BattleEvent自动处理UI和动画效果（这个函数现在可以被废弃，或只用于非常简单的情况）
 func handle_battle_event(battle_event: BattleEvent) -> void:
-	# 更新UI
-	ui_updater.update_from_event(battle_event)
-	
-	# 根据事件类型和技能信息添加适当的视觉效果
-	if battle_event.event_type == BattleEvent.EventType.ACTIVE_SKILL or battle_event.event_type == BattleEvent.EventType.PASSIVE_SKILL:
-		var skill_info = battle_event.skill_info
-		var targets = battle_event.targets
-		
-		# 处理伤害效果的视觉表现
-		if skill_info.has("damage") and skill_info.damage > 0:
-			var effect_type = skill_info.get("element", "hit")
-			for target in targets:
-				play_damage_sequence(target, skill_info.damage, effect_type)
-		
-		# 处理治疗效果的视觉表现
-		if skill_info.has("heal") and skill_info.heal > 0:
-			for target in targets:
-				play_heal_sequence(target, skill_info.heal)
-	
-	# 处理状态效果
-	elif battle_event.event_type == BattleEvent.EventType.STATE_RESOLVE:
-		var state_info = battle_event.state_info
-		var source = battle_event.source
-		
-		# 处理DOT伤害的视觉表现
-		if state_info.has("dot_damage") and state_info.dot_damage > 0:
-			var effect_type = state_info.get("element", "hit")
-			play_damage_sequence(source, state_info.dot_damage, effect_type)
-		
-		# 处理HOT治疗的视觉表现
-		if state_info.has("hot_heal") and state_info.hot_heal > 0:
-			play_heal_sequence(source, state_info.hot_heal)
+	# ... (保留或删除) ...
+	pass

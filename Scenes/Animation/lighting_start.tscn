@@ -116,4 +116,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.33922e-05, 0.00632071, -0.
 axis = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_71pmk")
-frame_progress = 0.135818
+frame_progress = 0.0610348

@@ -148,4 +148,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_myua8")
-frame_progress = 0.332946
+frame_progress = 0.880496

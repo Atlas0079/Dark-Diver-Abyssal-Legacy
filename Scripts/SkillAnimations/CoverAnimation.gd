@@ -5,8 +5,6 @@ var original_position: Vector3
 var target_sprite: Sprite3D
 var user_sprite: Sprite3D
 var prepare_effect: AnimatedSprite3D
-var general_animation: GeneralAnimation
-var ui_updater: UpdateUI
 
 # 添加extra_event函数，处理额外事件逻辑
 func extra_event(animation_queue: Array, current_event: BattleEvent) -> Array:
@@ -61,10 +59,8 @@ func extra_event(animation_queue: Array, current_event: BattleEvent) -> Array:
 	print("CoverAnimation.extra_event 返回事件: %s" % extra_events)
 	return extra_events
 
-func setup(p_battle_scene: Node3D,) -> void:
-	self.battle_scene = p_battle_scene
-	self.ui_updater = UpdateUI.new(battle_scene)
-	self.general_animation = GeneralAnimation.new(battle_scene, ui_updater)
+func setup(p_battle_scene: Node3D, p_general_animation: GeneralAnimation) -> void:
+	super.setup(p_battle_scene, p_general_animation)
 
 func play(phase: AnimationPhase, p_battle_event: BattleEvent) -> void: 
 	self.battle_event = p_battle_event
@@ -111,10 +107,10 @@ func play_prepare() -> void:
 	prepare_effect.global_position = user_sprite.global_position
 	prepare_effect.play()
 	
-	# 消耗魔法值（使用UI更新器）
+	# 消耗魔法值（使用通用动画的UI更新器）
 	var mp_cost = battle_event.skill_info.get("mp_cost", 0)
 	if mp_cost > 0:
-		ui_updater.update_mp(battle_event.source, -mp_cost)
+		general_animation.update_mp(battle_event.source, -mp_cost)
 	
 	# 等待准备动画完成
 	await prepare_effect.animation_finished

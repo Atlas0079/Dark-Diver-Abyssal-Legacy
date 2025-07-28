@@ -507,6 +507,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_bot" type="Panel" parent="Team/left_team"]
+layout_mode = 0
 offset_left = 456.0
 offset_top = 1284.0
 offset_right = 836.0
@@ -615,6 +616,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_top" type="Panel" parent="Team/left_team"]
+layout_mode = 0
 offset_left = 456.0
 offset_top = 1060.0
 offset_right = 836.0
@@ -728,6 +730,7 @@ offset_right = 870.0
 offset_bottom = 40.0
 
 [node name="back_top" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 894.0
 offset_top = 1060.0
 offset_right = 1274.0
@@ -834,6 +837,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="back_mid" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 894.0
 offset_top = 1173.0
 offset_right = 1274.0
@@ -942,6 +946,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_mid" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 1290.0
 offset_top = 1173.0
 offset_right = 1670.0
@@ -1050,6 +1055,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="back_bot" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 894.0
 offset_top = 1284.0
 offset_right = 1274.0
@@ -1158,6 +1164,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_bot" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 1290.0
 offset_top = 1284.0
 offset_right = 1670.0
@@ -1266,6 +1273,7 @@ texture_under = ExtResource("7_bun4i")
 texture_progress = ExtResource("10_lyox7")
 
 [node name="front_top" type="Panel" parent="Team/right_team"]
+layout_mode = 0
 offset_left = 1290.0
 offset_top = 1060.0
 offset_right = 1670.0

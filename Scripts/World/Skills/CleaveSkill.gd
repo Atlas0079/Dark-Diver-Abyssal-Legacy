@@ -25,18 +25,29 @@ func _build_skill_info(user: Character, battle: Battle) -> Dictionary:
 
 func apply_effects(user: Character, targets: Array[Character], battle: Battle, context: Dictionary = {}) -> Dictionary:
 	
-	var target = targets[0]
-	
-	# 构建技能信息
 	var skillinfo = _build_skill_info(user, battle)
 	
-	# 添加攻击效果，1倍伤害
-	var damage_multiplier = 1.0
-	skillinfo.effects.append(Attack.perform_attack(user, target, "physical", damage_multiplier))
-	
-	# 添加物理攻击力下降状态（两层）
-	StateManager.add_state(target, "physical_attack_down", 2)
-	skillinfo.effects.append({"physical_attack_down": 2})
+	# 遍历所有目标
+	for target in targets:
+		# --- 攻击效果 ---
+		var damage_multiplier = 1.0
+		var attack_result = Attack.perform_attack(user, target, "physical", damage_multiplier)
+		
+		var effect_package = {
+			"targets": [target],
+			"damage": attack_result.get("damage", 0),
+			"hit_type": attack_result.get("hit_type", "miss"),
+			"applied_states": [], # 初始化
+			"removed_states": []
+		}
+		
+		# --- 状态效果 ---
+		if attack_result.get("hit_type", "miss") != "miss":
+			StateManager.add_state(target, "physical_attack_down", 2)
+			effect_package.applied_states.append({"physical_attack_down": 2}) # 假设持续2回合
+		
+		# 添加到最终效果列表
+		skillinfo.effects.append(effect_package)
 	
 	print("应用Cleave")
 	return skillinfo 

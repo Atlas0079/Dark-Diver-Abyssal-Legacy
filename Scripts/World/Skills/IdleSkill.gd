@@ -27,9 +27,21 @@ func apply_effects(user: Character, targets: Array[Character], battle: Battle, c
 	# 构建技能信息
 	var skillinfo = _build_skill_info(user, battle)
 	
-	# 添加攻击效果
+	# 逻辑上增加资源
 	user.resources["health"]["current"] += 1
 	user.resources["mana"]["current"] += 1
+	
+	# 创建标准效果包
+	var effect_package = {
+		"targets": [user],
+		"heal": 1,
+		"mp_heal": 1, # 使用一个新键来表示魔法恢复
+		"applied_states": [],
+		"removed_states": []
+	}
+	
+	skillinfo.effects.append(effect_package)
+	
 	print("应用Idle")
 	return skillinfo
 

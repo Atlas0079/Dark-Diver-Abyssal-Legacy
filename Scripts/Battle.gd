@@ -130,6 +130,9 @@ func process_turn() -> void:
 	state_events = StateManager.check_states_at_timing("turn_end", self)
 	record_state_events(state_events)
 	
+	# 回合结束时，创建并记录一个同步事件
+	battle_info.append(_create_sync_event())
+	
 	# 4. 回合结束处理
 	turn_count += 1
 
@@ -363,6 +366,30 @@ func _create_passive_skill_event(user: Character, skill: BaseSkill, targets: Arr
 		if key != "effects" and not event.skill_info.has(key):
 			event.skill_info[key] = skill_result[key]
 	
+	return event
+
+# 创建回合同步事件
+func _create_sync_event() -> BattleEvent:
+	var event = BattleEvent.new()
+	event.event_type = BattleEvent.EventType.TURN_SYNC
+	event.turn_number = turn_count
+	
+	var sync_data = {}
+	# 收集战场上所有角色的状态
+	for team in [blue_team, red_team]:
+		for character in team.values():
+			if character:
+				# 使用角色实例的 object_id 作为唯一的键
+				# 注意：在动画系统端，我们需要一种方法通过角色实例找到UI
+				sync_data[character.get_instance_id()] = {
+					"hp": character.get_resource("health").current,
+					"mp": character.get_resource("mana").current,
+					"qi": character.get_resource("qi").current,
+					"ap": character.battle_stats.action_point,
+					"name": character.character_name # 用于调试输出
+				}
+				
+	event.sync_info = sync_data
 	return event
 
 func create_state_resolve_event(user: Character,state_result: Dictionary) -> BattleEvent:

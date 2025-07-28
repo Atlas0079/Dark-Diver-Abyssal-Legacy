@@ -22,9 +22,10 @@ StateManager="*res://Scripts/World/States/StateManager.gd"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/stretch/scale=0.5
 
 [rendering]
 

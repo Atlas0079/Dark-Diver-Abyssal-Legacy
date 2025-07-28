@@ -1,11 +1,8 @@
 class_name CoverReturnAnimation
 extends BaseSkillAnimation
 
-var general_animation: GeneralAnimation
-var ui_updater: UpdateUI
-
-func setup(p_battle_scene: Node3D) -> void:
-	self.battle_scene = p_battle_scene
+func setup(p_battle_scene: Node3D, p_general_animation: GeneralAnimation) -> void:
+	super.setup(p_battle_scene, p_general_animation)
 
 func play(phase: AnimationPhase, p_battle_event: BattleEvent) -> void:
 	self.battle_event = p_battle_event

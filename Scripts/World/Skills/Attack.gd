@@ -25,11 +25,8 @@ static func perform_attack(attacker: Character, target: Character, attack_type: 
 	var damage = calculate_damage(attacker, target, hit_type, attack_type, damage_multiplier)
 	
 	# 如果不是闪避，则造成伤害
-	var is_hit = hit_type != "miss"
-	if is_hit:
+	if hit_type != "miss":
 		target.modify_health(-damage)
-	else:
-		damage = 0
 	
 	# 返回攻击结果
 	return {
@@ -37,7 +34,6 @@ static func perform_attack(attacker: Character, target: Character, attack_type: 
 		"target": target,
 		"hit_type": hit_type,
 		"damage": damage,
-		"is_hit": is_hit
 	}
 
 # 计算命中类型

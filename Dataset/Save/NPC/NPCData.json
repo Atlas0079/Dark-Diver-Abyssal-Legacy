@@ -14,7 +14,7 @@
     
     "resources": {
       "health": {
-        "current": 10,
+        "current": 20,
         "max": 20
       },
       "mana": {
@@ -51,7 +51,7 @@
     },
     
     "battle": {
-      "action_point": 9,
+      "action_point": 1,
       "action_threshold": 10,
       "active_skills": {
         "S1005": {
@@ -132,7 +132,7 @@
       },
       
       "battle": {
-        "action_point": 0,
+        "action_point": 9,
         "action_threshold": 10,
         "active_skills": {
           "S1002": {

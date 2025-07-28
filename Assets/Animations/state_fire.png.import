@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6fvy8nqlqup"
-path.s3tc="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_00.png-d3d49a1153faf1b16e077d8ea43bd33b.s3tc.ctex"
-path.etc2="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_00.png-d3d49a1153faf1b16e077d8ea43bd33b.etc2.ctex"
+uid="uid://cek25si8f37w6"
+path.s3tc="res://.godot/imported/state_fire.png-52bc52517cfdaea5892ff25851363878.s3tc.ctex"
+path.etc2="res://.godot/imported/state_fire.png-52bc52517cfdaea5892ff25851363878.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Animations/New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_00.png"
-dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_00.png-d3d49a1153faf1b16e077d8ea43bd33b.s3tc.ctex", "res://.godot/imported/All_Fire_Bullet_Pixel_16x16_00.png-d3d49a1153faf1b16e077d8ea43bd33b.etc2.ctex"]
+source_file="res://Assets/Animations/state_fire.png"
+dest_files=["res://.godot/imported/state_fire.png-52bc52517cfdaea5892ff25851363878.s3tc.ctex", "res://.godot/imported/state_fire.png-52bc52517cfdaea5892ff25851363878.etc2.ctex"]
 
 [params]
 

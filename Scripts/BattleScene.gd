@@ -13,6 +13,8 @@ var team_node
 var blue_team_status_bars = {}
 var red_team_status_bars = {}
 var animation_manager
+# 新增：用于存储 instance_id 到 StatusBar 节点的映射
+var _character_id_to_ui_map = {}
 
 func _ready():
 	# 初始化节点引用
@@ -121,6 +123,9 @@ func _init_single_character_ui(pos: Battle.Position, is_blue_team: bool):
 		return
 
 	if character != null:
+		# --- 新增：建立映射 ---
+		_character_id_to_ui_map[character.get_instance_id()] = status_bar
+		
 		status_bar.visible = true
 		
 		# 更新角色名
@@ -251,3 +256,21 @@ func get_character_team(character: Character):
 		if battle.red_team.get(pos) == character:
 			return "red"
 	return null
+
+# 新增：根据角色 instance_id 和 UI 类型查找 UI 组件
+func find_character_ui_by_id(char_id: int, ui_type: String):
+	# 1. 先通过 ID 找到角色的 StatusBar
+	var status_bar = _character_id_to_ui_map.get(char_id)
+	if status_bar == null:
+		# 这是一个预期的失败情况：如果角色死亡并在回合中被移除，
+		# 它的UI可能已经不在映射中，但这不应被视为一个错误。
+		# push_error("BattleScene.find_character_ui_by_id 未找到 ID 为 %d 的角色的 StatusBar 映射" % char_id)
+		return null
+	
+	# 2. 从 StatusBar 中找到具体的 UI 节点
+	var node = status_bar.get_node_or_null(ui_type)
+	if node:
+		return node
+	else:
+		push_error("BattleScene.find_character_ui_by_id 在 ID %d 的 StatusBar 中未找到 UI 节点: %s" % [char_id, ui_type])
+		return null
